@@ -1,8 +1,11 @@
-public class BackstagePass {
-
-    private Item item;
+public class BackstagePass extends CustomItem{
 
     public BackstagePass(Item item){
-        this.item = item;
+        super(item);
+    }
+
+    @Override
+    public void updateItem() {
+
     }
 }

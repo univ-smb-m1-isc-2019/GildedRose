@@ -1,8 +1,11 @@
-public class StandardItem {
-
-    private Item item;
+public class StandardItem extends CustomItem{
 
     public StandardItem(Item item){
-        this.item = item;
+        super(item);
+    }
+
+    @Override
+    public void updateItem() {
+
     }
 }
