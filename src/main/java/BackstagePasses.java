@@ -1,6 +1,6 @@
-public class BackstagePass extends CustomItem{
+public class BackstagePasses extends CustomItem{
 
-    public BackstagePass(Item item){
+    public BackstagePasses(Item item){
         super(item);
     }
 
