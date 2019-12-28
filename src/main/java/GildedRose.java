@@ -5,8 +5,8 @@ import java.util.List;
 public class GildedRose {
 
 	private static List<Item> items = null;
-    private static int LOWEST_QUALITY_POSSIBLE = 0;
-    private static int HIGHEST_QUALITY_POSSIBLE = 50;
+    static final int LOWEST_QUALITY_POSSIBLE = 0;
+    static final int HIGHEST_QUALITY_POSSIBLE = 50;
 
 	/**
 	 * @param args
