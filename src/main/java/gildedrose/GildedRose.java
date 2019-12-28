@@ -38,7 +38,7 @@ public class GildedRose {
                 {
                     if (!"Sulfuras, Hand of Ragnaros".equals(item.name))
                     {
-                        item.quality = item.quality - 1;
+                        item.quality -= 1;
                     }
                 }
             }
@@ -84,7 +84,7 @@ public class GildedRose {
                         {
                             if (!"Sulfuras, Hand of Ragnaros".equals(item.name))
                             {
-                                item.quality = item.quality - 1;
+                                item.quality -= 1;
                             }
                         }
                     }
