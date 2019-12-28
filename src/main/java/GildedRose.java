@@ -34,7 +34,7 @@ public class GildedRose {
         {
             if ((!"Aged Brie".equals(item.name)) && !"Backstage passes to a TAFKAL80ETC concert".equals(item.name))
             {
-                if (item.quality > 0)
+                if (item.quality > LOWEST_QUALITY_POSSIBLE)
                 {
                     if (!"Sulfuras, Hand of Ragnaros".equals(item.name))
                     {
@@ -80,7 +80,7 @@ public class GildedRose {
                 {
                     if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.name))
                     {
-                        if (item.quality > 0)
+                        if (item.quality > LOWEST_QUALITY_POSSIBLE)
                         {
                             if (!"Sulfuras, Hand of Ragnaros".equals(item.name))
                             {
