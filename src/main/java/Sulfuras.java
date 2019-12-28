@@ -1,8 +1,11 @@
-public class Sulfuras {
-
-    private Item item;
+public class Sulfuras extends CustomItem{
 
     public Sulfuras(Item item){
-        this.item = item;
+        super(item);
+    }
+
+    @Override
+    public void updateItem() {
+        
     }
 }

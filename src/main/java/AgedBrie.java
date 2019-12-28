@@ -1,8 +1,11 @@
-public class AgedBrie {
-
-    private Item item;
+public class AgedBrie extends CustomItem{
 
     public AgedBrie(Item item){
-        this.item = item;
+        super(item);
+    }
+
+    @Override
+    public void updateItem() {
+
     }
 }
