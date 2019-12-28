@@ -44,7 +44,7 @@ public class GildedRose {
             }
             else
             {
-                if (item.quality < 50)
+                if (item.quality < HIGHEST_QUALITY_POSSIBLE)
                 {
                     item.quality += 1;
 
@@ -52,7 +52,7 @@ public class GildedRose {
                     {
                         if (item.sellIn < 11)
                         {
-                            if (item.quality < 50)
+                            if (item.quality < HIGHEST_QUALITY_POSSIBLE)
                             {
                                 item.quality += 1;
                             }
@@ -60,7 +60,7 @@ public class GildedRose {
 
                         if (item.sellIn < 6)
                         {
-                            if (item.quality < 50)
+                            if (item.quality < HIGHEST_QUALITY_POSSIBLE)
                             {
                                 item.quality += 1;
                             }
@@ -95,7 +95,7 @@ public class GildedRose {
                 }
                 else
                 {
-                    if (item.quality < 50)
+                    if (item.quality < HIGHEST_QUALITY_POSSIBLE)
                     {
                         item.quality += 1;
                     }
