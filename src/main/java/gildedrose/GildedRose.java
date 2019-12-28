@@ -92,7 +92,7 @@ public class GildedRose {
                     }
                     else
                     {
-                        item.quality = item.quality - item.quality;
+                        item.quality = LOWEST_QUALITY_POSSIBLE;
                     }
                 }
                 else
