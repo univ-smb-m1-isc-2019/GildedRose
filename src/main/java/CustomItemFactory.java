@@ -18,4 +18,15 @@ public class CustomItemFactory {
         itemTypeList.put(CONJURED_ITEM, new ConjuredItem(item));
         itemTypeList.put(SULFURAS_ITEM, new Sulfuras(item));
     }
+
+    public CustomItem getCustomItemFromItem(Item item){
+        for(String itemTypeName: itemTypeList.keySet()){
+
+            if(item.name.contains(itemTypeName)){
+                return itemTypeList.get(itemTypeName);
+            }
+        }
+        return new StandardItem(item);
+    }
+
 }
