@@ -46,7 +46,7 @@ public class GildedRose {
             {
                 if (item.quality < 50)
                 {
-                    item.quality = item.quality + 1;
+                    item.quality += 1;
 
                     if ("Backstage passes to a TAFKAL80ETC concert".equals(item.name))
                     {
@@ -54,7 +54,7 @@ public class GildedRose {
                         {
                             if (item.quality < 50)
                             {
-                                item.quality = item.quality + 1;
+                                item.quality += 1;
                             }
                         }
 
@@ -62,7 +62,7 @@ public class GildedRose {
                         {
                             if (item.quality < 50)
                             {
-                                item.quality = item.quality + 1;
+                                item.quality += 1;
                             }
                         }
                     }
@@ -97,7 +97,7 @@ public class GildedRose {
                 {
                     if (item.quality < 50)
                     {
-                        item.quality = item.quality + 1;
+                        item.quality += 1;
                     }
                 }
             }
