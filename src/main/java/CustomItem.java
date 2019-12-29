@@ -1,6 +1,6 @@
 public abstract class CustomItem {
 
-    private Item item;
+    protected Item item;
 
     public CustomItem(Item item) {
         this.item = item;
@@ -12,11 +12,20 @@ public abstract class CustomItem {
         return item.sellIn < 0;
     }
 
-    protected boolean hasHighestQualityPossible(){
+    protected boolean hasReachedHighestQualityPossible(){
         return item.quality >= GildedRose.HIGHEST_QUALITY_POSSIBLE;
     }
 
-    protected boolean hasLowestQualityPossible(){
+    protected boolean hasReachedLowestQualityPossible(){
         return item.quality <= GildedRose.LOWEST_QUALITY_POSSIBLE;
+    }
+
+    protected void checkQualityLimitReached(){
+        if(hasReachedHighestQualityPossible()){
+            item.quality = GildedRose.HIGHEST_QUALITY_POSSIBLE;
+        }
+        else if(hasReachedLowestQualityPossible()){
+            item.quality = GildedRose.LOWEST_QUALITY_POSSIBLE;
+        }
     }
 }
