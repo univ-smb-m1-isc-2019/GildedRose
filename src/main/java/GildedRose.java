@@ -32,80 +32,9 @@ public class GildedRose {
 
     public static void updateQuality()
     {
-        for (Item item: items)
-        {
+        for (Item item: items) {
             CustomItem customItem = getCustomItemFromItem(item);
             customItem.updateItem();
-
-            if ((!"Aged Brie".equals(item.name)) && !"Backstage passes to a TAFKAL80ETC concert".equals(item.name))
-            {
-                if (item.quality > LOWEST_QUALITY_POSSIBLE)
-                {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(item.name))
-                    {
-                        item.quality -= 1;
-                    }
-                }
-            }
-            else
-            {
-                if (item.quality < HIGHEST_QUALITY_POSSIBLE)
-                {
-                    item.quality += 1;
-
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(item.name))
-                    {
-                        if (item.sellIn < 11)
-                        {
-                            if (item.quality < HIGHEST_QUALITY_POSSIBLE)
-                            {
-                                item.quality += 1;
-                            }
-                        }
-
-                        if (item.sellIn < 6)
-                        {
-                            if (item.quality < HIGHEST_QUALITY_POSSIBLE)
-                            {
-                                item.quality += 1;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!"Sulfuras, Hand of Ragnaros".equals(item.name))
-            {
-                item.setSellIn(item.sellIn - 1);
-            }
-
-            if (item.sellIn < 0)
-            {
-                if (!"Aged Brie".equals(item.name))
-                {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.name))
-                    {
-                        if (item.quality > LOWEST_QUALITY_POSSIBLE)
-                        {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(item.name))
-                            {
-                                item.quality -= 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        item.quality = LOWEST_QUALITY_POSSIBLE;
-                    }
-                }
-                else
-                {
-                    if (item.quality < HIGHEST_QUALITY_POSSIBLE)
-                    {
-                        item.quality += 1;
-                    }
-                }
-            }
         }
     }
 
