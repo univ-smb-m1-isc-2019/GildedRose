@@ -6,6 +6,6 @@ public class Sulfuras extends CustomItem{
 
     @Override
     public void updateItem() {
-        
+        /* This item isn't sold and never loose quality */
     }
 }
