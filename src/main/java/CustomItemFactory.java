@@ -19,7 +19,7 @@ public class CustomItemFactory {
         itemTypeList.put(SULFURAS_ITEM, new Sulfuras(item));
     }
 
-    public CustomItem getCustomItemFromItem(Item item){
+    public CustomItem getCustomItem(Item item){
         for(String itemTypeName: itemTypeList.keySet()){
 
             if(item.name.contains(itemTypeName)){
