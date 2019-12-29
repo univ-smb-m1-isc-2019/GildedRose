@@ -7,6 +7,11 @@ public class ConjuredItem extends CustomItem {
         super(item);
     }
 
+    /**
+     * The Conjured Item DECREASES in quality :
+     * - By 2, before the selling date
+     * - By 4, after the selling date
+     */
     @Override
     public void updateItem() {
         item.sellIn -= 1;

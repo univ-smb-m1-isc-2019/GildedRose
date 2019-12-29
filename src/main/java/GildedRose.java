@@ -26,10 +26,6 @@ public class GildedRose {
         updateQuality();
 }
 
-    private static CustomItem getCustomItemFromItem(Item item){
-	    return new CustomItemFactory(item).getCustomItem(item);
-    }
-
     public static void updateQuality()
     {
         for (Item item: items) {
@@ -38,4 +34,7 @@ public class GildedRose {
         }
     }
 
+    private static CustomItem getCustomItemFromItem(Item item){
+        return new CustomItemFactory(item).getCustomItem(item);
+    }
 }

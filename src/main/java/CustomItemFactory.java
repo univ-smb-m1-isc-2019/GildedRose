@@ -20,8 +20,9 @@ public class CustomItemFactory {
     }
 
     public CustomItem getCustomItem(Item item){
-        for(String itemTypeName: itemTypeList.keySet()){
 
+        // Check if the given item is one of the special item in the itemTypeList
+        for(String itemTypeName: itemTypeList.keySet()){
             if(item.name.contains(itemTypeName)){
                 return itemTypeList.get(itemTypeName);
             }

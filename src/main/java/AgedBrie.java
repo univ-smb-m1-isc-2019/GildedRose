@@ -7,6 +7,11 @@ public class AgedBrie extends CustomItem{
         super(item);
     }
 
+    /**
+     * The Aged Brie INCREASES in quality :
+     * - By 1, before the selling date,
+     * - By 2, after the selling date.
+     */
     @Override
     public void updateItem() {
         item.sellIn -= 1;

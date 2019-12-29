@@ -20,6 +20,10 @@ public abstract class CustomItem {
         return item.quality <= GildedRose.LOWEST_QUALITY_POSSIBLE;
     }
 
+    /**
+     * Check if the quality value of the item has passed the limit.
+     * If that's the case, correct it.
+     */
     protected void checkQualityLimitReached(){
         if(hasReachedHighestQualityPossible()){
             item.quality = GildedRose.HIGHEST_QUALITY_POSSIBLE;
