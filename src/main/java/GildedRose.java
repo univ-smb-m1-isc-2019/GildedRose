@@ -102,4 +102,12 @@ public class GildedRose {
         }
     }
 
+    public List<Item> getItems()
+    {
+        return items;
+    }
+
+
+
+
 }
