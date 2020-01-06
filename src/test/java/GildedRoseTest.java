@@ -1,9 +1,13 @@
-import static org.junit.Assert.*;
+
 
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Optional;
+
+import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class GildedRoseTest {
@@ -12,12 +16,13 @@ public class GildedRoseTest {
 	public void sulfura_should_keep_same_quality()
 	{
 	    GildedRose gildedRose = new GildedRose();
-	    Item sulfura = gildedRose.get("Sulfuras, Hand of Ragnaros");
-	    int quality = sulfura.getQuality();
+	    Item sulfuras = gildedRose.get("Sulfuras, Hand of Ragnaros");
+	    int quality = sulfuras.getQuality();
 	    for(int i = 0; i<100; i++)
 	    {
 			gildedRose.updateQuality();
-			assertEquals(quality,sulfura.getQuality());
+			//assertEquals(quality,sulfuras.getQuality());
+			assertThat(sulfuras.getQuality()).isEqualTo(quality);
 		}
 
 	}
@@ -31,7 +36,9 @@ public class GildedRoseTest {
 		for(int i = 0; i<100; i++)
 		{
 			gildedRose.updateQuality();
-			assertTrue(quality <= brie.getQuality());
+			//assertTrue(quality <= brie.getQuality());
+			assertThat(quality).isLessThanOrEqualTo(brie.getQuality());
+
 		}
 	}
 	@Test
