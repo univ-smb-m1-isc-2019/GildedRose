@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 
 public class GildedRose {
@@ -227,4 +229,12 @@ public class GildedRose {
         }
     }
 
+    public List<Item> getCommonItems()
+    {
+        List<Item> list = getItems().stream()
+                .filter(item -> item.getClass().getName().equals("CommonItem"))
+                .collect(Collectors.toList());
+
+        return list;
+    }
 }

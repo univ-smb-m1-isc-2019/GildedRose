@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -33,6 +34,21 @@ public class GildedRoseTest {
 			assertTrue(quality <= brie.getQuality());
 		}
 	}
+	@Test
+	public void quality_should_be_less_than_50()
+	{
+		GildedRose gildedRose = new GildedRose();
 
+		for(int i = 0; i<100; i++)
+		{
+			gildedRose.updateQuality();
+		}
+
+		Optional<Item> optional = gildedRose.getCommonItems().stream()
+				.filter(item -> item.getQuality() > 50)
+				.findFirst();
+
+		assertTrue(optional.isEmpty());
+	}
 
 }
