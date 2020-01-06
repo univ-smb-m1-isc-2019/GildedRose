@@ -6,15 +6,11 @@ import java.util.List;
 
 public class GildedRose {
 
-	private static List<Item> items = null;
+	private List<Item> items;
 	static final int LOWEST_QUALITY_POSSIBLE = 0;
 	static final int HIGHEST_QUALITY_POSSIBLE = 50;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
+    public GildedRose(){
         System.out.println("OMGHAI!");
 
         items = new ArrayList<>();
@@ -24,19 +20,16 @@ public class GildedRose {
         items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new Item("Conjured Mana Cake", 3, 6));
+    }
 
-        updateQuality();
-}
-
-    public static void updateQuality()
-    {
+    public void updateQuality() {
         for (Item item: items) {
             CustomItem customItem = getCustomItemFromItem(item);
             customItem.updateItem();
         }
     }
 
-    private static CustomItem getCustomItemFromItem(Item item){
+    private CustomItem getCustomItemFromItem(Item item){
         return new CustomItemFactory(item).getCustomItem(item);
     }
 }
