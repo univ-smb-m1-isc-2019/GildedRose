@@ -1,35 +1,44 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 
 public class GildedRose {
 
-    private static ArrayList<Item> items = null;
+    private  static ArrayList<Item> items = null;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
-        System.out.println("OMGHAI!");
+    //Constructeur qui crée la liste d'items
+    public  void GildedRose(){
+        ManageList ML = new ManageList();
+        items = ML.create_list_item();
+    }
 
-        //Crée une liste vide pour les items
-        items = new ArrayList<Item>();
-
-        //Crée la liste des items
-        ManageList.create_list_item(items);
-
-        //Met à jour les données des items
-        UpdateQuality.updateQuality(items);
-
-        //Affiche items
-        ManageList.display_list(items);
-
+    //Constructeur qui modifie la qualité des items
+    public void updateQuality(){
+        UpdateQuality UQ = new UpdateQuality();
+        UQ.updateQuality(getItemList());
     }
 
 
-	
+    //Recupere l'item souhaité
+    public Item get(String key) {
 
+        Optional<Item> optional = items.stream()
+                .filter(item -> item.getName().equals(key))
+                .findFirst();
+        if (optional.isPresent()){
+            return optional.get();
+
+        }else{
+            throw new IllegalStateException("not found in shop");
+        }
+    }
+
+
+    //Recupere la liste d'items
+    public ArrayList<Item> getItemList() {
+        return items;
+    }
 
 }

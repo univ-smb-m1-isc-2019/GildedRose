@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ConditionQuality {
     ///////////////////////////////////////////////////////////////////
-    public static void decrease_quality(Item item){
+    public void decrease_quality(Item item){
 
         if ((!"Aged Brie".equals(item.getName())) && (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName())))
         {
@@ -34,7 +34,7 @@ public class ConditionQuality {
     }
 
     ///////////////////////////////////////////////////////////////////
-    public static void decrease_sellIn(Item item){
+    public void decrease_sellIn(Item item){
         if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
         {
             item.setSellIn(item.getSellIn() - 1);
@@ -42,7 +42,7 @@ public class ConditionQuality {
     }
 
     ///////////////////////////////////////////////////////////////////
-    public static void decrease_quality_sellIn_wrong(Item item){
+    public void decrease_quality_sellIn_wrong(Item item){
 
         if (item.getSellIn() < 0)
         {
@@ -74,7 +74,7 @@ public class ConditionQuality {
     }
 
     ///////////////////////////////////////////////////////////
-    public static void decrease_quality_item_conjured(Item item){
+    public void decrease_quality_item_conjured(Item item){
         if ("Conjured Mana Cake".equals(item.getName()))
         {
             item.setQuality(item.getQuality() -1);
