@@ -9,7 +9,7 @@ import java.util.Optional;
 public class GildedRoseTest {
 
 	@Test
-	public void sulfura_should_have_the_same_quality()
+	public void sulfura_should_keep_same_quality()
 	{
 	    GildedRose gildedRose = new GildedRose();
 	    Item sulfura = gildedRose.get("Sulfuras, Hand of Ragnaros");
@@ -35,7 +35,7 @@ public class GildedRoseTest {
 		}
 	}
 	@Test
-	public void quality_should_be_less_than_50()
+	public void quality_should_be_more_than_50()
 	{
 		GildedRose gildedRose = new GildedRose();
 
@@ -51,4 +51,20 @@ public class GildedRoseTest {
 		assertTrue(optional.isEmpty());
 	}
 
+	@Test
+	public void quality_should_never_be_less_than_0()
+	{
+		GildedRose gildedRose = new GildedRose();
+
+		for(int i = 0; i<100; i++)
+		{
+			gildedRose.updateQuality();
+		}
+
+		Optional<Item> optional = gildedRose.getItems().stream()
+				.filter(item -> item.getQuality() < 0)
+				.findFirst();
+
+		assertTrue(optional.isEmpty());
+	}
 }
