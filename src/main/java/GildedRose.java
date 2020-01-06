@@ -23,6 +23,13 @@ public class GildedRose {
 
     }
 
+    public void printItems(){
+        for(int i = 0; i < items.size(); i++){
+            System.out.println(items.get(i).getName() + " : " + items.get(i).getSellIn() + "(sell) , " +
+                    items.get(i).getQuality() + "(quality)");
+        }
+    }
+
 
     public void updateQuality() {
         for (int i = 0; i < items.size(); i++) {
@@ -88,6 +95,4 @@ public class GildedRose {
             throw new IllegalStateException("Not found in shop");
         }
     }
-
-
 }

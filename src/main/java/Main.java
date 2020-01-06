@@ -4,6 +4,9 @@ public class Main {
 
         GildedRose inn = new GildedRose();
         inn.init();
+        inn.printItems();
         inn.updateQuality();
+        System.out.println("======== update ========");
+        inn.printItems();
     }
 }
