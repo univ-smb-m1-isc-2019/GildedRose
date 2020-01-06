@@ -75,7 +75,7 @@ public class ConditionQuality {
 
     ///////////////////////////////////////////////////////////
     public void decrease_quality_item_conjured(Item item){
-        if ("Conjured Mana Cake".equals(item.getName()))
+        if (("Conjured Mana Cake".equals(item.getName()))&&(item.getQuality()>0))
         {
             item.setQuality(item.getQuality() -1);
         }
