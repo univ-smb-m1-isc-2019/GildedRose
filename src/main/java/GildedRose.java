@@ -1,113 +1,230 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class GildedRose {
 
-	private static List<Item> items = null;
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
-        System.out.println("OMGHAI!");
-		
-        items = new ArrayList<Item>();
-        items.add(new Item("+5 Dexterity Vest", 10, 20));
-        items.add(new Item("Aged Brie", 2, 0));
-        items.add(new Item("Elixir of the Mongoose", 5, 7));
-        items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
-        items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
-        items.add(new Item("Conjured Mana Cake", 3, 6));
-
-        updateQuality();
-}
+	private List<Item> items = null;
+	private int minimalValue ;
+	private int maximalValue ;
+	private int increaseByTwo;
+	private int increaseByThree;
 
 
-	
-    public static void updateQuality()
+	public GildedRose()
     {
-        for (int i = 0; i < items.size(); i++)
+        initListItems();
+        setMinimalValue(0);
+        setMaximalValue(50);
+        setIncreaseByTwo(11);
+        setIncreaseByThree(6);
+        initListItem();
+    }
+
+    public void initListItem()
+    {
+        ajouterItem(new Item("+5 Dexterity Vest", 10, 20));
+        ajouterItem(new Item("Aged Brie", 2, 0));
+        ajouterItem(new Item("Elixir of the Mongoose", 5, 7));
+        ajouterItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
+        ajouterItem(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        ajouterItem(new Item("Conjured Mana Cake", 3, 6));
+    }
+
+    public void updateQuality()
+    {
+        for (int i = 0; i < itemsSize(); i++)
         {
-            if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) 
+            if ((!isBrie(i)) && !isBackstage(i))
             {
-                if (items.get(i).getQuality() > 0)
+                if (getItemQuality(i) > getMinimalValue())
                 {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                    if (!isSulfuras(i))
                     {
-                        items.get(i).setQuality(items.get(i).getQuality() - 1);
+                        decrementItemQuality(i);
                     }
                 }
             }
             else
             {
-                if (items.get(i).getQuality() < 50)
+                if (getItemQuality(i) < getMaximalValue())
                 {
-                    items.get(i).setQuality(items.get(i).getQuality() + 1);
+                    incrementItemQuality(i);
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
+                    if (isBackstage(i))
                     {
-                        if (items.get(i).getSellIn() < 11)
+                        if (getItemSellIn(i) < getIncreaseByTwo())
                         {
-                            if (items.get(i).getQuality() < 50)
+                            if (getItemQuality(i) < getMaximalValue())
                             {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
+                                incrementItemQuality(i);
                             }
                         }
 
-                        if (items.get(i).getSellIn() < 6)
+                        if (getItemSellIn(i) < getIncreaseByThree())
                         {
-                            if (items.get(i).getQuality() < 50)
+                            if (getItemQuality(i) < getMaximalValue())
                             {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
+                                incrementItemQuality(i);
                             }
                         }
                     }
                 }
             }
 
-            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+            if (!isSulfuras(i))
             {
-                items.get(i).setSellIn(items.get(i).getSellIn() - 1);
+                decrementItemSellIn(i);
             }
 
-            if (items.get(i).getSellIn() < 0)
+            if (getItemSellIn(i) < getMinimalValue())
             {
-                if (!"Aged Brie".equals(items.get(i).getName()))
+                if (!isBrie(i))
                 {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
+                    if (!isBackstage(i))
                     {
-                        if (items.get(i).getQuality() > 0)
+                        if (getItemQuality(i) > getMinimalValue())
                         {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                            if (!isSulfuras(i))
                             {
-                                items.get(i).setQuality(items.get(i).getQuality() - 1);
+                                decrementItemQuality(i);
                             }
                         }
                     }
                     else
                     {
-                        items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
+                        setItemQuality(i,getMinimalValue());
                     }
                 }
                 else
                 {
-                    if (items.get(i).getQuality() < 50)
+                    if (getItemQuality(i) < getMaximalValue())
                     {
-                        items.get(i).setQuality(items.get(i).getQuality() + 1);
+                        incrementItemQuality(i);
                     }
                 }
             }
         }
     }
 
+
+    public boolean isSulfuras(int position)
+    {
+        return "Sulfuras, Hand of Ragnaros".equals(getItemName(position));
+    }
+
+    public boolean isBrie(int position)
+    {
+        return "Aged Brie".equals(getItemName(position));
+    }
+
+    public boolean isBackstage(int position)
+    {
+        return "Backstage passes to a TAFKAL80ETC concert".equals(getItemName(position));
+    }
     public List<Item> getItems()
     {
         return items;
     }
 
+    public void initListItems()
+    {
+        items = new ArrayList<Item>();
+    }
+
+    public void ajouterItem(Item item)
+    {
+        getItems().add(item);
+    }
+
+    public int itemsSize()
+    {
+        return items.size();
+    }
+
+    public int getItemQuality(int position)
+    {
+        return getItems().get(position).getQuality();
+    }
+
+    public void setItemQuality(int position, int value)
+    {
+        getItems().get(position).setQuality(value);
+    }
+
+    public String getItemName(int position)
+    {
+        return getItems().get(position).getName();
+    }
+
+    public void setMaximalValue(int value) {
+        maximalValue = value;
+    }
+
+    public void setMinimalValue(int value) {
+        minimalValue = value;
+    }
+
+    public int getMinimalValue(){ return minimalValue; }
+
+    public  int getMaximalValue(){ return maximalValue; }
+
+    public int getItemSellIn(int position)
+    {
+        return getItems().get(position).getSellIn();
+    }
+
+    public void setItemSellIn(int position, int value)
+    {
+        getItems().get(position).setSellIn(value);
+    }
+
+    public void incrementItemQuality(int position)
+    {
+        setItemQuality(position,getItemQuality(position) + 1);
+    }
+    public void decrementItemQuality(int position)
+    {
+        setItemQuality(position,getItemQuality(position) - 1);
+    }
+    public void decrementItemSellIn(int position)
+    {
+        setItemSellIn(position,getItemSellIn(position) - 1);
+    }
+
+    public void setIncreaseByTwo(int value)
+    {
+        increaseByTwo = value;
+    }
+    public void setIncreaseByThree(int value)
+    {
+        increaseByThree = value;
+    }
+
+    public int getIncreaseByTwo()
+    {
+        return increaseByTwo;
+    }
+    public int getIncreaseByThree()
+    {
+        return increaseByThree;
+    }
 
 
+    public Item get(String nom)
+    {
+        Optional<Item> optional = getItems().stream()
+                .filter(item -> item.getName().equals(nom))
+                .findFirst();
+
+        if(optional.isPresent())
+        {
+            return optional.get();
+        }
+        else {
+            throw new IllegalStateException("Not found in shop");
+        }
+    }
 
 }
