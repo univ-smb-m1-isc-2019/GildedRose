@@ -31,7 +31,7 @@ public class GildedRose {
         ajouterItem(new CommonItem("Elixir of the Mongoose", 5, 7));
         ajouterItem(new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80));
         ajouterItem(new CommonItem("Backstage passes to a TAFKAL80ETC concert", 15, 20));
-        ajouterItem(new CommonItem("Conjured Mana Cake", 3, 6));
+        ajouterItem(new ConjuredItem("Conjured Mana Cake", 3, 6));
     }
 
     public void updateQuality()
