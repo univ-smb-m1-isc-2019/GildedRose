@@ -27,6 +27,19 @@ public class GildedRoseTest {
 		}
 	}
 
+	//Permet de verifier que l'item sulfuras ne peut pas être vendu
+	@Test
+	public void sulfuras_cant_be_selled(){
+		GildedRose GR = new GildedRose();
+		GR.GildedRose();
+		Item sulfuras = GR.get("Sulfuras, Hand of Ragnaros");
+		int originQuality = sulfuras.sellIn;
+		for(int i=0; i<100; i++) {
+			GR.updateQuality();
+			assertTrue(originQuality == sulfuras.sellIn);
+		}
+	}
+
 	//Effectue un test permettant qu'un item ne depasse jamais 50 de qualité
 	@Test
 	public void item_never_more_50quality(){
