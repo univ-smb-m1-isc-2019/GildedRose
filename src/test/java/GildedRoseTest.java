@@ -1,19 +1,19 @@
 
 
+import org.assertj.core.internal.bytebuddy.build.ToStringPlugin;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class GildedRoseTest {
 
 	@Test
-	public void sulfura_should_keep_same_quality()
+	public void sulfuras_should_keep_same_quality()
 	{
 	    GildedRose gildedRose = new GildedRose();
 	    Item sulfuras = gildedRose.get("Sulfuras, Hand of Ragnaros");
@@ -73,5 +73,22 @@ public class GildedRoseTest {
 				.findFirst();
 
 		assertTrue(optional.isEmpty());
+	}
+
+
+	@Test
+	public void sulfura_cannot_be_sell()
+	{
+		GildedRose gildedRose = new GildedRose();
+		for(int i = 0; i<100; i++)
+		{
+			gildedRose.updateQuality();
+		}
+
+		Optional<Item> optional = gildedRose.getItems().stream()
+				.filter(item -> item.getName().equals("Sulfuras, Hand of Ragnaros"))
+				.findFirst();
+
+		assertFalse(optional.isEmpty());
 	}
 }
