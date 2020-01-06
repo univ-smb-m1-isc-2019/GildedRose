@@ -1,8 +1,8 @@
-public class ConjuredItem {
+public class AdvancedItem {
     public Item item;
     public boolean conjured;
 
-    public ConjuredItem(Item item, boolean conjured) {
+    public AdvancedItem(Item item, boolean conjured) {
         this.setItem(item);
         this.setConjured(conjured);
     }
