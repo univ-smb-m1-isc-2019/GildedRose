@@ -24,12 +24,12 @@ public class GildedRose {
 
     public void initListItem()
     {
-        ajouterItem(new Item("+5 Dexterity Vest", 10, 20));
-        ajouterItem(new Item("Aged Brie", 2, 0));
-        ajouterItem(new Item("Elixir of the Mongoose", 5, 7));
-        ajouterItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
-        ajouterItem(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
-        ajouterItem(new Item("Conjured Mana Cake", 3, 6));
+        ajouterItem(new CommonItem("+5 Dexterity Vest", 10, 20));
+        ajouterItem(new CommonItem("Aged Brie", 2, 0));
+        ajouterItem(new CommonItem("Elixir of the Mongoose", 5, 7));
+        ajouterItem(new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80));
+        ajouterItem(new CommonItem("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        ajouterItem(new CommonItem("Conjured Mana Cake", 3, 6));
     }
 
     public void updateQuality()
