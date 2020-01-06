@@ -229,10 +229,10 @@ public class GildedRose {
         }
     }
 
-    public List<Item> getCommonItems()
+    public List<Item> getNonLegendaryItems()
     {
         List<Item> list = getItems().stream()
-                .filter(item -> item.getClass().getName().equals("CommonItem"))
+                .filter(item -> item.getClass().getName().equals("CommonItem") || item.getClass().getName().equals("ConjuredItem"))
                 .collect(Collectors.toList());
 
         return list;

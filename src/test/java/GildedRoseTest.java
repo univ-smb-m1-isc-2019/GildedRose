@@ -51,7 +51,7 @@ public class GildedRoseTest {
 			gildedRose.updateQuality();
 		}
 
-		Optional<Item> optional = gildedRose.getCommonItems().stream()
+		Optional<Item> optional = gildedRose.getNonLegendaryItems().stream()
 				.filter(item -> item.getQuality() > 50)
 				.findFirst();
 
