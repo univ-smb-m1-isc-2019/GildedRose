@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stock {
-    public static List<CorruptedItem> addAllItem(List<CorruptedItem> items){
+    public  List<CorruptedItem> addAllItem(List<CorruptedItem> items){
         items = new ArrayList<CorruptedItem>();
         CorruptedItem item1 = new CorruptedItem(new Item("+5 Dexterity Vest", 10, 20),false);
         CorruptedItem item2 = new CorruptedItem(new Item("Aged Brie", 2, 0),false);

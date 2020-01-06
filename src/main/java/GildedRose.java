@@ -4,14 +4,15 @@ import java.util.List;
 public class GildedRose {
 
 	private static List<CorruptedItem> items = null;
+	private Stock stock = new Stock();
+	private Treatment treatment = new Treatment();
+	private Result result = new Result();
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-        items = Stock.addAllItem(items);
-        Treatment.updateQuality(items);
-        Result.showResult(items);
+
+	public  void gildedRose() {
+        items = stock.addAllItem(items);
+        treatment.updateQuality(items);
+        result.showResult(items);
 }
 
 

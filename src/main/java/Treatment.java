@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Treatment {
-    public static void updateQuality(List<CorruptedItem> items)
+    public  void updateQuality(List<CorruptedItem> items)
     {
         for (int i = 0; i < items.size(); i++)
         {
