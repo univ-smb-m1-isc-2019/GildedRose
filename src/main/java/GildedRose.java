@@ -18,18 +18,15 @@ public class GildedRose {
 
             if ((!"Aged Brie".equals(item.getName()))) {
                 if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
-                    if (item.getQuality() > 0)
-                        myManagement.dayPassed(item);
+                    myManagement.itemQualityDecrement(item);
 
             }else{
 
                 if (item.getQuality() < 50) {
                     item.setQuality(item.getQuality() + 1);
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
+                    if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
                         myManagement.qualityIncrementBackstage(item);
-                    }
-
 
                 }
             }
@@ -44,24 +41,14 @@ public class GildedRose {
     }
 
 
-    private void sellInLessThan0(Item myitem){
-        if (!"Aged Brie".equals(myitem.getName())) {
-            if (!"Backstage passes to a TAFKAL80ETC concert".equals(myitem.getName())) {
-
-                if (myitem.getQuality() > 0) {
-                    myManagement.dayPassed(myitem);/**/
-                }
-
-
-
-            }else{
-                myitem.setQuality(myitem.getQuality() - myitem.getQuality());
-            }
-        }else{
-            if (myitem.getQuality() < 50){
-                myitem.setQuality(myitem.getQuality() + 1);
-            }
-        }
+    private void sellInLessThan0(Item myItem){
+        if (!"Aged Brie".equals(myItem.getName())) {
+            if (!"Backstage passes to a TAFKAL80ETC concert".equals(myItem.getName())) {
+                myManagement.itemQualityDecrement(myItem);
+            }else
+                myItem.setQuality(myItem.getQuality() - myItem.getQuality());
+        }else
+            myManagement.itemQualityIncrement(myItem);
     }
 
 }
