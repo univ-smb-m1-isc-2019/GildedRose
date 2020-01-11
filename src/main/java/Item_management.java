@@ -8,17 +8,9 @@ public class Item_management {
        return myItem.getQuality() < QUALITY_MAX;
     }
 
-    public void qualityIncrementBackstage(Item myItem){
-
-        if (myItem.getSellIn() < 11)
-            if (qualityLessThan50(myItem)) {
-                myItem.setQuality(myItem.getQuality() + 1);
-            }
-
-        if (myItem.getSellIn() < 6)
-            if (qualityLessThan50(myItem)) {
-                myItem.setQuality(myItem.getQuality() + 1);
-            }
+    public void itemQualityIncrement(Item myItem){
+        if (myItem.getQuality() > QUALITY_MIN)
+            myItem.setQuality(myItem.getQuality() + 1);
     }
 
     public void itemQualityDecrement(Item myItem){
@@ -29,6 +21,19 @@ public class Item_management {
     public void dayPassed(Item myItem){
             if (!LEGENDARY_ITEM.equals(myItem.getName()))
                 itemQualityDecrement(myItem);
+    }
+
+    public void qualityIncrementBackstage(Item myItem){
+
+        if (myItem.getSellIn() < 11)
+            if (qualityLessThan50(myItem)) {
+                itemQualityIncrement(myItem);
+            }
+
+        if (myItem.getSellIn() < 6)
+            if (qualityLessThan50(myItem)) {
+                itemQualityIncrement(myItem);
+            }
     }
 
 
