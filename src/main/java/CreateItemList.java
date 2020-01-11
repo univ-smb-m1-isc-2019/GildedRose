@@ -20,12 +20,11 @@ public class CreateItemList {
         items.add(new Item("Conjured Mana Cake", 3, 6));
     }
 
-    public static List<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public static void setItems(List<Item> items) {
+    public void setItems(List<Item> items) {
         CreateItemList.items = items;
     }
-
 }
