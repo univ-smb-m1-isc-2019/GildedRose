@@ -2,11 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateItemList {
-    private static List<Item> items;
-
-    public CreateItemList() {
-        this.items = null;
-    }
+    private static List<Item> items = null;
 
     public void createList(){
         System.out.println("OMGHAI!");
