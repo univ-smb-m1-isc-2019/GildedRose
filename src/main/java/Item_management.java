@@ -21,15 +21,14 @@ public class Item_management {
             }
     }
 
-    public void qualityDecrement(Item myItem){
-        myItem.setQuality(myItem.getQuality() - 1);
+    public void itemQualityDecrement(Item myItem){
+        if (myItem.getQuality() > 0)
+            myItem.setQuality(myItem.getQuality() - 1);
     }
 
     public void dayPassed(Item myItem){
-        if (myItem.getQuality() > QUALITY_MIN)
-            if (!LEGENDARY_ITEM.equals(myItem.getName())) {
-                qualityDecrement(myItem);
-            }
+            if (!LEGENDARY_ITEM.equals(myItem.getName()))
+                itemQualityDecrement(myItem);
     }
 
 
