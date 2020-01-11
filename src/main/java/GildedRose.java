@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.List;
-
 
 public class GildedRose {
 
@@ -33,7 +31,6 @@ public class GildedRose {
 
             if (item.getSellIn() < 0)
                 sellIn_LessThan0(item);
-
         }
     }
 
