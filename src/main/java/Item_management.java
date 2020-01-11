@@ -26,9 +26,10 @@ public class Item_management {
     }
 
     public void dayPassed(Item myItem){
-        if (!LEGENDARY_ITEM.equals(myItem.getName())) {
-            qualityDecrement(myItem);
-        }
+        if (myItem.getQuality() > QUALITY_MIN)
+            if (!LEGENDARY_ITEM.equals(myItem.getName())) {
+                qualityDecrement(myItem);
+            }
     }
 
 
