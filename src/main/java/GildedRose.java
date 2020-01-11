@@ -22,26 +22,23 @@ public class GildedRose {
 
             }else{
 
-                if (item.getQuality() < 50) {
-                    item.setQuality(item.getQuality() + 1);
+                myManagement.itemQualityIncrement(item);
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
-                        myManagement.qualityIncrementBackstage(item);
+                if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
+                    myManagement.qualityIncrementBackstage(item);
 
-                }
             }
 
             myManagement.dayPassed(item);/**/
 
-            if (item.getSellIn() < 0) {
-                sellInLessThan0(item);
-            }
+            if (item.getSellIn() < 0)
+                sellIn_LessThan0(item);
 
         }
     }
 
 
-    private void sellInLessThan0(Item myItem){
+    private void sellIn_LessThan0(Item myItem){
         if (!"Aged Brie".equals(myItem.getName())) {
             if (!"Backstage passes to a TAFKAL80ETC concert".equals(myItem.getName())) {
                 myManagement.itemQualityDecrement(myItem);
