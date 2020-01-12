@@ -37,9 +37,9 @@ public class GildedRose {
 
     private void sellIn_LessThan0(Item myItem){
         if (!"Aged Brie".equals(myItem.getName())) {
-            if (!"Backstage passes to a TAFKAL80ETC concert".equals(myItem.getName())) {
+            if (!"Backstage passes to a TAFKAL80ETC concert".equals(myItem.getName()))
                 myManagement.itemQualityDecrement(myItem);
-            }else
+            else
                 myItem.setQuality(myItem.getQuality() - myItem.getQuality());
         }else
             myManagement.itemQualityIncrement(myItem);
