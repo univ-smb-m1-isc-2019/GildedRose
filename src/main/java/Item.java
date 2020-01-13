@@ -2,9 +2,9 @@
 public abstract class Item {
 	//This class will never been instancied itself. It regroups subclasses and their methods.
 	protected final static int QUALITY_MAX= 50;
-    protected String name;
-	protected int sellIn;
-    protected int quality;
+    public String name;
+	public int sellIn;
+    public int quality;
     
     public Item(String name, int sellIn, int quality) {
 		this.setName(name);
@@ -32,6 +32,6 @@ public abstract class Item {
 		this.quality = quality;
 	}
 
-	public void updateQuality(){}
+	public void  updateQuality(){};
 
 }
