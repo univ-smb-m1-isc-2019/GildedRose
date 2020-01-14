@@ -38,7 +38,7 @@ public class GildedRoseTest {
 		for (int i = 0; i<100; i++){
             List<Item> oldList = inn.items
                     .stream()
-                    .filter(el -> !GildedRose.notStandardItems.contains(el))
+                    .filter(el -> GildedRose.standardItems.contains(el))
                     .filter(el -> el.getQuality() > 0)
                     .map(el -> new Item(el.getName(), el.getSellIn(), el.getQuality()))
                     .collect(Collectors.toList());
@@ -98,7 +98,7 @@ public class GildedRoseTest {
         for (int i = 0; i<100; i++){
             List<Item> oldList = inn.items
                     .stream()
-                    .filter(el -> !GildedRose.notStandardItems.contains(el))
+                    .filter(el -> GildedRose.standardItems.contains(el))
                     .filter(el -> el.getSellIn() < 0)
                     .map(el -> new Item(el.getName(), el.getSellIn(), el.getQuality()))
                     .collect(Collectors.toList());
@@ -131,14 +131,16 @@ public class GildedRoseTest {
         }
     }
 
-//    @Test
-//    public void conjured_quality_should_decrease_twice(){
-//        GildedRose inn = new GildedRose();
-//        Item conjured = inn.get("Conjured Mana Cake");
-//        for (int i = 0; i < 100; i++){
-//            Item oldConjured = new Item(conjured.getName(), conjured.getSellIn(), conjured.getQuality());
-//            inn.updateQuality();
-//            assertEquals(conjured.getQuality(), oldConjured.getQuality() - 2 );
-//        }
-//    }
+    @Test
+    public void conjured_quality_should_decrease_twice(){
+        GildedRose inn = new GildedRose();
+        Item conjured = inn.get("Conjured Mana Cake");
+        for (int i = 0; i < 100; i++){
+            Item oldConjured = new Item(conjured.getName(), conjured.getSellIn(), conjured.getQuality());
+            inn.updateQuality();
+            assertTrue(conjured.getQuality() == oldConjured.getQuality() - 2
+                    || conjured.getQuality() == 0
+                    );
+        }
+    }
 }

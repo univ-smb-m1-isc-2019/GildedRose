@@ -1,19 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 public class GildedRose {
 
-	public List<Item> items = null;
-    public static List<Item> notStandardItems = null;
-	public GildedRose(){
-
+	List<Item> items;
+	private Updater updater;
+    static List<Item> standardItems = null;
+    static List<Item> conjuredItems = null;
+	GildedRose(){
+        updater = new Updater();
 	    this.items = createList();
-	    initNotStandardList();
+	    initStandardList();
+	    initConjuredList();
     }
-    public List<Item> createList(){
+    private List<Item> createList(){
         List<Item> items = new ArrayList<>();
         items.add(new Item("+5 Dexterity Vest", 0, 20));
         items.add(new Item("Aged Brie", 2, 0));
@@ -23,25 +25,26 @@ public class GildedRose {
         items.add(new Item("Conjured Mana Cake", 3, 6));
         return items;
     }
-    public void initNotStandardList(){
-        notStandardItems = new ArrayList<>();
-        Item sulfuras = get("Sulfuras, Hand of Ragnaros");
-        Item agedBrie = get("Aged Brie");
-        Item backstage = get("Backstage passes to a TAFKAL80ETC concert");
-        Item conjuredManaCake = get("Conjured Mana Cake");
-        notStandardItems.add(sulfuras);
-        notStandardItems.add(agedBrie);
-        notStandardItems.add(backstage);
-        notStandardItems.add(conjuredManaCake);
+    private void initStandardList(){
+        standardItems = new ArrayList<>();
+        Item vest = get("+5 Dexterity Vest");
+        Item elixir = get("Elixir of the Mongoose");
+        standardItems.add(vest);
+        standardItems.add(elixir);
     }
-    public void display(){
+    private void initConjuredList(){
+        conjuredItems = new ArrayList<>();
+        Item cake = get("Conjured Mana Cake");
+        conjuredItems.add(cake);
+    }
+    void display(){
         for (Item it : items){
             System.out.println("Name : " + it.getName());
             System.out.println("SellIn : " + it.getSellIn());
             System.out.println("Quality : " + it.getQuality() + "\n");
         }
     }
-    public Item get(String name){
+    Item get(String name){
         Optional<Item> optional = items
                 .stream()
                 .filter(item -> item.getName().equals(name))
@@ -52,52 +55,31 @@ public class GildedRose {
             throw new IllegalStateException("not in shop");
         }
     }
-    public void updateQuality()
+    void updateQuality()
     {
 
         for (Item it : items)
         {
-            if ((!"Aged Brie".equals(it.getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(it.getName())) 
+            if (standardItems.contains(it))
             {
-                if (it.getQuality() > 0)
-                {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(it.getName()))
-                    {
-                        it.setQuality(it.getQuality() - 1);
-                    }
-                }
+                updater.standardItemUpdate.updateQuality(it);
+            }
+            else if(conjuredItems.contains(it)){
+                updater.conjuredItemUpdate.updateQuality(it);
             }
             else
             {
-                if (it.getQuality() < 50)
-                {
-                    it.setQuality(it.getQuality() + 1);
+                if (it.getName().equals("Aged Brie"))
+                    updater.agedBrieUpdate.updateQuality(it);
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(it.getName()))
-                    {
-                        if (it.getSellIn() < 11)
-                        {
-                            if (it.getQuality() < 50)
-                            {
-                                it.setQuality(it.getQuality() + 1);
-                            }
-                        }
+                if (it.getName().equals("Backstage passes to a TAFKAL80ETC concert"))
+                    updater.backstageUpdater.updateQuality(it);
 
-                        if (it.getSellIn() < 6)
-                        {
-                            if (it.getQuality() < 50)
-                            {
-                                it.setQuality(it.getQuality() + 1);
-                            }
-                        }
-                    }
-                }
             }
 
             if (!"Sulfuras, Hand of Ragnaros".equals(it.getName()))
-            {
                 it.setSellIn(it.getSellIn() - 1);
-            }
+
 
             if (it.getSellIn() < 0)
             {
@@ -109,13 +91,18 @@ public class GildedRose {
                         {
                             if (!"Sulfuras, Hand of Ragnaros".equals(it.getName()))
                             {
-                                it.setQuality(it.getQuality() - 1);
+                                if (conjuredItems.contains(it)){
+                                    updater.conjuredItemUpdate.updateQuality(it);
+                                }else {
+                                    it.setQuality(it.getQuality() - 1);
+                                }
+
                             }
                         }
                     }
                     else
                     {
-                        it.setQuality(it.getQuality() - it.getQuality());
+                        it.setQuality(0);
                     }
                 }
                 else
