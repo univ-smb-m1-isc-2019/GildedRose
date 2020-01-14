@@ -1,23 +1,38 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 public class GildedRose {
 
-	public static List<Item> items = null;
-
+	public List<Item> items = null;
+    public static List<Item> notStandardItems = null;
 	public GildedRose(){
-        createList();
+
+	    this.items = createList();
+	    initNotStandardList();
     }
-    public void createList(){
-        items = new ArrayList<Item>();
-        items.add(new Item("+5 Dexterity Vest", 10, 20));
+    public List<Item> createList(){
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("+5 Dexterity Vest", 0, 20));
         items.add(new Item("Aged Brie", 2, 0));
         items.add(new Item("Elixir of the Mongoose", 5, 7));
         items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new Item("Conjured Mana Cake", 3, 6));
+        return items;
+    }
+    public void initNotStandardList(){
+        notStandardItems = new ArrayList<>();
+        Item sulfuras = get("Sulfuras, Hand of Ragnaros");
+        Item agedBrie = get("Aged Brie");
+        Item backstage = get("Backstage passes to a TAFKAL80ETC concert");
+        Item conjuredManaCake = get("Conjured Mana Cake");
+        notStandardItems.add(sulfuras);
+        notStandardItems.add(agedBrie);
+        notStandardItems.add(backstage);
+        notStandardItems.add(conjuredManaCake);
     }
     public void display(){
         for (Item it : items){
