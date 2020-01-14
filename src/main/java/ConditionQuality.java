@@ -1,12 +1,16 @@
 import java.util.ArrayList;
 
 public class ConditionQuality {
+    String brie = "Aged Brie";
+    String sulfuras = "Sulfuras, Hand of Ragnaros";
+    String backstage = "Backstage passes to a TAFKAL80ETC concert";
+    String conjured = "Conjured Mana Cake";
     ///////////////////////////////////////////////////////////////////
     public void decrease_quality(Item item){
 
-        if ((!"Aged Brie".equals(item.getName())) && (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName())))
+        if ((!brie.equals(item.getName())) && (!backstage.equals(item.getName())))
         {
-            if ((item.getQuality() > 0)&&(!"Sulfuras, Hand of Ragnaros".equals(item.getName())))
+            if (item.getQuality() > 0 &&!sulfuras.equals(item.getName()) && !conjured.equals(item.getName()))
             {
                 item.setQuality(item.getQuality() - 1);
 
@@ -19,7 +23,7 @@ public class ConditionQuality {
             {
                 item.setQuality(item.getQuality() + 1);
 
-                if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()) && (item.getSellIn() < 11)&&(item.getQuality() < 50))
+                if (backstage.equals(item.getName()) && (item.getSellIn() < 11)&&(item.getQuality() < 50))
                 {
                     item.setQuality(item.getQuality() + 1);
 
@@ -35,7 +39,7 @@ public class ConditionQuality {
 
     ///////////////////////////////////////////////////////////////////
     public void decrease_sellIn(Item item){
-        if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
+        if (!sulfuras.equals(item.getName()))
         {
             item.setSellIn(item.getSellIn() - 1);
         }
@@ -46,13 +50,13 @@ public class ConditionQuality {
 
         if (item.getSellIn() < 0)
         {
-            if (!"Aged Brie".equals(item.getName()))
+            if (!brie.equals(item.getName()))
             {
-                if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
+                if (!backstage.equals(item.getName()))
                 {
                     if (item.getQuality() > 0)
                     {
-                        if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
+                        if (!sulfuras.equals(item.getName()) && !conjured.equals(item.getName()))
                         {
                             item.setQuality(item.getQuality() - 1);
                         }
@@ -75,9 +79,27 @@ public class ConditionQuality {
 
     ///////////////////////////////////////////////////////////
     public void decrease_quality_item_conjured(Item item){
-        if (("Conjured Mana Cake".equals(item.getName()))&&(item.getQuality()>0))
+        int qualityConjured = item.getQuality();
+        //cas ou l'item conjuré a une date de vente positive ou egale a 0
+        if (conjured.equals(item.getName()) && qualityConjured > 0 && item.getSellIn() >= 0 )
         {
-            item.setQuality(item.getQuality() -1);
+            if (qualityConjured - 2 >= 0){
+            item.setQuality(qualityConjured -2);
+            }
         }
+        //cas ou l'item conjuré a une date vente negative
+        else if (conjured.equals(item.getName()) && qualityConjured > 0 && item.getSellIn() < 0)
+        {
+            if (qualityConjured - 4 >= 0){
+            item.setQuality(qualityConjured -4);
+            }
+            else if(qualityConjured - 2 >= 0){
+                item.setQuality(qualityConjured -2);
+            }
+            else if(qualityConjured - 1 >= 0){
+                item.setQuality(qualityConjured -1);
+            }
+        }
+
     }
 }

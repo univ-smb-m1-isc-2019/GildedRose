@@ -8,6 +8,7 @@ public class GildedRose {
 
     private  static ArrayList<Item> items = null;
 
+
     //Constructeur qui crée la liste d'items
     public  void GildedRose(){
         ManageList ML = new ManageList();
