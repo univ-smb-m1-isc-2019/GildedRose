@@ -159,14 +159,14 @@ public class GildedRoseTest {
 			items.stream()
 					.forEach(
 							item -> {
-								if (elixir.getSellIn() < 0 && elixir.getQuality() != 0) {
+								if (item == elixir && elixir.getSellIn() < 0 && elixir.getQuality() != 0) {
 									assertThat(lastQualityElixir - 2).isEqualTo(elixir.getQuality());
 
 								}
-								else if (dexterity.getSellIn() < 0 && dexterity.getQuality() != 0){
+								else if (item == dexterity && dexterity.getSellIn() < 0 && dexterity.getQuality() != 0){
 									assertThat(lastQualityDexterity - 2).isEqualTo(dexterity.getQuality());
 								}
-								else if (conjured.getSellIn() < 0 && lastQualityConjured - 4 >= 0){
+								else if (item == conjured && conjured.getSellIn() < 0 && lastQualityConjured - 4 >= 0){
 									assertThat(lastQualityConjured - 4).isEqualTo(conjured.getQuality());
 								}
 							}
