@@ -28,7 +28,7 @@ public class ItemFactory {
         Optional<String> similarName = findFirstKeyInString(item.name);
 
         if(similarName.isPresent()) {
-            return (AbstractItem) recognizableItems
+            return recognizableItems
                     .get(similarName.get())
                     .getConstructor(Item.class)
                     .newInstance(item);
