@@ -57,7 +57,7 @@ public class GildedRoseTest {
 	}
 
 
-
+	/** Initialization 1 **/
 	@BeforeClass
 	public static void runTest_1(){
 		CreateItemList_1();
@@ -66,6 +66,7 @@ public class GildedRoseTest {
 		gRoseTest.updateQuality();
 	}
 
+	/** Initialization 2 **/
 	@BeforeClass
 	public static void runTest_2(){
 		CreateItemList_2();
@@ -92,14 +93,10 @@ public class GildedRoseTest {
 		}
 	}
 
-
+	/**Test equality of objects, initial item with expected item **/
 	public void updateQualityStandardItem(Item item, Item itemResultExpected){
 		Assert.assertEquals(itemResultExpected.getQuality(), item.getQuality());
 		Assert.assertEquals(itemResultExpected.getSellIn(),item.getSellIn());
 	}
-
-
-
-
 
 }
