@@ -49,6 +49,27 @@ public class GildedRoseTest {
 
 
 	/////////////////////////////////////////////////////////////////
+	// Backstage Passes
+	/////////////////////////////////////////////////////////////////
+
+	@Test
+	public void backstagePassesQualityShouldIncreaseByOneWhenMoreThanTenDaysBeforeSellInDate(){
+		int QUALITY_INCREASE_RATE = 1;
+
+		GildedRose inn = new GildedRose();
+		Item backstagePasses = inn.getItem("Backstage passes to a TAFKAL80ETC concert");
+
+		int qualityBeforeUpdate;
+		while(backstagePasses.sellIn > 10 && !hasReachedHighestQualityPossible(backstagePasses)){
+			qualityBeforeUpdate = backstagePasses.quality;
+
+			inn.updateQuality();
+			assertThat(backstagePasses.quality).isEqualTo(qualityBeforeUpdate + QUALITY_INCREASE_RATE);
+		}
+	}
+
+
+	/////////////////////////////////////////////////////////////////
 	// Standard Item
 	/////////////////////////////////////////////////////////////////
 
