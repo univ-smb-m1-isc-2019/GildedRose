@@ -1,5 +1,5 @@
-public class CommonItem extends Item {
-    private int minimalValue;
+public class CommonItem extends MyItem {
+
 
     public CommonItem(String name, int sellIn, int quality)
     {
@@ -35,16 +35,6 @@ public class CommonItem extends Item {
         setQuality(getQuality() - 1);
     }
 
-
-    public void setMinimalValue(int min)
-    {
-        this.minimalValue = min;
-    }
-
-    public int getMinimalValue()
-    {
-        return minimalValue;
-    }
 
 
 

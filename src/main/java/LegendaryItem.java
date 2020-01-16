@@ -1,6 +1,6 @@
 
 
-public class LegendaryItem extends Item{
+public class LegendaryItem extends MyItem{
 
 
     public LegendaryItem(String name, int sellIn, int quality) {

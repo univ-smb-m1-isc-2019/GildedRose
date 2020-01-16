@@ -1,4 +1,4 @@
-public class ConjuredItem extends Item {
+public class ConjuredItem extends MyItem {
 
 
     public ConjuredItem(String name, int sellIn, int quality) {
