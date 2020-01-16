@@ -1,3 +1,5 @@
+package gildedrose;
+
 public class AgedBrie extends CustomItem{
 
     private static final int QUALITY_EVOLUTION_BEFORE_SELL_DATE = 1;

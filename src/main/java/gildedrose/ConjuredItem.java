@@ -1,16 +1,18 @@
-public class StandardItem extends CustomItem{
+package gildedrose;
 
-    private static final int QUALITY_EVOLUTION_BEFORE_SELL_DATE = 1;
-    private static final int QUALITY_EVOLUTION_AFTER_SELL_DATE = 2;
+public class ConjuredItem extends CustomItem {
 
-    public StandardItem(Item item){
+    private static final int QUALITY_EVOLUTION_BEFORE_SELL_DATE = 2;
+    private static final int QUALITY_EVOLUTION_AFTER_SELL_DATE = 4;
+
+    public ConjuredItem(Item item){
         super(item);
     }
 
     /**
-     * The Standard Item DECREASES in quality:
-     * - By 1, before the selling date
-     * - By 2, after the selling date
+     * The Conjured Item DECREASES in quality :
+     * - By 2, before the selling date
+     * - By 4, after the selling date
      */
     @Override
     public void updateItem() {

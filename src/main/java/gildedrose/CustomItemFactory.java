@@ -1,3 +1,5 @@
+package gildedrose;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,7 +8,7 @@ public class CustomItemFactory {
     private final static String AGED_BRIE_ITEM = "Aged Brie";
     private final static String BACKSTAGE_PASSES_ITEM = "Backstage passes";
     private final static String CONJURED_ITEM = "Conjured";
-    private final static String SULFURAS_ITEM = "Sulfuras, Hand of Ragnaros";
+    private final static String SULFURAS_ITEM = "gildedrose.Sulfuras, Hand of Ragnaros";
 
     private Map<String, CustomItem> itemTypeList;
 

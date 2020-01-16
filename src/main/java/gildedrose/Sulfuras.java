@@ -1,3 +1,5 @@
+package gildedrose;
+
 public class Sulfuras extends CustomItem{
 
     public Sulfuras(Item item){

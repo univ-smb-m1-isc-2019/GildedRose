@@ -1,3 +1,5 @@
+package gildedrose;
+
 public class BackstagePasses extends CustomItem{
 
     private static final int CLOSE_CONCERT_DATE = 10;
