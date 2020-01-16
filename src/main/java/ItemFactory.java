@@ -3,21 +3,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ItemFactory {
-    Map<String, Class<? extends AbstractItem>> classes;
+    Map<String, Class<? extends AbstractItem>> instances;
 
     public ItemFactory() {
-        this.classes = new HashMap<>();
+        this.instances = new HashMap<>();
 
-        classes.put("Sulfuras, Hand of Ragnaros", LegendaryItem.class);
-        classes.put("+5 Dexterity Vest", OrdinaryItem.class);
-        classes.put("Elixir of the Mongoose", OrdinaryItem.class);
-        classes.put("Aged Brie", AgedBrie.class);
-        classes.put("Backstage passes to a TAFKAL80ETC concert", BackstagePasses.class);
+        instances.put("Sulfuras, Hand of Ragnaros", LegendaryItem.class);
+        instances.put("+5 Dexterity Vest", OrdinaryItem.class);
+        instances.put("Elixir of the Mongoose", OrdinaryItem.class);
+        instances.put("Aged Brie", AgedBrie.class);
+        instances.put("Backstage passes to a TAFKAL80ETC concert", BackstagePasses.class);
     }
 
     // return the instance corresponding to the given item.
-    public AbstractItem getClass(Item item) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class<?> c = classes.get(item.name);
+    public AbstractItem getInstance(Item item) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Class<?> c = instances.get(item.name);
         return (AbstractItem) c.getConstructor(Item.class).newInstance(item);
     }
 }

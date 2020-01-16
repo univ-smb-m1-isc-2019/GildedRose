@@ -20,7 +20,7 @@ public class GildedRose {
         ItemFactory itemFactory = new ItemFactory();
 
         for (Item item : items) {
-            itemFactory.getClass(item).update();
+            itemFactory.getInstance(item).update();
         }
     }
 
