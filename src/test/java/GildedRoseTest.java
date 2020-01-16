@@ -130,7 +130,25 @@ public class GildedRoseTest {
 		Item conjuredItem = inn.getItem("Conjured Mana Cake");
 
 		int qualityBeforeUpdate;
-		while(!hasSellInDatePassed(conjuredItem) && !hasReachedHighestQualityPossible(conjuredItem)){
+		while(!hasSellInDatePassed(conjuredItem) && !hasReachedLowestQualityPossible(conjuredItem)){
+			qualityBeforeUpdate = conjuredItem.quality;
+
+			inn.updateQuality();
+			assertThat(conjuredItem.quality).isEqualTo(qualityBeforeUpdate - QUALITY_DECREASE_RATE);
+		}
+	}
+
+	@Test
+	public void conjuredItemQualityShouldDecreaseByFourAfterSellInDate(){
+		int QUALITY_DECREASE_RATE = 4;
+
+		GildedRose inn = new GildedRose();
+		Item conjuredItem = inn.getItem("Conjured Mana Cake");
+
+		reduceItemSellInValueTo(inn, conjuredItem, 0);
+
+		int qualityBeforeUpdate;
+		while(!hasReachedLowestQualityPossible(conjuredItem)){
 			qualityBeforeUpdate = conjuredItem.quality;
 
 			inn.updateQuality();
