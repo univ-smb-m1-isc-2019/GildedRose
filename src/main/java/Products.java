@@ -11,6 +11,7 @@ public class Products extends Item {
     public String toString() {
         return "Item : " + this.name + "| Sell-in : " + this.sellIn + "| Quality : " + this.quality;
     }
+
     void decreaseSellIn() {
         sellIn = sellIn - 1;
     }
@@ -32,11 +33,19 @@ public class Products extends Item {
             increaseQuality(1);
 
             if ((sellIn <= 10) && (quality < MAX_QUALITY)) {
-                increaseQuality(2);
+                if ((quality < MAX_QUALITY - 1))
+                    increaseQuality(2);
+                else
+                    increaseQuality(1);
             }
 
             if ((sellIn <= 5) && (quality < MAX_QUALITY)) {
-                increaseQuality(3);
+                if (quality < MAX_QUALITY - 2)
+                    increaseQuality(3);
+                else if (quality < MAX_QUALITY - 1)
+                    increaseQuality(2);
+                else
+                    increaseQuality(1);
             }
         }
 

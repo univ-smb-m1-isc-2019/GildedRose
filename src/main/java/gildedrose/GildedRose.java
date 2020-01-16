@@ -9,7 +9,7 @@ public class GildedRose {
     private final static String ABRIE = "Aged Brie";
     private final static String BACKPASS = "Backstage passes to a TAFKAL80ETC concert";
 
-    private static List<Products> items = null;
+    private List<Products> items;
 
 
     public GildedRose() {
