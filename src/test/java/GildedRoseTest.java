@@ -7,7 +7,7 @@ public class GildedRoseTest {
 
 	@Test
 	public void testTheTruth() {
-		boolean test = false;
+		boolean test = true;
 		assertTrue(test);
 	}
 }
