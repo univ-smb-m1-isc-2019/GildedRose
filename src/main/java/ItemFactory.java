@@ -11,6 +11,7 @@ public class ItemFactory {
         classes.put("Sulfuras, Hand of Ragnaros", LegendaryItem.class);
         classes.put("+5 Dexterity Vest", OrdinaryItem.class);
         classes.put("Elixir of the Mongoose", OrdinaryItem.class);
+        classes.put("Aged Brie", AgedBrie.class);
     }
 
     // return the instance corresponding to the given item.

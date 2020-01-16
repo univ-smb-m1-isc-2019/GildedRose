@@ -6,10 +6,10 @@ public class OrdinaryItem extends AbstractItem {
 
     @Override
     public void updateQuality() {
-        if(!hasReachQualityBoundary() && !hasReachSellInBoundary()) {
+        if(!hasReachMinQuality() && !hasReachSellInBoundary()) {
             item.quality--;
         }
-        else if(!hasReachQualityBoundary()) {
+        else if(!hasReachMinQuality()) {
             item.quality = item.quality - 2;
         }
     }

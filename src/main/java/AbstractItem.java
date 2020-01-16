@@ -21,7 +21,11 @@ public abstract class AbstractItem {
         return item.sellIn < 0;
     }
 
-    public boolean hasReachQualityBoundary() {
-        return item.quality <= 0 || item.quality > 50;
+    public boolean hasReachMinQuality() {
+        return item.quality <= 0;
+    }
+
+    public boolean hasReachMaxQuality() {
+        return item.quality >= 50;
     }
 }

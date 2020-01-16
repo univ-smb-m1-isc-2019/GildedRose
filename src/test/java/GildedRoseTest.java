@@ -70,4 +70,31 @@ public class GildedRoseTest {
 		}
 	}
 
+	@Test
+	public void AgedBrieQualityShouldIncrement() throws Exception {
+		GildedRose inn = new GildedRose();
+		Item agedBrie = inn.get("Aged Brie");
+
+		int oldQuality;
+		boolean hasNoSellIn = false, hasReachMaxQuality = false;
+
+		for (int i = 0; i < 100; i++) {
+			oldQuality = agedBrie.quality;
+			inn.updateQuality();
+
+			if(hasReachMaxQuality) {
+				assertEquals(agedBrie.quality, oldQuality);
+			}
+			else if(!hasNoSellIn) {
+				assertEquals(agedBrie.quality, oldQuality + 1);
+			}
+			else {
+				assertEquals(agedBrie.quality, oldQuality + 2);
+			}
+
+			hasNoSellIn = agedBrie.sellIn <= 0;
+			hasReachMaxQuality = agedBrie.quality == 50;
+		}
+	}
+
 }
