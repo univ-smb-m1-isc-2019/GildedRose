@@ -15,6 +15,14 @@ public abstract class MyItem extends Item {
 
     }
 
+    protected void decrementItemSellIn() {
+        setSellIn(getSellIn()-1);
+    }
+
+    protected void decrementItemQuality() {
+        setQuality(getQuality() - 1);
+    }
+
     public  int getMaximalValue(){ return maximalValue; }
 
     public void setMaximalValue(int value)

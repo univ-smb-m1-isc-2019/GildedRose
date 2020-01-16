@@ -25,14 +25,10 @@ public class CommonItem extends MyItem {
         decrementItemSellIn();
     }
 
-    private void decrementItemSellIn() {
-        setSellIn(getSellIn()-1);
-    }
 
 
-    private void decrementItemQuality() {
-        setQuality(getQuality() - 1);
-    }
+
+
 
 
 

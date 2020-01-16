@@ -16,9 +16,6 @@ public abstract class improveItem extends MyItem {
     {
 
     }
-    protected void decrementItemSellIn() {
-        setSellIn(getSellIn()-1);
-    }
 
     protected void incrementItemQuality()
     {
