@@ -1,5 +1,3 @@
-package gildedrose;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,19 +9,19 @@ public class GildedRose {
     private final static String ABRIE = "Aged Brie";
     private final static String BACKPASS = "Backstage passes to a TAFKAL80ETC concert";
 
-    private static List<Item> items = null;
+    private static List<Products> items = null;
 
 
     public GildedRose() {
 
-        items = new ArrayList<Item>();
-        items.add(new Item("+5 Dexterity Vest", 10, 20));
-        items.add(new Item("Aged Brie", 2, 0));
-        items.add(new Item("" +
+        items = new ArrayList<Products>();
+        items.add(new Products("+5 Dexterity Vest", 10, 20));
+        items.add(new Products("Aged Brie", 2, 0));
+        items.add(new Products("" +
                 " of the Mongoose", 5, 7));
-        items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
-        items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
-        items.add(new Conjured("gildedrose.Conjured Mana Cake", 3, 6));
+        items.add(new Products("Sulfuras, Hand of Ragnaros", 0, 80));
+        items.add(new Products("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        items.add(new Conjured("Conjured Mana Cake", 3, 6));
 
     }
 

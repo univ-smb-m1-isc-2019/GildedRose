@@ -1,8 +1,4 @@
-package gildedrose;
-
-import gildedrose.Item;
-
-public class Conjured extends Item {
+public class Conjured extends Products {
     public Conjured(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
