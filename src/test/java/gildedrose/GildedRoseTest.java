@@ -5,6 +5,32 @@ import static org.assertj.core.api.Assertions.*;
 
 public class GildedRoseTest {
 
+
+	/////////////////////////////////////////////////////////////////
+	// Aged Brie
+	/////////////////////////////////////////////////////////////////
+
+	@Test
+	public void agedBrieQualityShouldIncreaseByOneBeforeSellInDate(){
+		int QUALITY_INCREASE_RATE = 1;
+
+		GildedRose inn = new GildedRose();
+		Item agedBrie = inn.getItem("Aged Brie");
+
+		int qualityBeforeUpdate;
+		while(!hasSellInDatePassed(agedBrie) && !hasReachedHighestQualityPossible(agedBrie)){
+			qualityBeforeUpdate = agedBrie.quality;
+
+			inn.updateQuality();
+			assertThat(agedBrie.quality).isEqualTo(qualityBeforeUpdate + QUALITY_INCREASE_RATE);
+		}
+	}
+
+
+	/////////////////////////////////////////////////////////////////
+	// Standard Item
+	/////////////////////////////////////////////////////////////////
+
 	@Test
 	public void standardItemQualityShouldDecreaseByOneBeforeSellInDate(){
 		int QUALITY_DECREASE_RATE = 1;
@@ -13,7 +39,7 @@ public class GildedRoseTest {
 		Item standardItem = inn.getItem("+5 Dexterity Vest");
 
 		int qualityBeforeUpdate;
-		while(!hasSellInDatePassed(standardItem)){
+		while(!hasSellInDatePassed(standardItem) && !hasReachedLowestQualityPossible(standardItem)){
 			qualityBeforeUpdate = standardItem.quality;
 
 			inn.updateQuality();
@@ -28,7 +54,6 @@ public class GildedRoseTest {
 		GildedRose inn = new GildedRose();
 		Item standardItem = inn.getItem("+5 Dexterity Vest");
 
-
 		reduceItemSellInValueTo(inn, standardItem, 0);
 
 		int qualityBeforeUpdate;
@@ -39,6 +64,11 @@ public class GildedRoseTest {
 			assertThat(standardItem.quality).isEqualTo(qualityBeforeUpdate - QUALITY_DECREASE_RATE);
 		}
 	}
+
+
+	/////////////////////////////////////////////////////////////////
+	// Sulfuras
+	/////////////////////////////////////////////////////////////////
 
 	@Test
 	public void sulfurasQualityShouldNeverChange(){
@@ -53,6 +83,11 @@ public class GildedRoseTest {
 			assertThat(sulfuras.quality).isEqualTo(originalQuality);
 		}
 	}
+
+
+	/////////////////////////////////////////////////////////////////
+	// Utils
+	/////////////////////////////////////////////////////////////////
 
 	private static void reduceItemSellInValueTo(GildedRose inn, Item item, int sellIn){
 		while(sellIn < item.sellIn){
