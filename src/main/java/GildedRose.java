@@ -14,13 +14,16 @@ public class GildedRose {
 
     public void updateQuality(){
         for (Item item: this.items) {
+
             if ((!AGED_BRIE.equals(item.getName())) && !(BACKSTAGE_PASSES.equals(item.getName())))
                 myManagement.itemQualityDecrement(item);
+
             else{
                 myManagement.itemQualityIncrement(item);
                 if (BACKSTAGE_PASSES.equals(item.getName()))
                     myManagement.qualityIncrementBackstage(item);
             }
+
             myManagement.dayPassed(item);
 
             if (item.getSellIn() < 0)
