@@ -1,4 +1,4 @@
-public class BetterNearSellInItem extends Item{
+public class BetterNearSellInItem extends SpecializedItem{
 
     private final static int FIRST_LEVEL = 10;
     private final static int FIRST_LEVEL_IMPROVE = 2;
@@ -10,15 +10,11 @@ public class BetterNearSellInItem extends Item{
         super(name, sellIn, quality);
     }
 
-    //"Backstage passes", like aged brie, increases in Quality as it's
-    //SellIn value approaches; Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert
-
-    @Override
+    //Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert
     public void updateQuality(){
         if(this.sellIn <= 0){
             this.quality=0;
         }
-
         else{
             if(this.sellIn<=SECOND_LEVEL){
                 this.quality +=SECOND_LEVEL_IMPROVE;
@@ -30,6 +26,9 @@ public class BetterNearSellInItem extends Item{
                 else{ this.quality +=1;
                 }
             }
+        }
+        if ( this.quality > QUALITY_MAX){
+            this.quality = QUALITY_MAX;
         }
         this.sellIn -=1;
     }

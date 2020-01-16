@@ -1,4 +1,4 @@
-public class ConjuredItem extends Item{
+public class ConjuredItem extends SpecializedItem{
 
     private static final int DECAY = 2;
 
@@ -6,7 +6,7 @@ public class ConjuredItem extends Item{
         super(name, sellIn, quality);
     }
 
-    @Override
+    //"Conjured" items degrade in Quality twice as fast as normal items
     public void updateQuality(){
         if (this.sellIn<=0){
             setQuality(quality - DECAY*2);

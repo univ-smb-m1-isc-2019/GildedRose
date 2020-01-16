@@ -1,16 +1,18 @@
-public class Item {
-	public String name;
+public abstract class SpecializedItem {
+	//This class is just a superClass for differents kinds of items. It does not need to be instancied.
+	protected final static int QUALITY_MAX= 50;
+    public String name;
 	public int sellIn;
-	public int quality;
+    public int quality;
 
-	public Item(String name, int sellIn, int quality) {
+    public SpecializedItem(String name, int sellIn, int quality) {
 		this.setName(name);
 		this.setSellIn(sellIn);
 		this.setQuality(quality);
 	}
 
 	/* Generated getter and setter code */
-	public String getName() {
+    public String getName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -28,4 +30,8 @@ public class Item {
 	public void setQuality(int quality) {
 		this.quality = quality;
 	}
+
+	//This method is implemented different way for each kind of item
+	public abstract void updateQuality();
+
 }

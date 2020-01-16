@@ -1,4 +1,4 @@
-public class BetterWithTimeItem extends Item {
+public class BetterWithTimeItem extends SpecializedItem {
 
     private static final int IMPROVE = 1;
 
@@ -6,9 +6,9 @@ public class BetterWithTimeItem extends Item {
         super(name, sellIn, quality);
     }
 
-    @Override
+    //increases in Quality the older it gets
     public void updateQuality(){
-        if(this.quality <50){
+        if(this.quality < QUALITY_MAX){
             quality += IMPROVE;
         }
         this.sellIn-=1;
