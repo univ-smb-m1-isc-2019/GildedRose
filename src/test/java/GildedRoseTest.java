@@ -1,3 +1,4 @@
+import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.anyOf;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -24,23 +25,16 @@ public class GildedRoseTest {
 		Item dexterityVest = inn.get("+5 Dexterity Vest");
 
 		int oldQuality;
-		boolean hasNoQuality = false;
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = dexterityVest.quality;
 			inn.updateQuality();
 
-			if(dexterityVest.quality > 0 && dexterityVest.sellIn >= 0) {
+			if(!hasReachMinQuality(dexterityVest) && !hasReachSellInBoundary(dexterityVest))
 				assertEquals(dexterityVest.quality, oldQuality - 1);
-			}
-			else if(dexterityVest.quality >= 0 && !hasNoQuality) {
-				assertEquals(dexterityVest.quality, oldQuality - 2);
-			}
-			else {
-				assertEquals(dexterityVest.quality, oldQuality);
-			}
-
-			hasNoQuality = dexterityVest.quality == 0;
+			else if(!hasReachMinQuality(dexterityVest))
+				assertTrue(dexterityVest.quality == oldQuality - 2 || hasReachMinQuality(dexterityVest));
+			else assertEquals(dexterityVest.quality, AbstractItem.MIN_QUALITY);
 		}
 	}
 
@@ -50,23 +44,16 @@ public class GildedRoseTest {
 		Item elixirOfTheMongoose = inn.get("Elixir of the Mongoose");
 
 		int oldQuality;
-		boolean hasNoQuality = false;
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = elixirOfTheMongoose.quality;
 			inn.updateQuality();
 
-			if(elixirOfTheMongoose.quality > 0 && elixirOfTheMongoose.sellIn >= 0) {
+			if(!hasReachMinQuality(elixirOfTheMongoose) && !hasReachSellInBoundary(elixirOfTheMongoose))
 				assertEquals(elixirOfTheMongoose.quality, oldQuality - 1);
-			}
-			else if(!hasNoQuality) {
-				assertEquals(elixirOfTheMongoose.quality, oldQuality - 2);
-			}
-			else {
-				assertEquals(elixirOfTheMongoose.quality, oldQuality);
-			}
-
-			hasNoQuality = elixirOfTheMongoose.quality == 0;
+			else if(!hasReachMinQuality(elixirOfTheMongoose))
+				assertTrue(elixirOfTheMongoose.quality == oldQuality - 2 || hasReachMinQuality(elixirOfTheMongoose));
+			else assertEquals(elixirOfTheMongoose.quality, AbstractItem.MIN_QUALITY);
 		}
 	}
 
@@ -76,24 +63,16 @@ public class GildedRoseTest {
 		Item agedBrie = inn.get("Aged Brie");
 
 		int oldQuality;
-		boolean hasNoSellIn = false, hasReachMaxQuality = false;
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = agedBrie.quality;
 			inn.updateQuality();
 
-			if(hasReachMaxQuality) {
-				assertEquals(agedBrie.quality, oldQuality);
-			}
-			else if(!hasNoSellIn) {
+			if(hasReachMaxQuality(agedBrie))
+				assertEquals(agedBrie.quality, AbstractItem.MAX_QUALITY);
+			else if(!hasReachSellInBoundary(agedBrie))
 				assertEquals(agedBrie.quality, oldQuality + 1);
-			}
-			else {
-				assertEquals(agedBrie.quality, oldQuality + 2);
-			}
-
-			hasNoSellIn = agedBrie.sellIn <= 0;
-			hasReachMaxQuality = agedBrie.quality == 50;
+			else assertEquals(agedBrie.quality, oldQuality + 2);
 		}
 	}
 
@@ -103,32 +82,60 @@ public class GildedRoseTest {
 		Item backstagePasses = inn.get("Backstage passes to a TAFKAL80ETC concert");
 
 		int oldQuality;
-		boolean hasReachMaxQuality = false;
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = backstagePasses.quality;
 			inn.updateQuality();
 
-			if(!hasReachMaxQuality && backstagePasses.sellIn >= 10) {
+			if(hasReachMaxQuality(backstagePasses))
+				assertEquals(backstagePasses.quality, AbstractItem.MAX_QUALITY);
+			if(!hasReachCloseDate(backstagePasses))
 				assertEquals(backstagePasses.quality, oldQuality + 1);
-			}
-			else if(!hasReachMaxQuality && backstagePasses.sellIn >= 5) {
+			else if(!hasReachImminentDate(backstagePasses))
 				assertEquals(backstagePasses.quality, oldQuality + 2);
-			}
-			else if(!hasReachMaxQuality) {
+			else if(!hasReachSellInBoundary(backstagePasses))
 				assertEquals(backstagePasses.quality, oldQuality + 3);
-			}
-			else if(backstagePasses.sellIn >= 0) {
-				assertEquals(backstagePasses.quality, oldQuality);
-			}
-			else {
-				assertEquals(backstagePasses.quality, 0);
-			}
-
-			if(!hasReachMaxQuality) {
-				hasReachMaxQuality = backstagePasses.quality == 50;
-			}
+			else assertEquals(backstagePasses.quality, AbstractItem.MIN_QUALITY);
 		}
+	}
+
+	@Test
+	public void conjuredItemQualityShouldDecrementUntilZero() throws Exception {
+		GildedRose inn = new GildedRose();
+		Item conjuredWater = inn.get("Conjured Water");
+
+		int oldQuality;
+
+		for (int i = 0; i < 100; i++) {
+			oldQuality = conjuredWater.quality;
+			inn.updateQuality();
+
+			if(!hasReachMinQuality(conjuredWater) && !hasReachSellInBoundary(conjuredWater))
+				assertEquals(conjuredWater.quality, oldQuality - 2);
+			else if(!hasReachMinQuality(conjuredWater))
+				assertTrue(conjuredWater.quality == oldQuality - 4 || hasReachMinQuality(conjuredWater));
+			else assertEquals(conjuredWater.quality, AbstractItem.MIN_QUALITY);
+		}
+	}
+
+	private boolean hasReachMaxQuality(Item item) {
+		return item.quality >= AbstractItem.MAX_QUALITY;
+	}
+
+	private boolean hasReachMinQuality(Item item) {
+		return item.quality <= AbstractItem.MIN_QUALITY;
+	}
+
+	private boolean hasReachSellInBoundary(Item item) {
+		return item.sellIn < AbstractItem.MIN_SELLIN;
+	}
+
+	private boolean hasReachCloseDate(Item item) {
+		return item.sellIn < 10;
+	}
+
+	private boolean hasReachImminentDate(Item item) {
+		return item.sellIn < 5;
 	}
 
 }

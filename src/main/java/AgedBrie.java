@@ -5,11 +5,8 @@ public class AgedBrie extends AbstractItem {
 
     @Override
     public void updateQuality() {
-        if(!hasReachSellInBoundary() && !hasReachMaxQuality()) {
-            item.quality++;
-        }
-        else if(!hasReachMaxQuality()) {
-            item.quality = item.quality + 2;
-        }
+        if(!hasReachSellInBoundary()) item.quality++;
+        else if(!hasReachMaxQuality()) item.quality = item.quality + 2;
+        if(hasReachMaxQuality()) item.quality = MAX_QUALITY;
     }
 }

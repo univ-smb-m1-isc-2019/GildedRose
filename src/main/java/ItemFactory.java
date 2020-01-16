@@ -13,6 +13,7 @@ public class ItemFactory {
         instances.put("Elixir of the Mongoose", OrdinaryItem.class);
         instances.put("Aged Brie", AgedBrie.class);
         instances.put("Backstage passes", BackstagePasses.class);
+        instances.put("Conjured", ConjuredItem.class);
     }
 
     // return the instance corresponding to the given item.
