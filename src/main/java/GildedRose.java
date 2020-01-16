@@ -16,7 +16,7 @@ public class GildedRose {
         ItemFactory itemFactory = new ItemFactory();
 
         for (Item item : items) {
-            itemFactory.getClass(item.name).update();
+            itemFactory.getClass(item).update();
         }
     }
 
