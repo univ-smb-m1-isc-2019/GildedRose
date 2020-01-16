@@ -44,4 +44,30 @@ public class GildedRoseTest {
 		}
 	}
 
+	@Test
+	public void elixirOfTheMongooseQualityShouldDecrementUntilZero() throws Exception {
+		GildedRose inn = new GildedRose();
+		Item elixirOfTheMongoose = inn.get("Elixir of the Mongoose");
+
+		int oldQuality;
+		boolean hasNoQuality = false;
+
+		for (int i = 0; i < 100; i++) {
+			oldQuality = elixirOfTheMongoose.quality;
+			inn.updateQuality();
+
+			if(elixirOfTheMongoose.quality > 0 && elixirOfTheMongoose.sellIn >= 0) {
+				assertEquals(elixirOfTheMongoose.quality, oldQuality - 1);
+			}
+			else if(!hasNoQuality) {
+				assertEquals(elixirOfTheMongoose.quality, oldQuality - 2);
+			}
+			else {
+				assertEquals(elixirOfTheMongoose.quality, oldQuality);
+			}
+
+			hasNoQuality = elixirOfTheMongoose.quality == 0;
+		}
+	}
+
 }
