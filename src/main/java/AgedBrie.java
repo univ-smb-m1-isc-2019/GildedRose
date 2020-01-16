@@ -1,4 +1,5 @@
 public class AgedBrie extends AbstractItem {
+
     public AgedBrie(Item item) {
         super(item);
     }
@@ -6,7 +7,8 @@ public class AgedBrie extends AbstractItem {
     @Override
     public void updateQuality() {
         if(!hasReachSellInBoundary()) item.quality++;
-        else if(!hasReachMaxQuality()) item.quality = item.quality + 2;
+        else if(!hasReachMaxQuality()) item.quality += 2;
         if(hasReachMaxQuality()) item.quality = MAX_QUALITY;
     }
+
 }

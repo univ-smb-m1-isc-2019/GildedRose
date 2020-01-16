@@ -1,5 +1,4 @@
 public abstract class AbstractItem {
-
     public static final int MIN_QUALITY = 0;
     public static final int MAX_QUALITY = 50;
     public static final int MIN_SELLIN = 0;
@@ -32,4 +31,5 @@ public abstract class AbstractItem {
     public boolean hasReachMaxQuality() {
         return item.quality >= MAX_QUALITY;
     }
+
 }
