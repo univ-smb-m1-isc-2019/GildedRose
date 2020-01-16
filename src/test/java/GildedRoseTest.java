@@ -104,6 +104,18 @@ public class GildedRoseTest {
 		}
 	}
 
+	@Test
+	public void backstagePassesQualityShouldDropToZeroAfterSellInDate(){
+		GildedRose inn = new GildedRose();
+		Item backstagePasses = inn.getItem("Backstage passes to a TAFKAL80ETC concert");
+
+		reduceItemSellInValueTo(inn, backstagePasses, 0);
+
+		for(int i = 0; i < 100; ++i){
+			inn.updateQuality();
+			assertThat(backstagePasses.quality).isEqualTo(0);
+		}
+	}
 
 	/////////////////////////////////////////////////////////////////
 	// Standard Item
