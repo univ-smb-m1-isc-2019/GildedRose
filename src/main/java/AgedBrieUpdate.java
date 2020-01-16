@@ -1,6 +1,5 @@
-public class AgedBrieUpdate {
-    public void updateQuality(Item item){
-        if (item.getQuality() < 50)
-            item.setQuality(item.getQuality() + 1);
+public class AgedBrieUpdate extends ItemUpdate {
+    public AgedBrieUpdate(){
+        this.adjust_quality = adjust_quality * -1;
     }
 }

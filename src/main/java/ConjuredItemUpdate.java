@@ -1,10 +1,5 @@
-public class ConjuredItemUpdate {
-
-    public void updateQuality(Item item){
-        if (item.getQuality() > 0) {
-            item.setQuality(item.getQuality() - 2);
-        }
-        if (item.getQuality() < 0)
-            item.setQuality(0);
+public class ConjuredItemUpdate extends ItemUpdate {
+    public ConjuredItemUpdate(){
+         this.adjust_quality = adjust_quality * 2;
     }
 }
