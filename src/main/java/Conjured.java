@@ -7,7 +7,10 @@ public class Conjured extends Products {
         super.decreaseSellIn();
 
         if (quality > super.MIN_QUALITY) {
+            if (quality > super.MIN_QUALITY + 1)
             super.decreaseQuality(2);
+            else if (quality > super.MIN_QUALITY)
+                super.setQualityToZero();
         }
     }
 }

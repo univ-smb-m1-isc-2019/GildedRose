@@ -9,7 +9,7 @@ public class Products extends Item {
 
     @Override
     public String toString() {
-        return "Item : " + this.name + "| Sell-in : " + this.sellIn + "| Quality : " + this.quality;
+        return "Item : " + this.name + " | Sell-in : " + this.sellIn + " | Quality : " + this.quality;
     }
 
     void decreaseSellIn() {
@@ -24,7 +24,7 @@ public class Products extends Item {
         quality = quality - (1 * rate);
     }
 
-    private void setQualityToZero() {
+    void setQualityToZero() {
         quality = 0;
     }
 
@@ -59,13 +59,10 @@ public class Products extends Item {
     void updateAgedBrie() {
         decreaseSellIn();
 
-        if (quality < MAX_QUALITY) {
+        if (quality < MAX_QUALITY || (sellIn < SELL_PASSED && quality < MAX_QUALITY)) {
             increaseQuality(1);
         }
 
-        if (sellIn < SELL_PASSED && quality < MAX_QUALITY) {
-            increaseQuality(1);
-        }
     }
 
     void update() {
@@ -76,7 +73,11 @@ public class Products extends Item {
         }
 
         if (sellIn < SELL_PASSED && quality > MIN_QUALITY) {
-            decreaseQuality(2);
+            if (quality > MIN_QUALITY + 1)
+                decreaseQuality(2);
+            else {
+                setQualityToZero();
+            }
         }
     }
 }
