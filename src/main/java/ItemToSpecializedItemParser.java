@@ -1,8 +1,7 @@
 
 public abstract class ItemToSpecializedItemParser {
     //This class is a parser, it does not need to be instancied.
-    public ItemToSpecializedItemParser() {
-    }
+
     //Take an item as argument and return an other kind of SpecializedItem, depending the name of the item.
     public static SpecializedItem itemToSpecializedItem(Item item){
         if(item.getName().equals("Sulfuras, Hand of Ragnaros")){
