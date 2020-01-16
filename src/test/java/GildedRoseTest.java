@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.*;
 
 
 public class GildedRoseTest {
-	
+
 	@Test
 	public void sulfurasQualityShouldNeverChange(){
 		GildedRose inn = new GildedRose();
@@ -19,6 +19,12 @@ public class GildedRoseTest {
 		for(int i = 0; i < 100; ++i) {
 			inn.updateQuality();
 			assertThat(sulfuras.quality).isEqualTo(originalQuality);
+		}
+	}
+
+	private static void reduceItemSellInValueTo(GildedRose inn, Item item, int sellIn){
+		while(sellIn < item.sellIn){
+			inn.updateQuality();
 		}
 	}
 }
