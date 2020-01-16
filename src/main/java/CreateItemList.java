@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateItemList {
-    private static List<Item> items = null;
+    private List<Item> items = null;
 
-    public void createList(){
+    public CreateItemList(){
         System.out.println("OMGHAI!");
 
         items = new ArrayList<Item>();
@@ -21,6 +21,6 @@ public class CreateItemList {
     }
 
     public void setItems(List<Item> items) {
-        CreateItemList.items = items;
+        this.items = items;
     }
 }
