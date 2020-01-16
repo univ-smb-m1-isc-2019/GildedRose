@@ -7,7 +7,16 @@ public class ConjuredItem extends MyItem {
 
     @Override
     protected void updateQuality() {
-        super.updateQuality();
+        if (getQuality() > getMinimalValue()) {
+            decrementItemQuality();
+            decrementItemQuality();
+        }
+
+        if (getSellIn() < getMinimalValue() && getQuality() > getMinimalValue())
+        {
+            decrementItemQuality();
+            decrementItemQuality();
+        }
     }
 
     @Override
@@ -17,5 +26,8 @@ public class ConjuredItem extends MyItem {
 
     private void decrementItemSellIn() {
         setSellIn(getSellIn()-1);
+    }
+    private void decrementItemQuality() {
+        setQuality(getQuality() - 1);
     }
 }
