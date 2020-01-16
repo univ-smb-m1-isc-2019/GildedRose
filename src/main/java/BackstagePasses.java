@@ -2,12 +2,14 @@ public class BackstagePasses extends improveItem {
     private int maximalValue;
     private int increaseByTwo;
     private int increaseByThree;
+    private int minimalValue;
 
     public BackstagePasses(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
         setMaximalValue(50);
         setIncreaseByTwo(11);
         setIncreaseByThree(6);
+        setMinimalValue(0);
 
     }
 
@@ -15,28 +17,29 @@ public class BackstagePasses extends improveItem {
     protected void udpdateSellIn() {
         decrementItemSellIn();
     }
-    private void decrementItemSellIn() {
-        setSellIn(getSellIn()-1);
-    }
+
 
     @Override
     protected void updateQuality() {
-        if (getQuality() < getMaximalValue()) {
-            incrementItemQuality();
-        }
-        if (getSellIn() < getIncreaseByTwo())
+        if (getSellIn() < getMinimalValue())
         {
-            if (getQuality() < getMaximalValue())
-            {
+            setQuality(getMinimalValue());
+        }
+        else
+        {
+            if (getQuality() < getMaximalValue()) {
                 incrementItemQuality();
             }
-        }
+            if (getSellIn() < getIncreaseByTwo()) {
+                if (getQuality() < getMaximalValue()) {
+                    incrementItemQuality();
+                }
+            }
 
-        if (getSellIn() < getIncreaseByThree())
-        {
-            if (getQuality() < getMaximalValue())
-            {
-                incrementItemQuality();
+            if (getSellIn() < getIncreaseByThree()) {
+                if (getQuality() < getMaximalValue()) {
+                    incrementItemQuality();
+                }
             }
         }
     }
@@ -48,10 +51,6 @@ public class BackstagePasses extends improveItem {
         setQuality(getQuality() + 1);
     }
 
-
-
-
-    
     public  int getMaximalValue(){ return maximalValue; }
 
     public void setMaximalValue(int value)
@@ -75,6 +74,16 @@ public class BackstagePasses extends improveItem {
     public int getIncreaseByThree()
     {
         return increaseByThree;
+    }
+
+    public void setMinimalValue(int min)
+    {
+        this.minimalValue = min;
+    }
+
+    public int getMinimalValue()
+    {
+        return minimalValue;
     }
 
 }

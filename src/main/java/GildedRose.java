@@ -48,24 +48,7 @@ public class GildedRose {
                 {
                     incrementItemQuality(i);
 
-                    if (isBackstage(i))
-                    {
-                        if (getItemSellIn(i) < getIncreaseByTwo())
-                        {
-                            if (getItemQuality(i) < getMaximalValue())
-                            {
-                                incrementItemQuality(i);
-                            }
-                        }
 
-                        if (getItemSellIn(i) < getIncreaseByThree())
-                        {
-                            if (getItemQuality(i) < getMaximalValue())
-                            {
-                                incrementItemQuality(i);
-                            }
-                        }
-                    }
                 }
             }
 
@@ -78,14 +61,6 @@ public class GildedRose {
             {
                 if (!isBrie(i))
                 {
-                    if (!isBackstage(i))
-                    {
-
-                    }
-                    else
-                    {
-                        setItemQuality(i,getMinimalValue());
-                    }
                 }
                 else
                 {

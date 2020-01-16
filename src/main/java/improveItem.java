@@ -15,4 +15,7 @@ public abstract class improveItem extends Item {
     {
 
     }
+    protected void decrementItemSellIn() {
+        setSellIn(getSellIn()-1);
+    }
 }
