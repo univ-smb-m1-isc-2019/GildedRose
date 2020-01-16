@@ -39,25 +39,10 @@ public class GildedRose {
     {
         for (int i = 0; i < itemsSize(); i++)
         {
-            
+
         }
     }
 
-
-    public boolean isSulfuras(int position)
-    {
-        return "Sulfuras, Hand of Ragnaros".equals(getItemName(position));
-    }
-
-    public boolean isBrie(int position)
-    {
-        return "Aged Brie".equals(getItemName(position));
-    }
-
-    public boolean isBackstage(int position)
-    {
-        return "Backstage passes to a TAFKAL80ETC concert".equals(getItemName(position));
-    }
     public List<Item> getItems()
     {
         return items;
@@ -77,21 +62,8 @@ public class GildedRose {
     {
         return items.size();
     }
+    
 
-    public int getItemQuality(int position)
-    {
-        return getItems().get(position).getQuality();
-    }
-
-    public void setItemQuality(int position, int value)
-    {
-        getItems().get(position).setQuality(value);
-    }
-
-    public String getItemName(int position)
-    {
-        return getItems().get(position).getName();
-    }
 
     public void setMaximalValue(int value) {
         maximalValue = value;
@@ -101,32 +73,7 @@ public class GildedRose {
         minimalValue = value;
     }
 
-    public int getMinimalValue(){ return minimalValue; }
 
-    public  int getMaximalValue(){ return maximalValue; }
-
-    public int getItemSellIn(int position)
-    {
-        return getItems().get(position).getSellIn();
-    }
-
-    public void setItemSellIn(int position, int value)
-    {
-        getItems().get(position).setSellIn(value);
-    }
-
-    public void incrementItemQuality(int position)
-    {
-        setItemQuality(position,getItemQuality(position) + 1);
-    }
-    public void decrementItemQuality(int position)
-    {
-        setItemQuality(position,getItemQuality(position) - 1);
-    }
-    public void decrementItemSellIn(int position)
-    {
-        setItemSellIn(position,getItemSellIn(position) - 1);
-    }
 
     public void setIncreaseByTwo(int value)
     {
@@ -135,15 +82,6 @@ public class GildedRose {
     public void setIncreaseByThree(int value)
     {
         increaseByThree = value;
-    }
-
-    public int getIncreaseByTwo()
-    {
-        return increaseByTwo;
-    }
-    public int getIncreaseByThree()
-    {
-        return increaseByThree;
     }
 
 
