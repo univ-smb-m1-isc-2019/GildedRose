@@ -7,20 +7,13 @@ import java.util.stream.Collectors;
 public class GildedRose {
 
 	private List<Item> items = null;
-	private int minimalValue ;
-	private int maximalValue ;
-	private int increaseByTwo;
-	private int increaseByThree;
+
 
 
 	public GildedRose()
     {
         initListItems();
 
-        setMinimalValue(0);
-        setMaximalValue(50);
-        setIncreaseByTwo(11);
-        setIncreaseByThree(6);
 
         initItems();
     }
@@ -39,7 +32,7 @@ public class GildedRose {
     {
         for (int i = 0; i < itemsSize(); i++)
         {
-
+            System.out.println(getItems().get(i).getClass().getName());
         }
     }
 
@@ -62,28 +55,6 @@ public class GildedRose {
     {
         return items.size();
     }
-    
-
-
-    public void setMaximalValue(int value) {
-        maximalValue = value;
-    }
-
-    public void setMinimalValue(int value) {
-        minimalValue = value;
-    }
-
-
-
-    public void setIncreaseByTwo(int value)
-    {
-        increaseByTwo = value;
-    }
-    public void setIncreaseByThree(int value)
-    {
-        increaseByThree = value;
-    }
-
 
     public Item get(String nom)
     {
@@ -103,7 +74,7 @@ public class GildedRose {
     public List<Item> getNonLegendaryItems()
     {
         List<Item> list = getItems().stream()
-                .filter(item -> item.getClass().getName().equals("CommonItem") || item.getClass().getName().equals("ConjuredItem"))
+                .filter(item -> !item.getClass().getName().equals("LegendaryItem"))
                 .collect(Collectors.toList());
 
         return list;
