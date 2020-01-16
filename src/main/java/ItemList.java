@@ -3,22 +3,22 @@ import java.util.List;
 
 public class ItemList {
 
-    public List<AmelioratedItem> init() {
-        List<AmelioratedItem> itemlist = new ArrayList<AmelioratedItem>();
-        itemlist.add(new AmelioratedItem(("+5 Dexterity Vest", 10, 20), false));
-        itemlist.add(new AmelioratedItem(("Aged Brie", 2, 0), true));
-        itemlist.add(new AmelioratedItem(("Elixir of the Mongoose", 5, 7), false));
-        itemlist.add(new AmelioratedItem(("Sulfuras, Hand of Ragnaros", 0, 80), false));
-        itemlist.add(new AmelioratedItem(("Backstage passes to a TAFKAL80ETC concert", 15, 20), false));
-        itemlist.add(new AmelioratedItem(("Conjured Mana Cake", 3, 6), true));
-        return itemlist;
+    public List<ResetItem> init() {
+        List<ResetItem> itemList = new ArrayList<ResetItem>();
+        itemList.add(new ResetItem(new Item("+5 Dexterity Vest", 10, 20), false));
+        itemList.add(new ResetItem(new Item("Aged Brie", 2, 0), true));
+        itemList.add(new ResetItem(new Item("Elixir of the Mongoose", 5, 7), false));
+        itemList.add(new ResetItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80), false));
+        itemList.add(new ResetItem(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20), false));
+        itemList.add(new ResetItem(new Item("Conjured Mana Cake", 3, 6), true));
+        return itemList;
     }
 
-    public String toString(List<AmelioratedItem> itemlist) {
+    public String toString(List<ResetItem> itemList) {
         String res = "";
-        for (int i = 0; i < itemlist.size(); i++) {
-            res += "Name : " + itemlist.get(i).getItem().getName() + " | SellIn : " + itemlist.get(i).getItem().getSellIn()
-                    + " , Quality : " + itemlist.get(i).getItem().getQuality() + "\n";
+        for (int i = 0; i < itemList.size(); i++) {
+            res += "Name : " + itemList.get(i).getItem().getName() + " | SellIn : " + itemList.get(i).getItem().getSellIn()
+                    + " , Quality : " + itemList.get(i).getItem().getQuality() + "\n";
         }
         return res;
     }

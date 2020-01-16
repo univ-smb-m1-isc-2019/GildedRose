@@ -1,9 +1,9 @@
-public class AmelioratedItem {
+public class ResetItem {
 
     public Item item;
     public boolean conjured;
 
-    public AmelioratedItem(Item item, boolean conjured){
+    public ResetItem(Item item, boolean conjured){
         this.setItem(item);
         this.setConjured(conjured);
     }
@@ -16,7 +16,7 @@ public class AmelioratedItem {
         this.item = item;
     }
 
-    public boolean getConjured(){
+    public boolean isConjured(){
         return this.conjured;
     }
 
