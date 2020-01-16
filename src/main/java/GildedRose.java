@@ -2,6 +2,8 @@ import java.util.List;
 
 public class GildedRose {
 
+    private static String AGED_BRIE = "Aged Brie";
+    private static String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     private Item_management myManagement;
     private static List<Item> items;
 
@@ -11,23 +13,15 @@ public class GildedRose {
     }
 
     public void updateQuality(){
-
         for (Item item: this.items) {
-
-            if ((!"Aged Brie".equals(item.getName()))) {
-                if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
-                    myManagement.itemQualityDecrement(item);
-
-            }else{
-
+            if ((!AGED_BRIE.equals(item.getName())) && !(BACKSTAGE_PASSES.equals(item.getName())))
+                myManagement.itemQualityDecrement(item);
+            else{
                 myManagement.itemQualityIncrement(item);
-
-                if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
+                if (BACKSTAGE_PASSES.equals(item.getName()))
                     myManagement.qualityIncrementBackstage(item);
-
             }
-
-            myManagement.dayPassed(item);/**/
+            myManagement.dayPassed(item);
 
             if (item.getSellIn() < 0)
                 sellIn_LessThan0(item);
@@ -36,8 +30,8 @@ public class GildedRose {
 
 /**Management quality of item if days for selling were exceeded **/
     private void sellIn_LessThan0(Item myItem){
-        if (!"Aged Brie".equals(myItem.getName())) {
-            if (!"Backstage passes to a TAFKAL80ETC concert".equals(myItem.getName()))
+        if (!AGED_BRIE.equals(myItem.getName())) {
+            if (!BACKSTAGE_PASSES.equals(myItem.getName()))
                 myManagement.itemQualityDecrement(myItem);
             else
                 myItem.setQuality(myItem.getQuality() - myItem.getQuality());
