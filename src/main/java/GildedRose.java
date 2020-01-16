@@ -47,15 +47,9 @@ public class GildedRose {
                 if (getItemQuality(i) < getMaximalValue())
                 {
                     incrementItemQuality(i);
-
-
                 }
             }
 
-            if (!isSulfuras(i))
-            {
-                decrementItemSellIn(i);
-            }
 
             if (getItemSellIn(i) < getMinimalValue())
             {
