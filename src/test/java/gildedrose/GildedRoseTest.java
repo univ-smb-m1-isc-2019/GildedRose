@@ -1,10 +1,37 @@
 package gildedrose;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class GildedRoseTest {
 
+
+	/////////////////////////////////////////////////////////////////
+	// General
+	/////////////////////////////////////////////////////////////////
+
+	@Test
+	public void itemQualityShouldNeverBeMoreThanTheHighestQualityPossible(){
+		GildedRose inn = new GildedRose();
+
+		ArrayList<Item> items = inn.getItems();
+
+		for(int i = 0; i < 1000; ++i){
+			inn.updateQuality();
+
+			testEveryItemQualityToNeverBeMoreThanTheHighestQualityPossible(items);
+		}
+	}
+
+	private void testEveryItemQualityToNeverBeMoreThanTheHighestQualityPossible(ArrayList<Item> items){
+		for(Item item: items){
+			if(!item.name.equals("Sulfuras, Hand of Ragnaros"))
+				assertThat(item.quality).isLessThanOrEqualTo(GildedRose.HIGHEST_QUALITY_POSSIBLE);
+		}
+	}
 
 	/////////////////////////////////////////////////////////////////
 	// Aged Brie

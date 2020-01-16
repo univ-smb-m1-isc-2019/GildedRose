@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class GildedRose {
 
-	private List<Item> items;
+	private ArrayList<Item> items;
 	static final int LOWEST_QUALITY_POSSIBLE = 0;
 	static final int HIGHEST_QUALITY_POSSIBLE = 50;
 
@@ -46,5 +46,9 @@ public class GildedRose {
         else {
             throw new IllegalAccessError("Item not found in shop");
         }
+    }
+
+    public ArrayList<Item> getItems(){
+        return items;
     }
 }
