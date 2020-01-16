@@ -8,7 +8,7 @@ public class Item_managementTest {
     private static Item standardTestItem;
 
     @BeforeClass
-    public static void runT(){
+    public static void runTest(){
         item_mTest = new Item_management();
         legend_item = new Item("Sulfuras, Hand of Ragnaros",0, 80);
         standardTestItem = new Item("Aged Brie", 2, 1);
