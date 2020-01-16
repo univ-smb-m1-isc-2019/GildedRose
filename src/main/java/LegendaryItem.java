@@ -7,11 +7,14 @@ public class LegendaryItem extends MyItem{
         super(name, sellIn, quality);
     }
 
-    public void updateQuality()
+    @Override
+    protected void updateQuality()
     {
         /*Les items legendaires ne se degradent pas*/
     }
-    public void updateSellIn()
+
+    @Override
+    protected void udpdateSellIn()
     {
         /*Les items legendaires ne peuvent pas etre*/
     }

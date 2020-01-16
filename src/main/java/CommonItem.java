@@ -8,8 +8,8 @@ public class CommonItem extends MyItem {
         setMinimalValue(0);
     }
 
-    public void updateQuality()
-    {
+    @Override
+    protected void updateQuality() {
         if (getQuality() > getMinimalValue()) {
             decrementItemQuality();
         }
@@ -18,12 +18,11 @@ public class CommonItem extends MyItem {
         {
             decrementItemQuality();
         }
-
     }
-    public void updateSellIn()
-    {
-        decrementItemSellIn();
 
+    @Override
+    protected void udpdateSellIn() {
+        decrementItemSellIn();
     }
 
     private void decrementItemSellIn() {
