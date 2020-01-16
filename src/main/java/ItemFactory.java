@@ -1,15 +1,13 @@
-import items.AbstractItem;
-import items.Legendary;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ItemFactory {
     Map<String, AbstractItem> classes;
 
-    public ItemFactory() {
+    public ItemFactory(Item item) {
         this.classes = new HashMap<>();
 
-        classes.put("Sulfuras, Hand of Ragnaros", new Legendary());
+        classes.put("Sulfuras, Hand of Ragnaros", new Legendary(item));
     }
 
     public AbstractItem getClass(String name) {
