@@ -6,13 +6,6 @@ public class GildedRose {
 
 	private static List<Item> items = null;
 
-	public static void main(String[] args) {
-        System.out.println("OMGHAI!");
-        itemsInit();
-        updateQuality();
-
-}
-
     public static void itemsInit(){
         items = new ArrayList<Item>();
         items.add(new Item("+5 Dexterity Vest", 10, 20));
