@@ -41,13 +41,6 @@ public class GildedRose {
         {
             if ((!isBrie(i)) && !isBackstage(i))
             {
-                if (getItemQuality(i) > getMinimalValue())
-                {
-                    if (!isSulfuras(i))
-                    {
-                        decrementItemQuality(i);
-                    }
-                }
             }
             else
             {
@@ -87,13 +80,7 @@ public class GildedRose {
                 {
                     if (!isBackstage(i))
                     {
-                        if (getItemQuality(i) > getMinimalValue())
-                        {
-                            if (!isSulfuras(i))
-                            {
-                                decrementItemQuality(i);
-                            }
-                        }
+
                     }
                     else
                     {
