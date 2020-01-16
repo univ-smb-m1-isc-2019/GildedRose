@@ -19,6 +19,14 @@ public class AgedBrie extends improveItem {
         {
             incrementItemQuality();
         }
+        if (getSellIn() < getMinimalValue())
+        {
+            if (getQuality() < getMaximalValue())
+            {
+                incrementItemQuality();
+            }
+        }
+
     }
 
 

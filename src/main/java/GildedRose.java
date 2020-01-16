@@ -28,7 +28,7 @@ public class GildedRose {
     public void initItems()
     {
         ajouterItem(new CommonItem("+5 Dexterity Vest", 10, 20));
-        ajouterItem(new CommonItem("Aged Brie", 2, 0));
+        ajouterItem(new AgedBrie("Aged Brie", 2, 0));
         ajouterItem(new CommonItem("Elixir of the Mongoose", 5, 7));
         ajouterItem(new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80));
         ajouterItem(new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 15, 20));
@@ -39,31 +39,7 @@ public class GildedRose {
     {
         for (int i = 0; i < itemsSize(); i++)
         {
-            if ((!isBrie(i)) && !isBackstage(i))
-            {
-            }
-            else
-            {
-                if (getItemQuality(i) < getMaximalValue())
-                {
-                    incrementItemQuality(i);
-                }
-            }
-
-
-            if (getItemSellIn(i) < getMinimalValue())
-            {
-                if (!isBrie(i))
-                {
-                }
-                else
-                {
-                    if (getItemQuality(i) < getMaximalValue())
-                    {
-                        incrementItemQuality(i);
-                    }
-                }
-            }
+            
         }
     }
 
