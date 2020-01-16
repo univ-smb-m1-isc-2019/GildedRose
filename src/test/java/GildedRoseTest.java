@@ -25,6 +25,25 @@ public class GildedRoseTest {
 	}
 
 	@Test
+	public void standardItemQualityShouldDecreaseByTwoWhenSellInLessEqualThanZero(){
+		int QUALITY_DECREASE_RATE = 2;
+
+		GildedRose inn = new GildedRose();
+		Item standardItem = inn.getItem("+5 Dexterity Vest");
+
+
+		reduceItemSellInValueTo(inn, standardItem, 0);
+
+		int qualityBeforeUpdate;
+		while(standardItem.quality > GildedRose.LOWEST_QUALITY_POSSIBLE){
+			qualityBeforeUpdate = standardItem.quality;
+
+			inn.updateQuality();
+			assertThat(standardItem.quality).isEqualTo(qualityBeforeUpdate - QUALITY_DECREASE_RATE);
+		}
+	}
+
+	@Test
 	public void sulfurasQualityShouldNeverChange(){
 		GildedRose inn = new GildedRose();
 
