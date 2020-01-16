@@ -11,6 +11,7 @@ public class ItemFactory {
         classes.put("Sulfuras, Hand of Ragnaros", Legendary.class);
     }
 
+    // return the instance corresponding to the given item.
     public AbstractItem getClass(Item item) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class<?> c = classes.get(item.name);
         return (AbstractItem) c.getConstructor(Item.class).newInstance(item);
