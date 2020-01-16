@@ -2,6 +2,7 @@ package gildedrose;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class GildedRose {
@@ -31,5 +32,19 @@ public class GildedRose {
 
     private CustomItem getCustomItemFromItem(Item item){
         return new CustomItemFactory(item).getCustomItem(item);
+    }
+
+    public Item getItem(String key){
+
+        Optional<Item> optionalItem = items.stream()
+                .filter( item -> item.name.equals(key) )
+                .findFirst();
+
+        if(optionalItem.isPresent()){
+            return optionalItem.get();
+        }
+        else {
+            throw new IllegalAccessError("Item not found in shop");
+        }
     }
 }
