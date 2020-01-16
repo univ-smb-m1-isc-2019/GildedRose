@@ -65,7 +65,6 @@ public class GildedRoseTest {
 		}
 	}
 
-
 	@Test
 	public void backstagePassesQualityShouldIncreaseByTwoBetweenTenAndFiveDaysBeforeSellInDate(){
 		int QUALITY_INCREASE_RATE = 2;
@@ -77,6 +76,24 @@ public class GildedRoseTest {
 
 		int qualityBeforeUpdate;
 		while(backstagePasses.sellIn > 5 && !hasReachedHighestQualityPossible(backstagePasses)){
+			qualityBeforeUpdate = backstagePasses.quality;
+
+			inn.updateQuality();
+			assertThat(backstagePasses.quality).isEqualTo(qualityBeforeUpdate + QUALITY_INCREASE_RATE);
+		}
+	}
+
+	@Test
+	public void backstagePassesQualityShouldIncreaseByThreeWhenLessEqualThanFiveDaysBeforeSellInDate(){
+		int QUALITY_INCREASE_RATE = 3;
+
+		GildedRose inn = new GildedRose();
+		Item backstagePasses = inn.getItem("Backstage passes to a TAFKAL80ETC concert");
+
+		reduceItemSellInValueTo(inn, backstagePasses, 5);
+
+		int qualityBeforeUpdate;
+		while(!hasSellInDatePassed(backstagePasses) && !hasReachedHighestQualityPossible(backstagePasses)){
 			qualityBeforeUpdate = backstagePasses.quality;
 
 			inn.updateQuality();
