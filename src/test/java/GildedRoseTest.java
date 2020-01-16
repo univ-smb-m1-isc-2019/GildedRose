@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.*;
 
 public class GildedRoseTest {
 
-
 	/////////////////////////////////////////////////////////////////
 	// General
 	/////////////////////////////////////////////////////////////////
@@ -35,6 +34,27 @@ public class GildedRoseTest {
 		}
 	}
 
+	@Test
+	public void itemQualityShouldNeverBeLessThanTheLowestQualityPossible(){
+		GildedRose inn = new GildedRose();
+
+		ArrayList<Item> items = inn.getItems();
+
+		for(int i = 0; i < 1000; ++i){
+			inn.updateQuality();
+
+			testEveryItemQualityToNeverBeLessThanTheLowestQualityPossible(items);
+		}
+	}
+
+	private void testEveryItemQualityToNeverBeLessThanTheLowestQualityPossible(ArrayList<Item> items){
+		for(Item item: items){
+			if(!item.name.equals("Sulfuras, Hand of Ragnaros"))
+				assertThat(item.quality).isGreaterThanOrEqualTo(GildedRose.LOWEST_QUALITY_POSSIBLE);
+		}
+	}
+
+	
 	/////////////////////////////////////////////////////////////////
 	// Aged Brie
 	/////////////////////////////////////////////////////////////////
