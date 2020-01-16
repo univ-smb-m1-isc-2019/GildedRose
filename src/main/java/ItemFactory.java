@@ -8,7 +8,8 @@ public class ItemFactory {
     public ItemFactory() {
         this.classes = new HashMap<>();
 
-        classes.put("Sulfuras, Hand of Ragnaros", Legendary.class);
+        classes.put("Sulfuras, Hand of Ragnaros", LegendaryItem.class);
+        classes.put("+5 Dexterity Vest", OrdinaryItem.class);
     }
 
     // return the instance corresponding to the given item.

@@ -10,6 +10,7 @@ public class GildedRose {
     public GildedRose() {
         items = new ArrayList<Item>();
         items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
+        items.add(new Item("+5 Dexterity Vest", 10, 20));
     }
 
     public void updateQuality() throws Exception {
