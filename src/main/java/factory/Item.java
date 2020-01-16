@@ -1,3 +1,4 @@
+package factory;
 
 public class Item {
     public String name;

@@ -1,3 +1,5 @@
+package factory;
+
 public class LegendaryItem extends AbstractItem {
 
     public LegendaryItem(Item item) {

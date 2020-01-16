@@ -1,3 +1,5 @@
+package factory;
+
 public class AgedBrie extends AbstractItem {
 
     public AgedBrie(Item item) {

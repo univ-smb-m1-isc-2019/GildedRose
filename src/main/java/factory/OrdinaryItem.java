@@ -1,3 +1,5 @@
+package factory;
+
 public class OrdinaryItem extends AbstractItem {
 
     public OrdinaryItem(Item item) {

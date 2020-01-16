@@ -1,3 +1,6 @@
+import factory.AbstractItem;
+import factory.Item;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

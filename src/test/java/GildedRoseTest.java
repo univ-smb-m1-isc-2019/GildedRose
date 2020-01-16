@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import factory.AbstractItem;
+import factory.Item;
 import org.junit.Test;
 
 public class GildedRoseTest {

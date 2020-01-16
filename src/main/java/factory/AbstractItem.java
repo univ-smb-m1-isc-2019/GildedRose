@@ -1,3 +1,5 @@
+package factory;
+
 public abstract class AbstractItem {
     public static final int MIN_QUALITY = 0;
     public static final int MAX_QUALITY = 50;

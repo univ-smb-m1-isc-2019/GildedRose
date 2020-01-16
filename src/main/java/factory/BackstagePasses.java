@@ -1,3 +1,5 @@
+package factory;
+
 public class BackstagePasses extends AbstractItem {
     protected static final int CLOSE_DATE = 10;
     protected static final int IMMINENT_DATE = 5;

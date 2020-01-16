@@ -1,3 +1,5 @@
+package factory;
+
 public class ConjuredItem extends AbstractItem {
 
     public ConjuredItem(Item item) {
