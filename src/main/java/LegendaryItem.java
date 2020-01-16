@@ -9,6 +9,10 @@ public class LegendaryItem extends Item{
 
     public void updateQuality()
     {
-        /*Les items legendaires ne se degrades pas*/
+        /*Les items legendaires ne se degradent pas*/
+    }
+    public void updateSellIn()
+    {
+        /*Les items legendaires ne peuvent pas etre*/
     }
 }
