@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class GildedRose {
 
-	private List<Item> items = null;
+	private List<MyItem> items = null;
 
 
 
@@ -36,17 +36,17 @@ public class GildedRose {
         }
     }
 
-    public List<Item> getItems()
+    public List<MyItem> getItems()
     {
         return items;
     }
 
     public void initListItems()
     {
-        items = new ArrayList<Item>();
+        items = new ArrayList<MyItem>();
     }
 
-    public void ajouterItem(Item item)
+    public void ajouterItem(MyItem item)
     {
         getItems().add(item);
     }
