@@ -10,9 +10,9 @@ public class BackstagePasses extends AbstractItem {
 
     @Override
     public void updateQuality() {
-        item.quality += 1;
-        if(hasReachCloseDate()) item.quality += 1;
-        if(hasReachImminentDate()) item.quality += 1;
+        item.quality++;
+        if(hasReachCloseDate()) item.quality++;
+        if(hasReachImminentDate()) item.quality++;
         if(hasReachSellInBoundary()) item.quality = MIN_QUALITY;
         if(hasReachMaxQuality()) item.quality = MAX_QUALITY;
     }
