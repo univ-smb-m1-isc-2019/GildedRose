@@ -1,4 +1,3 @@
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.anyOf;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
