@@ -10,19 +10,24 @@ public class CommonItem extends Item {
 
     public void updateQuality()
     {
-        if (getItemQuality() > getMinimalValue()) {
+        if (getQuality() > getMinimalValue()) {
             decrementItemQuality();
         }
     }
+    public void updateSellIn()
+    {
+        decrementItemSellIn();
+    }
+
+    private void decrementItemSellIn() {
+        setSellIn(getSellIn()-1);
+    }
+
 
     private void decrementItemQuality() {
-        setQuality(getItemQuality() -1);
+        setQuality(getQuality() - 1);
     }
 
-    public int getItemQuality()
-    {
-        return this.quality;
-    }
 
     public void setMinimalValue(int min)
     {
