@@ -34,7 +34,7 @@ public class GildedRose {
         }
     }
 
-/**Management quality of item if days for selling are gone **/
+/**Management quality of item if days for selling were exceeded **/
     private void sellIn_LessThan0(Item myItem){
         if (!"Aged Brie".equals(myItem.getName())) {
             if (!"Backstage passes to a TAFKAL80ETC concert".equals(myItem.getName()))
