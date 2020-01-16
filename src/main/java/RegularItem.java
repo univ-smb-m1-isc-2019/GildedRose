@@ -5,7 +5,7 @@ public class RegularItem extends SpecializedItem {
     public RegularItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
-    
+
     //Decrease the quality by 1
     //Once the sell by date has passed, Quality degrades twice as fast
     public void updateQuality() {

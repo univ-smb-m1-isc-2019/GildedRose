@@ -14,7 +14,8 @@ public abstract class ItemToSpecializedItemParser {
         if(item.getName().equals("Backstage passes to a TAFKAL80ETC concert")){
             return new BetterNearSellInItem(item.getName(),item.getSellIn(),item.getQuality());
         }
-        if(item.getName().equals("Conjured Mana Cake")){
+        //If an item name contains the word conjured, it means it's a conjured item, not an other one
+        if(item.getName().contains("Conjured")){
             return new ConjuredItem(item.getName(),item.getSellIn(),item.getQuality());
         }
         else{
