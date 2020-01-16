@@ -3,5 +3,12 @@ public class BackstagePasses extends improveItem {
         super(name, sellIn, quality);
     }
 
+    @Override
+    protected void udpdateSellIn() {
+        decrementItemSellIn();
+    }
+    private void decrementItemSellIn() {
+        setSellIn(getSellIn()-1);
+    }
 
 }
