@@ -13,6 +13,7 @@ public class GildedRose {
         items.add(new Item("+5 Dexterity Vest", 10, 20));
         items.add(new Item("Elixir of the Mongoose", 5, 7));
         items.add(new Item("Aged Brie", 2, 0));
+        items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
     }
 
     public void updateQuality() throws Exception {

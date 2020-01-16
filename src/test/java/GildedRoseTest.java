@@ -97,4 +97,38 @@ public class GildedRoseTest {
 		}
 	}
 
+	@Test
+	public void BackstagePassesQualityShouldIncrement() throws Exception {
+		GildedRose inn = new GildedRose();
+		Item backstagePasses = inn.get("Backstage passes to a TAFKAL80ETC concert");
+
+		int oldQuality;
+		boolean hasReachMaxQuality = false;
+
+		for (int i = 0; i < 100; i++) {
+			oldQuality = backstagePasses.quality;
+			inn.updateQuality();
+
+			if(!hasReachMaxQuality && backstagePasses.sellIn >= 10) {
+				assertEquals(backstagePasses.quality, oldQuality + 1);
+			}
+			else if(!hasReachMaxQuality && backstagePasses.sellIn >= 5) {
+				assertEquals(backstagePasses.quality, oldQuality + 2);
+			}
+			else if(!hasReachMaxQuality) {
+				assertEquals(backstagePasses.quality, oldQuality + 3);
+			}
+			else if(backstagePasses.sellIn >= 0) {
+				assertEquals(backstagePasses.quality, oldQuality);
+			}
+			else {
+				assertEquals(backstagePasses.quality, 0);
+			}
+
+			if(!hasReachMaxQuality) {
+				hasReachMaxQuality = backstagePasses.quality == 50;
+			}
+		}
+	}
+
 }

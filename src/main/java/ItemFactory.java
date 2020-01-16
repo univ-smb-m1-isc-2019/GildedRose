@@ -12,6 +12,7 @@ public class ItemFactory {
         classes.put("+5 Dexterity Vest", OrdinaryItem.class);
         classes.put("Elixir of the Mongoose", OrdinaryItem.class);
         classes.put("Aged Brie", AgedBrie.class);
+        classes.put("Backstage passes to a TAFKAL80ETC concert", BackstagePasses.class);
     }
 
     // return the instance corresponding to the given item.
