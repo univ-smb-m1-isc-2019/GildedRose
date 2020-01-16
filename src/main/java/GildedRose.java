@@ -32,7 +32,8 @@ public class GildedRose {
     {
         for (int i = 0; i < itemsSize(); i++)
         {
-            System.out.println(getItems().get(i).getClass().getName());
+            getItems().get(i).updateQuality();
+            getItems().get(i).udpdateSellIn();
         }
     }
 
@@ -58,7 +59,7 @@ public class GildedRose {
 
     public Item get(String nom)
     {
-        Optional<Item> optional = getItems().stream()
+        Optional<MyItem> optional = getItems().stream()
                 .filter(item -> item.getName().equals(nom))
                 .findFirst();
 
@@ -71,9 +72,9 @@ public class GildedRose {
         }
     }
 
-    public List<Item> getNonLegendaryItems()
+    public List<MyItem> getNonLegendaryItems()
     {
-        List<Item> list = getItems().stream()
+        List<MyItem> list = getItems().stream()
                 .filter(item -> !item.getClass().getName().equals("LegendaryItem"))
                 .collect(Collectors.toList());
 

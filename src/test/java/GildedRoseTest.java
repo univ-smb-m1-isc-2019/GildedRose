@@ -51,7 +51,7 @@ public class GildedRoseTest {
 			gildedRose.updateQuality();
 		}
 
-		Optional<Item> optional = gildedRose.getNonLegendaryItems().stream()
+		Optional<MyItem> optional = gildedRose.getNonLegendaryItems().stream()
 				.filter(item -> item.getQuality() > 50)
 				.findFirst();
 
@@ -68,7 +68,7 @@ public class GildedRoseTest {
 			gildedRose.updateQuality();
 		}
 
-		Optional<Item> optional = gildedRose.getItems().stream()
+		Optional<MyItem> optional = gildedRose.getItems().stream()
 				.filter(item -> item.getQuality() < 0)
 				.findFirst();
 
@@ -85,7 +85,7 @@ public class GildedRoseTest {
 			gildedRose.updateQuality();
 		}
 
-		Optional<Item> optional = gildedRose.getItems().stream()
+		Optional<MyItem> optional = gildedRose.getItems().stream()
 				.filter(item -> item.getName().equals("Sulfuras, Hand of Ragnaros"))
 				.findFirst();
 
