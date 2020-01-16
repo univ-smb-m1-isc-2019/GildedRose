@@ -1,16 +1,35 @@
+import items.AbstractItem;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class GildedRose {
 
-	private static List<Item> items = null;
+    private List<Item> items = null;
 
-	public static void main(String[] args) {
-        System.out.println("OMGHAI!");
+    public GildedRose() {
+        items = new ArrayList<Item>();
+        items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
     }
-	
-    public static void updateQuality() {
+
+    public void updateQuality() throws Exception {
+        ItemFactory itemFactory = new ItemFactory();
+
+        for (Item item : items) {
+            itemFactory.getClass(item.name).update();
+        }
+    }
+
+    public Item get(String key) {
+        Optional<Item> optional = items.stream().filter(item -> item.getName().equals(key)).findFirst();
+        if(optional.isPresent()) {
+            return optional.get();
+        }
+        else {
+            throw new IllegalStateException("not found in shop");
+        }
     }
 
 }
