@@ -6,14 +6,14 @@ import static org.assertj.core.api.Assertions.*;
 public class GildedRoseTest {
 
 	@Test
-	public void standardItemQualityShouldDecreaseByOneWhenSellInSuperiorThanZero(){
+	public void standardItemQualityShouldDecreaseByOneBeforeSellInDate(){
 		int QUALITY_DECREASE_RATE = 1;
 
 		GildedRose inn = new GildedRose();
 		Item standardItem = inn.getItem("+5 Dexterity Vest");
 
 		int qualityBeforeUpdate;
-		while(standardItem.sellIn > 0){
+		while(!hasSellInDatePassed(standardItem)){
 			qualityBeforeUpdate = standardItem.quality;
 
 			inn.updateQuality();
@@ -22,7 +22,7 @@ public class GildedRoseTest {
 	}
 
 	@Test
-	public void standardItemQualityShouldDecreaseByTwoWhenSellInLessEqualThanZero(){
+	public void standardItemQualityShouldDecreaseByTwoAfterSellInDate(){
 		int QUALITY_DECREASE_RATE = 2;
 
 		GildedRose inn = new GildedRose();
@@ -32,7 +32,7 @@ public class GildedRoseTest {
 		reduceItemSellInValueTo(inn, standardItem, 0);
 
 		int qualityBeforeUpdate;
-		while(standardItem.quality > GildedRose.LOWEST_QUALITY_POSSIBLE){
+		while(!hasReachedLowestQualityPossible(standardItem)){
 			qualityBeforeUpdate = standardItem.quality;
 
 			inn.updateQuality();
@@ -58,5 +58,17 @@ public class GildedRoseTest {
 		while(sellIn < item.sellIn){
 			inn.updateQuality();
 		}
+	}
+
+	private static boolean hasSellInDatePassed(Item item){
+		return item.sellIn <= 0;
+	}
+
+	private static boolean hasReachedHighestQualityPossible(Item item){
+		return item.quality >= GildedRose.HIGHEST_QUALITY_POSSIBLE;
+	}
+
+	private static boolean hasReachedLowestQualityPossible(Item item){
+		return item.quality <= GildedRose.LOWEST_QUALITY_POSSIBLE;
 	}
 }
