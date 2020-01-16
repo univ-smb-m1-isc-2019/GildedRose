@@ -6,5 +6,6 @@ public class Main {
 
         GildedRose gildedRose = new GildedRose();
         gildedRose.updateQuality();
+
     }
 }

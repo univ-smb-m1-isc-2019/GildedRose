@@ -77,7 +77,7 @@ public class GildedRoseTest {
 
 
 	@Test
-	public void sulfura_cannot_be_sell()
+	public void sulfura_cannot_be_sold()
 	{
 		GildedRose gildedRose = new GildedRose();
 		for(int i = 0; i<100; i++)
@@ -90,5 +90,10 @@ public class GildedRoseTest {
 				.findFirst();
 
 		assertFalse(optional.isEmpty());
+	}
+
+	@Test
+	public void item_with_date_passed_should_degrade_twice_as_fast()
+	{
 	}
 }

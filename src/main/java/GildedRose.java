@@ -17,14 +17,16 @@ public class GildedRose {
 	public GildedRose()
     {
         initListItems();
+
         setMinimalValue(0);
         setMaximalValue(50);
         setIncreaseByTwo(11);
         setIncreaseByThree(6);
-        initListItem();
+
+        initItems();
     }
 
-    public void initListItem()
+    public void initItems()
     {
         ajouterItem(new CommonItem("+5 Dexterity Vest", 10, 20));
         ajouterItem(new CommonItem("Aged Brie", 2, 0));
