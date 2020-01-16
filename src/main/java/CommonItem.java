@@ -11,9 +11,12 @@ public class CommonItem extends Item {
     public void updateQuality()
     {
         if (getItemQuality() > getMinimalValue()) {
-
-
+            decrementItemQuality();
         }
+    }
+
+    private void decrementItemQuality() {
+        setQuality(getItemQuality() -1);
     }
 
     public int getItemQuality()
