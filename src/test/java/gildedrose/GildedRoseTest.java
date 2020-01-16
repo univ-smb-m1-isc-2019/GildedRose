@@ -26,6 +26,24 @@ public class GildedRoseTest {
 		}
 	}
 
+	@Test
+	public void agedBrieQualityShouldIncreaseByTwoAfterSellInDate(){
+		int QUALITY_INCREASE_RATE = 2;
+
+		GildedRose inn = new GildedRose();
+		Item agedBrie = inn.getItem("Aged Brie");
+
+		reduceItemSellInValueTo(inn, agedBrie, 0);
+
+		int qualityBeforeUpdate;
+		while(!hasReachedHighestQualityPossible(agedBrie)){
+			qualityBeforeUpdate = agedBrie.quality;
+
+			inn.updateQuality();
+			assertThat(agedBrie.quality).isEqualTo(qualityBeforeUpdate + QUALITY_INCREASE_RATE);
+		}
+	}
+
 
 	/////////////////////////////////////////////////////////////////
 	// Standard Item
