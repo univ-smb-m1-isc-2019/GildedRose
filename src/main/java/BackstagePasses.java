@@ -24,19 +24,41 @@ public class BackstagePasses extends improveItem {
         if (getQuality() < getMaximalValue()) {
             incrementItemQuality();
         }
+        if (getSellIn() < getIncreaseByTwo())
+        {
+            if (getQuality() < getMaximalValue())
+            {
+                incrementItemQuality();
+            }
+        }
+
+        if (getSellIn() < getIncreaseByThree())
+        {
+            if (getQuality() < getMaximalValue())
+            {
+                incrementItemQuality();
+            }
+        }
     }
+
+
 
     public void incrementItemQuality()
     {
         setQuality(getQuality() + 1);
     }
+
+
+
+
+    
     public  int getMaximalValue(){ return maximalValue; }
 
     public void setMaximalValue(int value)
     {
         this.maximalValue = value;
     }
-    
+
     public void setIncreaseByTwo(int value)
     {
         increaseByTwo = value;
