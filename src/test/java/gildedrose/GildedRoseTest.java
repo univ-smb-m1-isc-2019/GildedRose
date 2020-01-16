@@ -114,6 +114,28 @@ public class GildedRoseTest {
 		}
 	}
 
+
+	/////////////////////////////////////////////////////////////////
+	// Conjured Item
+	/////////////////////////////////////////////////////////////////
+
+	@Test
+	public void conjuredItemQualityShouldDecreaseByTwoBeforeSellInDate(){
+		int QUALITY_DECREASE_RATE = 2;
+
+		GildedRose inn = new GildedRose();
+		Item conjuredItem = inn.getItem("Conjured Mana Cake");
+
+		int qualityBeforeUpdate;
+		while(!hasSellInDatePassed(conjuredItem) && !hasReachedHighestQualityPossible(conjuredItem)){
+			qualityBeforeUpdate = conjuredItem.quality;
+
+			inn.updateQuality();
+			assertThat(conjuredItem.quality).isEqualTo(qualityBeforeUpdate - QUALITY_DECREASE_RATE);
+		}
+	}
+
+
 	/////////////////////////////////////////////////////////////////
 	// Standard Item
 	/////////////////////////////////////////////////////////////////
