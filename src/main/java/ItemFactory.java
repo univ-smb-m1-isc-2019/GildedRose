@@ -3,17 +3,21 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ItemFactory {
-    Map<String, Class<? extends AbstractItem>> instances;
+    Map<String, Class<? extends AbstractItem>> recognizableItems;
 
     public ItemFactory() {
-        this.instances = new HashMap<>();
+        initMapRecognizableItems();
+    }
 
-        instances.put("Sulfuras, Hand of Ragnaros", LegendaryItem.class);
-        instances.put("Dexterity Vest", OrdinaryItem.class);
-        instances.put("Elixir of the Mongoose", OrdinaryItem.class);
-        instances.put("Aged Brie", AgedBrie.class);
-        instances.put("Backstage passes", BackstagePasses.class);
-        instances.put("Conjured", ConjuredItem.class);
+    private void initMapRecognizableItems() {
+        this.recognizableItems = new HashMap<>();
+
+        recognizableItems.put("Sulfuras, Hand of Ragnaros", LegendaryItem.class);
+        recognizableItems.put("Dexterity Vest", OrdinaryItem.class);
+        recognizableItems.put("Elixir of the Mongoose", OrdinaryItem.class);
+        recognizableItems.put("Aged Brie", AgedBrie.class);
+        recognizableItems.put("Backstage passes", BackstagePasses.class);
+        recognizableItems.put("Conjured", ConjuredItem.class);
     }
 
     // return the instance corresponding to the given item.
@@ -22,7 +26,7 @@ public class ItemFactory {
         Optional<String> similarName = findFirstKeyInString(item.name);
 
         if(similarName.isPresent()) {
-            return (AbstractItem) instances
+            return (AbstractItem) recognizableItems
                     .get(similarName.get())
                     .getConstructor(Item.class)
                     .newInstance(item);
@@ -32,9 +36,9 @@ public class ItemFactory {
     }
 
     private Optional<String> findFirstKeyInString(String str) {
-        return instances.keySet()
+        return recognizableItems.keySet()
                 .stream()
-                .filter(key -> str.contains(key))
+                .filter(str::contains)
                 .findFirst();
     }
 

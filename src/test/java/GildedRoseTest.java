@@ -3,7 +3,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
 public class GildedRoseTest {
 
 	@Test
@@ -14,7 +13,7 @@ public class GildedRoseTest {
 		int originQuality = sulfuras.quality;
 
 		for (int i = 0; i < 100; i++) {
-			inn.updateQuality();
+			inn.howTimeFlies();
 			assertEquals(originQuality, sulfuras.quality);
 		}
 	}
@@ -28,7 +27,7 @@ public class GildedRoseTest {
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = dexterityVest.quality;
-			inn.updateQuality();
+			inn.howTimeFlies();
 
 			if(!hasReachMinQuality(dexterityVest) && !hasReachSellInBoundary(dexterityVest))
 				assertEquals(dexterityVest.quality, oldQuality - 1);
@@ -47,7 +46,7 @@ public class GildedRoseTest {
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = elixirOfTheMongoose.quality;
-			inn.updateQuality();
+			inn.howTimeFlies();
 
 			if(!hasReachMinQuality(elixirOfTheMongoose) && !hasReachSellInBoundary(elixirOfTheMongoose))
 				assertEquals(elixirOfTheMongoose.quality, oldQuality - 1);
@@ -66,7 +65,7 @@ public class GildedRoseTest {
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = agedBrie.quality;
-			inn.updateQuality();
+			inn.howTimeFlies();
 
 			if(hasReachMaxQuality(agedBrie))
 				assertEquals(agedBrie.quality, AbstractItem.MAX_QUALITY);
@@ -85,7 +84,7 @@ public class GildedRoseTest {
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = backstagePasses.quality;
-			inn.updateQuality();
+			inn.howTimeFlies();
 
 			if(hasReachMaxQuality(backstagePasses))
 				assertEquals(backstagePasses.quality, AbstractItem.MAX_QUALITY);
@@ -108,7 +107,7 @@ public class GildedRoseTest {
 
 		for (int i = 0; i < 100; i++) {
 			oldQuality = conjuredWater.quality;
-			inn.updateQuality();
+			inn.howTimeFlies();
 
 			if(!hasReachMinQuality(conjuredWater) && !hasReachSellInBoundary(conjuredWater))
 				assertEquals(conjuredWater.quality, oldQuality - 2);
