@@ -106,16 +106,17 @@ public class GildedRoseTest {
 			int actualQualityBackstage = backstage.getQuality();
 			int sellInBackstage = backstage.getSellIn();
 
+			if(actualQualityBackstage < 50) {
+				if (sellInBackstage < 10 && sellInBackstage >= 5) {
+					assertThat(lastQualityBackstage + 2).isEqualTo(actualQualityBackstage);
+				} else if (sellInBackstage < 5 && sellInBackstage >= 0) {
+					assertThat(lastQualityBackstage + 3).isEqualTo(actualQualityBackstage);
 
-			if (sellInBackstage < 10 && sellInBackstage >= 5) {
-				assertThat(lastQualityBackstage + 2).isEqualTo(actualQualityBackstage);
-			} else if (sellInBackstage < 5 && sellInBackstage >= 0) {
-				assertThat(lastQualityBackstage + 3).isEqualTo(actualQualityBackstage);
-
-			} else if (sellInBackstage < 0) {
-				assertThat(actualQualityBackstage).isEqualTo(0);
-			} else {
-				assertThat(lastQualityBackstage + 1).isEqualTo(actualQualityBackstage);
+				} else if (sellInBackstage < 0) {
+					assertThat(actualQualityBackstage).isEqualTo(0);
+				} else {
+					assertThat(lastQualityBackstage + 1).isEqualTo(actualQualityBackstage);
+				}
 			}
 
 		}
@@ -161,13 +162,41 @@ public class GildedRoseTest {
 							item -> {
 								if (item == elixir && elixir.getSellIn() < 0 && elixir.getQuality() != 0) {
 									assertThat(lastQualityElixir - 2).isEqualTo(elixir.getQuality());
-
 								}
 								else if (item == dexterity && dexterity.getSellIn() < 0 && dexterity.getQuality() != 0){
 									assertThat(lastQualityDexterity - 2).isEqualTo(dexterity.getQuality());
 								}
 								else if (item == conjured && conjured.getSellIn() < 0 && lastQualityConjured - 4 >= 0){
 									assertThat(lastQualityConjured - 4).isEqualTo(conjured.getQuality());
+								}
+							}
+					);
+
+		}
+	}
+
+	//Permet de vérifier qu'un item standard pert bien un de valeur avant que sa date de vente soit inferieur a 0.
+	@Test
+	public void quality_degrade_standard_item() {
+		GildedRose GR = new GildedRose();
+		GR.GildedRose();
+		ArrayList<Item> items = GR.getItemList();
+		Item dexterity = GR.get("+5 Dexterity Vest");
+		Item elixir = GR.get("Elixir of the Mongoose");
+
+
+		for (int i = 0; i < 100; i++) {
+			int lastQualityDexterity = dexterity.getQuality();
+			int lastQualityElixir = elixir.getQuality();
+			GR.updateQuality();
+			items.stream()
+					.forEach(
+							item -> {
+								if (item == elixir && elixir.getSellIn() >= 0 && elixir.getQuality() != 0) {
+									assertThat(lastQualityElixir - 1).isEqualTo(elixir.getQuality());
+								}
+								else if (item == dexterity && dexterity.getSellIn() >= 0 && dexterity.getQuality() != 0){
+									assertThat(lastQualityDexterity - 1).isEqualTo(dexterity.getQuality());
 								}
 							}
 					);
