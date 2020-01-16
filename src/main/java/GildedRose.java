@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,9 +6,14 @@ import java.util.Optional;
 public class GildedRose {
 
     private List<Item> items = null;
-    private ItemStore itemStore;
+    private ItemsStore itemsStore;
 
     public GildedRose() throws Exception {
+        initListItems();
+        itemsStore = new ItemsStore(items);
+    }
+
+    public void initListItems() {
         items = new ArrayList<Item>();
         items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new Item("+5 Dexterity Vest", 10, 20));
@@ -17,13 +21,11 @@ public class GildedRose {
         items.add(new Item("Aged Brie", 2, 0));
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new Item("Conjured Water", 10, 30));
-
-        itemStore = new ItemStore(items);
     }
 
-    public void howTimeFlies() {
+    public void updateItems() {
         for (Item item : items) {
-            itemStore.updateItem(item);
+            itemsStore.updateItem(item);
         }
     }
 

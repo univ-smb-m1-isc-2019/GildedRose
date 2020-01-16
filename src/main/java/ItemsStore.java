@@ -2,11 +2,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemStore {
+public class ItemsStore {
     // find correct instance for a given string.
     private Map<String, AbstractItem> store;
 
-    public ItemStore(List<Item> store) throws Exception {
+    public ItemsStore(List<Item> store) throws Exception {
         this.store = new HashMap<>();
         ItemFactory itemFactory = new ItemFactory();
 

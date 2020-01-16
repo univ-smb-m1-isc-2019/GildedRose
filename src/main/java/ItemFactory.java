@@ -30,9 +30,7 @@ public class ItemFactory {
                     .get(similarName.get())
                     .getConstructor(Item.class)
                     .newInstance(item);
-        } else {
-            throw new Exception("There is no item called this way in our world! Are you sure you're playing WOW?");
-        }
+        } else throw new Exception("There is no item called this way in our world! Are you sure you're playing WOW?");
     }
 
     private Optional<String> findFirstKeyInString(String str) {
