@@ -13,10 +13,17 @@ public class CommonItem extends Item {
         if (getQuality() > getMinimalValue()) {
             decrementItemQuality();
         }
+
+        if (getSellIn() < getMinimalValue() && getQuality() > getMinimalValue())
+        {
+            decrementItemQuality();
+        }
+
     }
     public void updateSellIn()
     {
         decrementItemSellIn();
+
     }
 
     private void decrementItemSellIn() {
