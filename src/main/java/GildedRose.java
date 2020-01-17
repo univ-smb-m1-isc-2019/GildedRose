@@ -30,7 +30,7 @@ public class GildedRose  {
         for (int i = 0; i < items.size(); i++)
         {
             ItemCreate item=  items.get(i);
-           item.doUpdateQuality();
+           item.doUpdateQuality(item);
         }
     }
 

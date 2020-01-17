@@ -3,7 +3,7 @@ public class AgedBrie extends ItemCreate {
         super("Aged Brie", sellIn, quality);
     }
 
-    public void  doUpdateQuality(){
+    public static void  doUpdateQuality(int quality, int sellIn){
 
         if (quality < 50) {
             quality++;

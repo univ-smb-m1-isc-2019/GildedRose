@@ -3,7 +3,7 @@ public class DefaultItem extends ItemCreate {
         super(name, sellIn, quality);
     }
 
-    public void  doUpdateQuality() {
+    public static void  doUpdateQuality(int quality, int sellIn) {
 
         if (quality > 0) {
             quality--;

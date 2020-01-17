@@ -4,7 +4,7 @@ public class BackstagePass extends ItemCreate {
 
     }
 
-    public void  doUpdateQuality(){
+    public static void  doUpdateQuality(int quality, int sellIn){
         if (quality < 50) {
             quality++;
             if (sellIn < 11) quality++;
