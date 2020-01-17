@@ -5,16 +5,12 @@ public class GildedRose  {
 
 	private static ArrayList<ItemCreate> items = null;
 
-    public GildedRose(String name, int sellIn, int quality) {
+    public GildedRose() {
 
     }
 
-    /**
-	 * @param args
-	 */
-	public static void main(String[] args) {
 
-        System.out.println("OMGHAI!");
+	public void initItems() {
 
         items = new ArrayList<ItemCreate>();
         items.add(new ItemCreate("+5 Dexterity Vest", 10, 20));
@@ -25,7 +21,6 @@ public class GildedRose  {
         items.add(new ItemCreate("Conjured Mana Cake", 3, 6));
 
 }
-
 
 
      protected void updateQuality()

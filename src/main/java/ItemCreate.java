@@ -25,7 +25,9 @@ public class ItemCreate extends Item {
 
 
 
-    protected void doUpdateQuality() {};
+    protected void doUpdateQuality() {
+        System.out.println("shit");
+    };
 }
 
 
