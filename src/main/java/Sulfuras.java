@@ -8,7 +8,6 @@ public class Sulfuras extends ItemFactory {
     @Override
     protected void  doUpdateQuality(){
 
-
     }
 
 }

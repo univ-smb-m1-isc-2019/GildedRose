@@ -25,7 +25,9 @@ public class ItemFactory extends Item {
         }
 
 
-   protected void doUpdateQuality() {
+
+
+    protected void doUpdateQuality() {
         switch (name) {
             case "Aged Brie":
                 if (quality < 50) {
