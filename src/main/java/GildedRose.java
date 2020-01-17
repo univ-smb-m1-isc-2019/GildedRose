@@ -12,7 +12,6 @@ public class GildedRose {
         itemList = il.init();
     }
 
-
     public void printItems() {
         for (int i = 0; i < itemList.size(); i++) {
             System.out.println(itemList.get(i).getItem().getName() + " : " + itemList.get(i).getItem().getSellIn() + "(sell) , " +
