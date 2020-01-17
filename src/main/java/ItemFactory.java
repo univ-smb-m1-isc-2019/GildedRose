@@ -1,6 +1,5 @@
 public class ItemFactory extends Item {
 
-
     public String name;
     public int sellIn;
     public int quality;
@@ -24,22 +23,7 @@ public class ItemFactory extends Item {
 
         }
 
-
-
-
-    protected void doUpdateQuality() {
-        if (quality > 0) {
-            quality = quality - 1;
-        }
-
-        sellIn = sellIn - 1;
-
-        if (sellIn < 0) {
-            if (quality > 0) {
-                quality = quality - 1;
-            }
-        }
-    }
+    protected void doUpdateQuality() {};
 }
 
 
