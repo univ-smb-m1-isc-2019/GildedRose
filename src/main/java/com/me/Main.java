@@ -1,11 +1,13 @@
+package com.me;
+
 public class Main {
 
     public static void main(String[] args) {
 
         GildedRose gr = new GildedRose();
-        gr.display();
+        ShopManager.displayList(gr.items);
         gr.updateQuality();
-        gr.display();
+        ShopManager.displayList(gr.items);
     }
 
 }

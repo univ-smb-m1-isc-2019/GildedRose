@@ -1,3 +1,4 @@
+package com.me;
 
 public class Item {
     public String name;

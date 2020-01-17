@@ -1,8 +1,8 @@
+import com.me.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -15,7 +15,7 @@ public class GildedRoseTest {
     @Test
     public void sulfuras_should_keep_same_quality(){
         GildedRose inn = new GildedRose();
-        Item sulfuras = inn.get("Sulfuras, Hand of Ragnaros");
+        Item sulfuras = ShopManager.get(inn.items,"Sulfuras, Hand of Ragnaros");
         for (int i = 0; i < 100; i++){
             Item oldSulfuras = new Item(sulfuras.getName(), sulfuras.getSellIn(), sulfuras.getQuality());
             inn.updateQuality();
@@ -26,7 +26,7 @@ public class GildedRoseTest {
     @Test
     public void sulfuras_never_has_to_be_sold(){
         GildedRose inn = new GildedRose();
-        Item sulfuras = inn.get("Sulfuras, Hand of Ragnaros");
+        Item sulfuras = ShopManager.get(inn.items,"Sulfuras, Hand of Ragnaros");
         for (int i = 0; i < 100; i++){
             inn.updateQuality();
             assertThat(sulfuras.getSellIn()).isEqualTo(0);
@@ -36,22 +36,24 @@ public class GildedRoseTest {
 	@Test
 	public void quality_should_decrease(){
 		GildedRose inn = new GildedRose();
-        List<Item> standardItems = new ArrayList<>();
-        standardItems.add(inn.get("+5 Dexterity Vest"));
-        standardItems.add(inn.get("Elixir of the Mongoose"));
+        List<Item> diminshingItems = new ArrayList<>();
+        diminshingItems.add(ShopManager.get(inn.items,"+5 Dexterity Vest"));
+        diminshingItems.add(ShopManager.get(inn.items,"Elixir of the Mongoose"));
+        diminshingItems.add(ShopManager.get(inn.items,"Conjured Mana Cake"));
 		for (int i = 0; i<100; i++){
             List<Item> oldList = inn.items
+                    .keySet()
                     .stream()
-                    .filter(el -> standardItems.contains(el))
+                    .filter(el -> diminshingItems.contains(el))
                     .filter(el -> el.getQuality() > 0)
                     .map(el -> new Item(el.getName(), el.getSellIn(), el.getQuality()))
                     .collect(Collectors.toList());
             inn.updateQuality();
             oldList
                     .forEach(el -> {
-                        assertThat(el.getQuality())
-                                .isGreaterThan(inn.get(el.getName())
-                                        .getQuality());
+                        assertThat(ShopManager.get(inn.items, el.getName())
+                                .getQuality())
+                                .isLessThan(el.getQuality());
                     });
         }
 
@@ -63,6 +65,7 @@ public class GildedRoseTest {
 		for (int i = 0; i < 100; i++){
 			inn.updateQuality();
 			inn.items
+                    .keySet()
                     .forEach(el ->
                             assertThat(el.getQuality()).isGreaterThanOrEqualTo(0)
                     );
@@ -72,10 +75,11 @@ public class GildedRoseTest {
     @Test
     public void quality_under_50(){
         GildedRose inn = new GildedRose();
-        Item sulfuras = inn.get("Sulfuras, Hand of Ragnaros");
+        Item sulfuras = ShopManager.get(inn.items,"Sulfuras, Hand of Ragnaros");
         for (int i = 0; i < 100; i++){
             inn.updateQuality();
             inn.items
+                    .keySet()
                     .stream()
                     .filter(el -> el != sulfuras)
                     .forEach(el ->
@@ -87,13 +91,24 @@ public class GildedRoseTest {
     @Test
     public void aged_brie_quality_should_increase(){
         GildedRose inn = new GildedRose();
-        Item brie = inn.get("Aged Brie");
+        Item brie = ShopManager.get(inn.items,"Aged Brie");
         for (int i = 0; i < 100; i++){
             Item oldBrie = new Item(brie.getName(), brie.getSellIn(), brie.getQuality());
             inn.updateQuality();
             if (oldBrie.getSellIn() >= 0 && oldBrie.getQuality() + 1 < 50){
                 assertThat(brie.getQuality()).isEqualTo(oldBrie.getQuality() + 1);
-            }else if (oldBrie.getSellIn() < 0 && oldBrie.getQuality() + 2 < 50){
+            }
+        }
+    }
+
+    @Test
+    public void aged_brie_quality_should_increase_twice_after_date_passed(){
+        GildedRose inn = new GildedRose();
+        Item brie = ShopManager.get(inn.items,"Aged Brie");
+        for (int i = 0; i < 100; i++){
+            Item oldBrie = new Item(brie.getName(), brie.getSellIn(), brie.getQuality());
+            inn.updateQuality();
+            if (oldBrie.getSellIn() < 0 && oldBrie.getQuality() + 2 < 50){
                 assertThat(brie.getQuality()).isEqualTo(oldBrie.getQuality() + 2);
             }
         }
@@ -103,10 +118,11 @@ public class GildedRoseTest {
     public void quality_should_decrease_twice_after_date_passed(){
         GildedRose inn = new GildedRose();
         List<Item> standardItems = new ArrayList<>();
-        standardItems.add(inn.get("+5 Dexterity Vest"));
-        standardItems.add(inn.get("Elixir of the Mongoose"));
+        standardItems.add(ShopManager.get(inn.items,"+5 Dexterity Vest"));
+        standardItems.add(ShopManager.get(inn.items,"Elixir of the Mongoose"));
         for (int i = 0; i<100; i++){
             List<Item> oldList = inn.items
+                    .keySet()
                     .stream()
                     .filter(el -> standardItems.contains(el))
                     .filter(el -> el.getSellIn() < 0)
@@ -115,7 +131,7 @@ public class GildedRoseTest {
             inn.updateQuality();
             oldList
                     .forEach(el -> {
-                        Item itemUpdated = inn.get(el.getName());
+                        Item itemUpdated = ShopManager.get(inn.items, el.getName());
                         assertTrue(el.getQuality() - 2 == itemUpdated.getQuality()
                                 || itemUpdated.getQuality() == 0);
                     });
@@ -125,7 +141,7 @@ public class GildedRoseTest {
     @Test
     public void backstage_passes_quality_should_increase(){
         GildedRose inn = new GildedRose();
-        Item backstage = inn.get("Backstage passes to a TAFKAL80ETC concert");
+        Item backstage = ShopManager.get(inn.items,"Backstage passes to a TAFKAL80ETC concert");
         for (int i = 0; i < 100; i++){
             Item oldBackstage = new Item(backstage.getName(), backstage.getSellIn(), backstage.getQuality());
             inn.updateQuality();
@@ -141,19 +157,42 @@ public class GildedRoseTest {
 
         }
     }
+    @Test
+    public void backstage_passes_quality_should_drop_to_0(){
+        GildedRose inn = new GildedRose();
+        Item backstage = ShopManager.get(inn.items,"Backstage passes to a TAFKAL80ETC concert");
+        for (int i = 0; i < 100; i++){
+            Item oldBackstage = new Item(backstage.getName(), backstage.getSellIn(), backstage.getQuality());
+            inn.updateQuality();
+            if(oldBackstage.getSellIn() < 0){
+                assertThat(backstage.getQuality()).isEqualTo(0);
+            }
 
+        }
+    }
     @Test
     public void conjured_quality_should_decrease_twice(){
         GildedRose inn = new GildedRose();
-        Item conjured = inn.get("Conjured Mana Cake");
+        Item conjured = ShopManager.get(inn.items,"Conjured Mana Cake");
+        for (int i = 0; i < 100; i++){
+            Item oldConjured = new Item(conjured.getName(), conjured.getSellIn(), conjured.getQuality());
+            inn.updateQuality();
+            if (oldConjured.getSellIn() >= 0 && oldConjured.getQuality() - 2 >= 0){
+                assertThat(conjured.getQuality()).isEqualTo(oldConjured.getQuality() - 2);
+            }
+
+        }
+    }
+    @Test
+    public void conjured_quality_should_decrease_twice_after_date_passed(){
+        GildedRose inn = new GildedRose();
+        Item conjured = ShopManager.get(inn.items,"Conjured Mana Cake");
         for (int i = 0; i < 100; i++){
             Item oldConjured = new Item(conjured.getName(), conjured.getSellIn(), conjured.getQuality());
             inn.updateQuality();
 
             if (oldConjured.getSellIn() < 0 && oldConjured.getQuality() - 4 >= 0){
                 assertThat(conjured.getQuality()).isEqualTo(oldConjured.getQuality() - 4);
-            }else if (oldConjured.getSellIn() >= 0 && oldConjured.getQuality() - 2 >= 0){
-                assertThat(conjured.getQuality()).isEqualTo(oldConjured.getQuality() - 2);
             }
 
         }
