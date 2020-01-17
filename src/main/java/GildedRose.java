@@ -41,7 +41,6 @@ public class GildedRose {
             if (item.getQuality() < 50)
             {
                 item.setQuality(item.getQuality() + 1);
-
             }
 
             item.setSellIn(item.getSellIn() - 1);
@@ -53,56 +52,42 @@ public class GildedRose {
                     item.setQuality(item.getQuality() + 1);
                 }
             }
-        }else{
-	        if("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())){
-                if (item.getQuality() < 50)
-                {
-                    item.setQuality(item.getQuality() + 1);
+        }else if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
+            if (item.getQuality() < 50) {
+                item.setQuality(item.getQuality() + 1);
 
-                    if (item.getSellIn() < 11)
-                    {
-                        if (item.getQuality() < 50)
-                        {
-                            item.setQuality(item.getQuality() + 1);
-                        }
-                    }
-
-                    if (item.getSellIn() < 6)
-                    {
-                        if (item.getQuality() < 50)
-                        {
-                            item.setQuality(item.getQuality() + 1);
-                        }
+                if (item.getSellIn() < 11) {
+                    if (item.getQuality() < 50) {
+                        item.setQuality(item.getQuality() + 1);
                     }
                 }
 
-                item.setSellIn(item.getSellIn() - 1);
-
-                if (item.getSellIn() < 0)
-                {
-                    item.setQuality(0);
-                }
-            }else{
-	            if ("Sulfuras, Hand of Ragnaros".equals(item.getName())){
-
-
-                }else{
-                    if (item.getQuality() > 0)
-                    {
-                        item.setQuality(item.getQuality() - 1);
-                    }
-
-                    item.setSellIn(item.getSellIn() - 1);
-
-                    if (item.getSellIn() < 0)
-                    {
-                        if (item.getQuality() > 0)
-                        {
-                            item.setQuality(item.getQuality() - 1);
-                        }
+                if (item.getSellIn() < 6) {
+                    if (item.getQuality() < 50) {
+                        item.setQuality(item.getQuality() + 1);
                     }
                 }
+            }
 
+            item.setSellIn(item.getSellIn() - 1);
+
+            if (item.getSellIn() < 0) {
+                item.setQuality(0);
+            }
+        } else if ("Sulfuras, Hand of Ragnaros".equals(item.getName())) {
+
+
+        } else {
+            if (item.getQuality() > 0) {
+                item.setQuality(item.getQuality() - 1);
+            }
+
+            item.setSellIn(item.getSellIn() - 1);
+
+            if (item.getSellIn() < 0) {
+                if (item.getQuality() > 0) {
+                    item.setQuality(item.getQuality() - 1);
+                }
             }
         }
     }
