@@ -38,32 +38,25 @@ public class GildedRose {
 
     private static void doUpdateQuality(Item item) {
 	    if("Aged Brie".equals(item.getName())){
-            if (false) 
+            if (item.getQuality() < 50)
             {
+                item.setQuality(item.getQuality() + 1);
 
-            }
-            else
-            {
-                if (item.getQuality() < 50)
+                if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
                 {
-                    item.setQuality(item.getQuality() + 1);
-
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
+                    if (item.getSellIn() < 11)
                     {
-                        if (item.getSellIn() < 11)
+                        if (item.getQuality() < 50)
                         {
-                            if (item.getQuality() < 50)
-                            {
-                                item.setQuality(item.getQuality() + 1);
-                            }
+                            item.setQuality(item.getQuality() + 1);
                         }
+                    }
 
-                        if (item.getSellIn() < 6)
+                    if (item.getSellIn() < 6)
+                    {
+                        if (item.getQuality() < 50)
                         {
-                            if (item.getQuality() < 50)
-                            {
-                                item.setQuality(item.getQuality() + 1);
-                            }
+                            item.setQuality(item.getQuality() + 1);
                         }
                     }
                 }
