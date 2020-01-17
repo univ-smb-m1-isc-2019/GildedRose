@@ -11,10 +11,8 @@ public class DefaultItem extends ItemFactory {
         }
         sellIn--;
 
-        if (sellIn < 0) {
-            if (quality < 50) {
-                quality++;
-            }
+        if (sellIn < 0 && quality < 50) {
+            quality++;
         }
 
     }}

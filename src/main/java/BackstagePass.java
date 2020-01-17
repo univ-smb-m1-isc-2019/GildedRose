@@ -7,18 +7,10 @@ public class BackstagePass extends ItemFactory{
     protected void  doUpdateQuality(){
         if (quality < 50) {
             quality++;
-
-            if (sellIn < 11) {
-                if (quality < 50) quality++;
-            }
-
-            if (sellIn < 6) {
-                if (quality < 50) quality++;
-            }
+            if (sellIn < 11) quality++;
+            if (sellIn < 6) quality++;
         }
         sellIn--;
-
         if (sellIn < 0) quality = 0;
-
     }
 }

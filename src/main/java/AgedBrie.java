@@ -9,12 +9,10 @@ public class AgedBrie extends ItemFactory{
             quality++;
         }
         sellIn--;
-
-        if (sellIn < 0) {
-            if (quality < 50) {
+        if (sellIn < 0 && quality < 50) {
                 quality++;
             }
         }
 
     }
-}
+
