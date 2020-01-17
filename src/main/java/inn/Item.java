@@ -23,9 +23,7 @@ public class Item {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getSellIn() {
-		return sellIn;
-	}
+
 	public void setSellIn(int sellIn) {
 		this.sellIn = sellIn;
 	}
