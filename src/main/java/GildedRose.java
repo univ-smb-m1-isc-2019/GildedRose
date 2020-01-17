@@ -32,65 +32,7 @@ public class GildedRose {
 
         {
             Item item=items.get(i);
-            doUpdateQuality(item);
-        }
-    }
-
-    private static void doUpdateQuality(Item item) {
-        switch (item.name) {
-            case "Aged Brie":
-                if (item.getQuality() < 50) {
-                    item.setQuality(item.getQuality() + 1);
-                }
-
-                item.setSellIn(item.getSellIn() - 1);
-
-                if (item.getSellIn() < 0) {
-                    if (item.getQuality() < 50) {
-                        item.setQuality(item.getQuality() + 1);
-                    }
-                }
-                break;
-            case "Backstage passes to a TAFKAL80ETC concert":
-                if (item.getQuality() < 50) {
-                    item.setQuality(item.getQuality() + 1);
-
-                    if (item.getSellIn() < 11) {
-                        if (item.getQuality() < 50) {
-                            item.setQuality(item.getQuality() + 1);
-                        }
-                    }
-
-                    if (item.getSellIn() < 6) {
-                        if (item.getQuality() < 50) {
-                            item.setQuality(item.getQuality() + 1);
-                        }
-                    }
-                }
-
-                item.setSellIn(item.getSellIn() - 1);
-
-                if (item.getSellIn() < 0) {
-                    item.setQuality(0);
-                }
-                break;
-            case "Sulfuras, Hand of Ragnaros":
-
-
-                break;
-            default:
-                if (item.getQuality() > 0) {
-                    item.setQuality(item.getQuality() - 1);
-                }
-
-                item.setSellIn(item.getSellIn() - 1);
-
-                if (item.getSellIn() < 0) {
-                    if (item.getQuality() > 0) {
-                        item.setQuality(item.getQuality() - 1);
-                    }
-                }
-                break;
+            ItemFactory.doUpdateQuality(item);
         }
     }
 
