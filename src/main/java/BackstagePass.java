@@ -1,4 +1,4 @@
-public class BackstagePass extends ItemFactory{
+public class BackstagePass extends ItemCreate {
     public BackstagePass(int sellIn, int quality) {
         super("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
 

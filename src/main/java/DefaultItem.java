@@ -1,4 +1,4 @@
-public class DefaultItem extends ItemFactory {
+public class DefaultItem extends ItemCreate {
     public DefaultItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }

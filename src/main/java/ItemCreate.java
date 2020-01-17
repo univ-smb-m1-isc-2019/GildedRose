@@ -1,10 +1,10 @@
-public class ItemFactory extends Item {
+public class ItemCreate extends Item {
 
     public String name;
     public int sellIn;
     public int quality;
 
-    public ItemFactory(String name, int sellIn, int quality) {
+    public ItemCreate(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     };
 

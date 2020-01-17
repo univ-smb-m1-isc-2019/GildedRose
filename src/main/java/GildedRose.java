@@ -1,13 +1,12 @@
 import java.util.ArrayList;
-import java.util.List;
 
 
-public class GildedRose extends ItemFactory{
+public class GildedRose  {
 
-	private static List<Item> items = null;
+	private static ArrayList<ItemCreate> items = null;
 
     public GildedRose(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+
     }
 
     /**
@@ -17,26 +16,25 @@ public class GildedRose extends ItemFactory{
 
         System.out.println("OMGHAI!");
 
-        items = new ArrayList<Item>();
-        items.add(new Item("+5 Dexterity Vest", 10, 20));
-        items.add(new Item("Aged Brie", 2, 0));
-        items.add(new Item("Elixir of the Mongoose", 5, 7));
-        items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
-        items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
-        items.add(new Item("Conjured Mana Cake", 3, 6));
+        items = new ArrayList<ItemCreate>();
+        items.add(new ItemCreate("+5 Dexterity Vest", 10, 20));
+        items.add(new ItemCreate("Aged Brie", 2, 0));
+        items.add(new ItemCreate("Elixir of the Mongoose", 5, 7));
+        items.add(new ItemCreate("Sulfuras, Hand of Ragnaros", 0, 80));
+        items.add(new ItemCreate("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        items.add(new ItemCreate("Conjured Mana Cake", 3, 6));
 
-        updateQuality();
 }
 
 
-     @Override
+
      protected void updateQuality()
     {
         for (int i = 0; i < items.size(); i++)
 
         {
-            Item item=items.get(i);
-            ItemFactory.doUpdateQuality(item);
+            ItemCreate item=  items.get(i);
+            item.doUpdateQuality();
         }
     }
 
