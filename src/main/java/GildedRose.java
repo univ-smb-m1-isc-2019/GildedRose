@@ -37,7 +37,7 @@ public class GildedRose {
     }
 
     private static void doUpdateQuality(Item item) {
-        switch (item.getName()) {
+        switch (item.name) {
             case "Aged Brie":
                 if (item.getQuality() < 50) {
                     item.setQuality(item.getQuality() + 1);
