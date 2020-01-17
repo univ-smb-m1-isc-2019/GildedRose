@@ -1,4 +1,5 @@
 import factory.*;
+import utils.MapOperations;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,7 @@ public class ItemFactory {
     // return the instance corresponding to the given item.
     public AbstractItem getInstance(Item item) throws Exception {
         // deal with stuff like conjured items, that has "conjured" in their name, as an example.
-        Optional<String> similarName = findFirstKeyInString(item.name);
+        Optional<String> similarName = MapOperations.findFirstCorrespondingKey(recognizableItems, item.name, item.name::contains);
 
         if(similarName.isPresent()) {
             return recognizableItems
@@ -33,13 +34,6 @@ public class ItemFactory {
                     .getConstructor(Item.class)
                     .newInstance(item);
         } else throw new Exception("There is no item called this way in our world! Are you sure you're playing WOW?");
-    }
-
-    private Optional<String> findFirstKeyInString(String str) {
-        return recognizableItems.keySet()
-                .stream()
-                .filter(str::contains)
-                .findFirst();
     }
 
 }
