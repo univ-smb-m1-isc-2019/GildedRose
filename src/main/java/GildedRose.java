@@ -1,4 +1,4 @@
-import exceptions.ItemNotFoundInShop;
+import exceptions.ItemNotFoundInShopException;
 import factory.Item;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class GildedRose {
             return optional.get();
         }
         else {
-            throw new ItemNotFoundInShop(key);
+            throw new ItemNotFoundInShopException(key);
         }
     }
 
