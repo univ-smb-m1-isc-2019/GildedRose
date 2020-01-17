@@ -2,11 +2,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GildedRose {
+public class GildedRose extends ItemFactory{
 
 	private static List<Item> items = null;
 
-	/**
+    public GildedRose(String name, int sellIn, int quality) {
+        super(name, sellIn, quality);
+    }
+
+    /**
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -25,8 +29,8 @@ public class GildedRose {
 }
 
 
-
-    public static void updateQuality()
+     @Override
+     protected void updateQuality()
     {
         for (int i = 0; i < items.size(); i++)
 

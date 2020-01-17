@@ -5,16 +5,14 @@ public class AgedBrie extends ItemFactory{
     @Override
     protected void  doUpdateQuality(){
 
-        if (true) {
+        if (quality < 50) {
+            quality++;
+        }
+        sellIn--;
+
+        if (sellIn < 0) {
             if (quality < 50) {
                 quality++;
-            }
-            sellIn--;
-
-            if (sellIn < 0) {
-                if (quality < 50) {
-                    quality++;
-                }
             }
         }
 
