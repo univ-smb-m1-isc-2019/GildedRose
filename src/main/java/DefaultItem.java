@@ -6,13 +6,13 @@ public class DefaultItem extends ItemFactory {
     @Override
     protected void  doUpdateQuality() {
 
-        if (quality < 50) {
-            quality++;
+        if (quality > 0) {
+            quality--;
         }
         sellIn--;
 
-        if (sellIn < 0 && quality < 50) {
-            quality++;
+        if (sellIn < 0 && quality > 0) {
+            quality--;
         }
 
     }}
