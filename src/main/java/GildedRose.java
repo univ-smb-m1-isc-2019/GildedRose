@@ -37,58 +37,60 @@ public class GildedRose {
     }
 
     private static void doUpdateQuality(Item item) {
-	    if("Aged Brie".equals(item.getName())){
-            if (item.getQuality() < 50)
-            {
-                item.setQuality(item.getQuality() + 1);
-            }
-
-            item.setSellIn(item.getSellIn() - 1);
-
-            if (item.getSellIn() < 0)
-            {
-                if (item.getQuality() < 50)
-                {
+        switch (item.getName()) {
+            case "Aged Brie":
+                if (item.getQuality() < 50) {
                     item.setQuality(item.getQuality() + 1);
                 }
-            }
-        }else if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-            if (item.getQuality() < 50) {
-                item.setQuality(item.getQuality() + 1);
 
-                if (item.getSellIn() < 11) {
+                item.setSellIn(item.getSellIn() - 1);
+
+                if (item.getSellIn() < 0) {
                     if (item.getQuality() < 50) {
                         item.setQuality(item.getQuality() + 1);
                     }
                 }
+                break;
+            case "Backstage passes to a TAFKAL80ETC concert":
+                if (item.getQuality() < 50) {
+                    item.setQuality(item.getQuality() + 1);
 
-                if (item.getSellIn() < 6) {
-                    if (item.getQuality() < 50) {
-                        item.setQuality(item.getQuality() + 1);
+                    if (item.getSellIn() < 11) {
+                        if (item.getQuality() < 50) {
+                            item.setQuality(item.getQuality() + 1);
+                        }
+                    }
+
+                    if (item.getSellIn() < 6) {
+                        if (item.getQuality() < 50) {
+                            item.setQuality(item.getQuality() + 1);
+                        }
                     }
                 }
-            }
 
-            item.setSellIn(item.getSellIn() - 1);
+                item.setSellIn(item.getSellIn() - 1);
 
-            if (item.getSellIn() < 0) {
-                item.setQuality(0);
-            }
-        } else if ("Sulfuras, Hand of Ragnaros".equals(item.getName())) {
+                if (item.getSellIn() < 0) {
+                    item.setQuality(0);
+                }
+                break;
+            case "Sulfuras, Hand of Ragnaros":
 
 
-        } else {
-            if (item.getQuality() > 0) {
-                item.setQuality(item.getQuality() - 1);
-            }
-
-            item.setSellIn(item.getSellIn() - 1);
-
-            if (item.getSellIn() < 0) {
+                break;
+            default:
                 if (item.getQuality() > 0) {
                     item.setQuality(item.getQuality() - 1);
                 }
-            }
+
+                item.setSellIn(item.getSellIn() - 1);
+
+                if (item.getSellIn() < 0) {
+                    if (item.getQuality() > 0) {
+                        item.setQuality(item.getQuality() - 1);
+                    }
+                }
+                break;
         }
     }
 
