@@ -27,7 +27,7 @@ public class ItemFactory {
     // return the instance corresponding to the given item.
     public AbstractItem getInstance(Item item) throws Exception {
         // deal with stuff like conjured items, that has "conjured" in their name, as an example.
-        Optional<String> similarName = MapOperations.findFirstCorrespondingKey(recognizableItems, item.name, item.name::contains);
+        Optional<String> similarName = MapOperations.findFirstCorrespondingKey(recognizableItems, item.name::contains);
 
         if(similarName.isPresent()) {
             return recognizableItems
