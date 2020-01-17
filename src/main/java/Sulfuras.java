@@ -5,8 +5,8 @@ public class Sulfuras extends ItemCreate {
         super("Sulfuras, Hand of Ragnaros", sellIn, quality);
     }
 
-    @Override
-    protected void  doUpdateQuality(){
+
+    public void  doUpdateQuality(){
 
     }
 

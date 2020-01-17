@@ -3,8 +3,8 @@ public class BackstagePass extends ItemCreate {
         super("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
 
     }
-    @Override
-    protected void  doUpdateQuality(){
+
+    public void  doUpdateQuality(){
         if (quality < 50) {
             quality++;
             if (sellIn < 11) quality++;

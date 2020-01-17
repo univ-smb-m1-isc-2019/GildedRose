@@ -23,10 +23,8 @@ public class ItemCreate extends Item {
 
         }
 
+    public void doUpdateQuality() {
 
-
-    protected void doUpdateQuality() {
-        System.out.println("shit");
     };
 }
 

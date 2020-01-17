@@ -2,8 +2,8 @@ public class AgedBrie extends ItemCreate {
     public AgedBrie( int sellIn, int quality) {
         super("Aged Brie", sellIn, quality);
     }
-    @Override
-    protected void  doUpdateQuality(){
+
+    public void  doUpdateQuality(){
 
         if (quality < 50) {
             quality++;

@@ -3,8 +3,7 @@ public class DefaultItem extends ItemCreate {
         super(name, sellIn, quality);
     }
 
-    @Override
-    protected void  doUpdateQuality() {
+    public void  doUpdateQuality() {
 
         if (quality > 0) {
             quality--;

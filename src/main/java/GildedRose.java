@@ -10,7 +10,8 @@ public class GildedRose  {
     }
 
 
-	public void initItems() {
+	public ArrayList<ItemCreate> initItems() {
+        System.out.println("OMGHAI!");
 
         items = new ArrayList<ItemCreate>();
         items.add(new ItemCreate("+5 Dexterity Vest", 10, 20));
@@ -20,16 +21,16 @@ public class GildedRose  {
         items.add(new ItemCreate("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new ItemCreate("Conjured Mana Cake", 3, 6));
 
+        return items;
 }
 
 
      protected void updateQuality()
-    {
+    {   initItems();
         for (int i = 0; i < items.size(); i++)
-
         {
             ItemCreate item=  items.get(i);
-            item.doUpdateQuality();
+           item.doUpdateQuality();
         }
     }
 
