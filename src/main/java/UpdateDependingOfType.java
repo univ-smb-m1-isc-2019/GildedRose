@@ -1,16 +1,16 @@
 public class UpdateDependingOfType {
     //private ItemType updatedItem;
 
-    public UpdateDependingOfType(ItemType item) {
+    public UpdateDependingOfType(Item item) {
         int sellIn = item.sellIn;
         int quality = item.quality;
+        ItemType itemType = new ItemType(item);
+        CustomItem itemToUpdate = null;
 
-        switch(item.type) {
+
+        switch(itemType.type) {
             case STANDARD:
-                if(sellIn > 0){
-                    sellIn--;
-                    if(quality > 0) quality--;
-                }else if (quality > 0) quality -= 2;
+                itemToUpdate = new StandardItem(item);
                 break;
             case CONJURED:
                 if(sellIn > 0){
@@ -44,10 +44,7 @@ public class UpdateDependingOfType {
             default:
                 break;
         }
-
-        item.setSellIn(sellIn);
-        item.setQuality(quality);
-
+        itemToUpdate.updateItemQuality();
     }
 
 }

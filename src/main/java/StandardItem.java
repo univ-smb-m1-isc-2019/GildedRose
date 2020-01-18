@@ -1,4 +1,4 @@
-public class StandardItem extends ItemType {
+public class StandardItem extends CustomItem {
     private static final int QUALITY_DECREASE = 1;
 
     public StandardItem(Item item) {
@@ -7,15 +7,12 @@ public class StandardItem extends ItemType {
 
     @Override
     public void updateItemQuality() {
-        int sellIn = this.sellIn;
-        int quality = this.quality;
-
-        sellIn -= 1;
+        item.sellIn -= 1;
 
         if(sellIn > 0){
-            quality -= QUALITY_DECREASE;
+            item.quality -= QUALITY_DECREASE;
         } else {
-            quality -= QUALITY_DECREASE * 2;
+            item.quality -= QUALITY_DECREASE * 2;
         }
 
         checkQualityInbounds();
