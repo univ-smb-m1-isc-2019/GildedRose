@@ -1,6 +1,8 @@
 package gildedrose;
 
-public class ItemType {
+public abstract class ItemType {
+    static final int LOWEST_QUALITY = 0;
+    static final int HIGHEST_QUALITY = 50;
     public enum Type { STANDARD, CONJURED, LEGENDARY, CHEESE, TICKET };
     public String name;
     public int sellIn;
@@ -32,6 +34,23 @@ public class ItemType {
                 itemType = Type.STANDARD;
         }
         this.type = itemType;
+    }
+
+    public abstract void updateItemQuality();
+
+    protected boolean isQualityTooLow(){
+        return quality < LOWEST_QUALITY;
+    }
+
+    protected boolean isQualityTooHigh(){
+        return quality > HIGHEST_QUALITY;
+    }
+
+    protected void checkQualityInbounds(){
+        if(isQualityTooLow()){
+            quality = LOWEST_QUALITY;
+        } else if(isQualityTooHigh())
+            quality = HIGHEST_QUALITY;
     }
 
     public Type getType() {
