@@ -1,18 +1,14 @@
 package gildedrose;
 
-public abstract class ItemType {
+public class ItemType {
     static final int LOWEST_QUALITY = 0;
     static final int HIGHEST_QUALITY = 50;
     public enum Type { STANDARD, CONJURED, LEGENDARY, CHEESE, TICKET };
     public String name;
-    public int sellIn;
-    public int quality;
     public Type type;
 
     public ItemType(Item item) {
         this.name = item.getName();
-        this.sellIn = item.getSellIn();
-        this.quality = item.getQuality();
 
         Type itemType;
         switch(this.name) {
@@ -36,45 +32,12 @@ public abstract class ItemType {
         this.type = itemType;
     }
 
-    public abstract void updateItemQuality();
-
-    protected boolean isQualityTooLow(){
-        return quality < LOWEST_QUALITY;
-    }
-
-    protected boolean isQualityTooHigh(){
-        return quality > HIGHEST_QUALITY;
-    }
-
-    protected void checkQualityInbounds(){
-        if(isQualityTooLow()){
-            quality = LOWEST_QUALITY;
-        } else if(isQualityTooHigh())
-            quality = HIGHEST_QUALITY;
-    }
-
     public Type getType() {
         return type;
     }
 
     public void setType(Type type) {
         this.type = type;
-    }
-
-    public int getQuality() {
-        return quality;
-    }
-
-    public void setQuality(int quality) {
-        this.quality = quality;
-    }
-
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    public void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
     }
 
     public String getName() {

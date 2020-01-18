@@ -3,16 +3,15 @@ package gildedrose;
 public class UpdateDependingOfType {
     //private gildedrose.ItemType updatedItem;
 
-    public UpdateDependingOfType(ItemType item) {
+    public UpdateDependingOfType(Item item) {
         int sellIn = item.sellIn;
         int quality = item.quality;
+        ItemType itemType = new ItemType(item);
+        CustomItem itemToUpdate = null;
 
-        switch(item.type) {
-            case ItemType.Type.STANDARD:
-                if(sellIn > 0){
-                    sellIn--;
-                    if(quality > 0) quality--;
-                }else if (quality > 0) quality -= 2;
+        switch(itemType.type) {
+            case STANDARD:
+                itemToUpdate = new StandardItem(item);
                 break;
             case ItemType.Type.CONJURED:
                 if(sellIn > 0){
@@ -46,10 +45,7 @@ public class UpdateDependingOfType {
             default:
                 break;
         }
-
-        item.setSellIn(sellIn);
-        item.setQuality(quality);
-
+        itemToUpdate.updateItemQuality();
     }
 
 }
