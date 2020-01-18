@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class ItemCreate extends Item {
 
@@ -35,13 +34,16 @@ public class ItemCreate extends Item {
         switch (item.getName()) {
             case "Aged Brie":
                 AgedBrie.doUpdateQuality(item);
+                break;
             case "Backstage passes to a TAFKAL80ETC concert":
                 BackstagePass.doUpdateQuality(item);
+                break;
             case "Sulfuras, Hand of Ragnaros":
                 Sulfuras.doUpdateQuality(item);
+                break;
             default:
                 DefaultItem.doUpdateQuality(item);
-
+                break;
         }
 
     }

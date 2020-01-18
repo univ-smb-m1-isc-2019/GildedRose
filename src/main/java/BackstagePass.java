@@ -3,7 +3,9 @@ public class BackstagePass extends ItemCreate {
         super("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
 
     }
-
+     //Backstage Item's quality should increase by one more than ten days before sellIn date
+    //by two between ten and five days before selling date
+    //by three less then five days before sellIn date
     public static void  doUpdateQuality(Item item){
         int sellIn=item.getSellIn();
         int quality=item.getQuality();

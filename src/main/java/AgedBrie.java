@@ -3,6 +3,7 @@ public class AgedBrie extends ItemCreate {
         super("Aged Brie", sellIn, quality);
     }
 
+  //AgedBrie Item's quality should increase by two after sellIn date and by one before SellIn date
     public static void  doUpdateQuality(Item item){
         int sellIn=item.getSellIn();
         int quality=item.getQuality();
@@ -13,9 +14,11 @@ public class AgedBrie extends ItemCreate {
         sellIn--;
         if (sellIn < 0 && quality < 50) {
                 quality++;
+
             }
-        item.setQuality(quality);
         item.setSellIn(sellIn);
+        item.setQuality(quality);
+
         }
 
     }
