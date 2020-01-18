@@ -4,4 +4,12 @@ public abstract class ItemHolder {
     public ItemHolder(Item item) {
         this.item = item;
     }
+
+    public void changeQualityOf(int n) {
+        this.item.setQuality(this.item.getQuality() + n);
+    }
+
+    public Item getItem() {
+        return item;
+    }
 }
