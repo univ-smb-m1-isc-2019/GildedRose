@@ -1,36 +1,37 @@
 import java.util.ArrayList;
 
 
+
 public class GildedRose  {
 
-	private static ArrayList<ItemCreate> items = null;
+	private static ArrayList<Item> items = null;
 
     public GildedRose() {
 
     }
 
 
-	public ArrayList<ItemCreate> initItems() {
+	public ArrayList<Item> initItems() {
         System.out.println("OMGHAI!");
 
-        items = new ArrayList<ItemCreate>();
-        items.add(new ItemCreate("+5 Dexterity Vest", 10, 20));
-        items.add(new ItemCreate("Aged Brie", 2, 0));
-        items.add(new ItemCreate("Elixir of the Mongoose", 5, 7));
-        items.add(new ItemCreate("Sulfuras, Hand of Ragnaros", 0, 80));
-        items.add(new ItemCreate("Backstage passes to a TAFKAL80ETC concert", 15, 20));
-        items.add(new ItemCreate("Conjured Mana Cake", 3, 6));
+        items = new ArrayList<>();
+        items.add(new Item("+5 Dexterity Vest", 10, 20));
+        items.add(new Item("Aged Brie", 2, 0));
+        items.add(new Item("Elixir of the Mongoose", 5, 7));
+        items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
+        items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        items.add(new Item("Conjured Mana Cake", 3, 6));
 
         return items;
 }
 
 
-     protected void updateQuality()
-    {   initItems();
+     protected void updateQuality(ArrayList<Item> items)
+    {
         for (int i = 0; i < items.size(); i++)
         {
-            ItemCreate item=  items.get(i);
-           item.doUpdateQuality(item);
+            Item item=  items.get(i);
+           ItemCreate.doUpdateQuality(item);
         }
     }
 

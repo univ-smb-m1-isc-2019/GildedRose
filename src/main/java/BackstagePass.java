@@ -4,7 +4,10 @@ public class BackstagePass extends ItemCreate {
 
     }
 
-    public static void  doUpdateQuality(int quality, int sellIn){
+    public static void  doUpdateQuality(Item item){
+        int sellIn=item.getSellIn();
+        int quality=item.getQuality();
+
         if (quality < 50) {
             quality++;
             if (sellIn < 11) quality++;
@@ -12,5 +15,8 @@ public class BackstagePass extends ItemCreate {
         }
         sellIn--;
         if (sellIn < 0) quality = 0;
+        item.setQuality(quality);
+        item.setSellIn(sellIn);
     }
+
 }

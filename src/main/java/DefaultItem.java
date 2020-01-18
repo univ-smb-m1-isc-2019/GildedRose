@@ -3,15 +3,19 @@ public class DefaultItem extends ItemCreate {
         super(name, sellIn, quality);
     }
 
-    public static void  doUpdateQuality(int quality, int sellIn) {
+    public static void  doUpdateQuality(Item item) {
+        int sellIn=item.getSellIn();
+        int quality=item.getQuality();
 
         if (quality > 0) {
             quality--;
+
         }
         sellIn--;
 
         if (sellIn < 0 && quality > 0) {
-            quality--;
+           quality --;
         }
-
+        item.setQuality(quality);
+        item.setSellIn(sellIn);
     }}

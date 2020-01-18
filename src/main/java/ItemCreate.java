@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+
 public class ItemCreate extends Item {
 
     public String name;
     public int sellIn;
     public int quality;
+
+
 
     public ItemCreate(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
@@ -26,18 +30,17 @@ public class ItemCreate extends Item {
     }
 
     public static void doUpdateQuality(Item item) {
-        int sellIn=item.getSellIn();
-        int quality=item.getQuality();
+
 
         switch (item.getName()) {
             case "Aged Brie":
-                AgedBrie.doUpdateQuality(quality, sellIn);
+                AgedBrie.doUpdateQuality(item);
             case "Backstage passes to a TAFKAL80ETC concert":
-                BackstagePass.doUpdateQuality(quality, sellIn);
+                BackstagePass.doUpdateQuality(item);
             case "Sulfuras, Hand of Ragnaros":
-                Sulfuras.doUpdateQuality(quality, sellIn);
+                Sulfuras.doUpdateQuality(item);
             default:
-                DefaultItem.doUpdateQuality(quality, sellIn);
+                DefaultItem.doUpdateQuality(item);
 
         }
 

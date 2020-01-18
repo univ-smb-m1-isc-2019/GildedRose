@@ -4,7 +4,7 @@ public class Sulfuras extends ItemCreate {
     }
 
 
-    public static void  doUpdateQuality(int quality, int sellIn){
+    public static void  doUpdateQuality(Item item){
 
     }
 
