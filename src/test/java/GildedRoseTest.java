@@ -49,4 +49,21 @@ public class GildedRoseTest {
         }
     }
 
+    @Test
+    public void QualityIsNeverTooHigh(){
+        List<Item> items = GildedRose.itemsInit();
+
+        for (int j = 0; j < 1000; j++){
+            for (int i = 0; i < items.size(); i++)
+            {
+                GildedRose.updateQuality();
+                if(items.get(i).name == "Sulfuras, Hand of Ragnaros"){
+                    assertTrue(items.get(i).quality == 80);
+                } else {
+                    assertTrue(items.get(i).quality <= 50);
+                }
+            }
+        }
+    }
+
 }
