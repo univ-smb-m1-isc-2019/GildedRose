@@ -1,4 +1,10 @@
-package PACKAGE_NAME;
+public class LegendaryItem extends CustomItem{
+    public LegendaryItem(Item item) {
+        super(item);
+    }
 
-public class LegendaryItem {
+    @Override
+    public void updateItemQuality() {
+
+    }
 }

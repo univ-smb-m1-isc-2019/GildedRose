@@ -3,8 +3,6 @@ public abstract class CustomItem {
     static final int HIGHEST_QUALITY = 50;
 
     protected Item item;
-    public int quality;
-    public int sellIn;
 
     public CustomItem(Item item) {
         this.item = item;
@@ -13,19 +11,18 @@ public abstract class CustomItem {
     public abstract void updateItemQuality();
 
     protected boolean isQualityTooLow(){
-        return quality < LOWEST_QUALITY;
+        return item.quality <= LOWEST_QUALITY;
     }
 
     protected boolean isQualityTooHigh(){
-        return quality > HIGHEST_QUALITY;
+        return item.quality >= HIGHEST_QUALITY;
     }
 
     protected void checkQualityInbounds(){
         if(isQualityTooLow()){
-            quality = LOWEST_QUALITY;
+            item.quality = LOWEST_QUALITY;
         } else if(isQualityTooHigh())
-            quality = HIGHEST_QUALITY;
+            item.quality = HIGHEST_QUALITY;
     }
-
 
 }

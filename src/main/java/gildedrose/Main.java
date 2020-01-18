@@ -7,10 +7,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
 
-        List<Item> items = GildedRose.itemsInit();
+        GildedRose.itemsInit();
         GildedRose.updateQuality();
 
     }
-
 
 }

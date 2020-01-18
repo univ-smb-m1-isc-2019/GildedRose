@@ -9,7 +9,7 @@ public class StandardItem extends CustomItem {
     public void updateItemQuality() {
         item.sellIn -= 1;
 
-        if(sellIn > 0){
+        if(item.sellIn > 0){
             item.quality -= QUALITY_DECREASE;
         } else {
             item.quality -= QUALITY_DECREASE * 2;

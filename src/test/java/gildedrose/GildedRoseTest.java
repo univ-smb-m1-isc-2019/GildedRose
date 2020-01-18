@@ -10,7 +10,6 @@ import java.util.List;
 
 public class GildedRoseTest {
 
-	/*
 	@Test
 	public void ItemTypeHasRightType() {
 		List<Item> items = GildedRose.itemsInit();
@@ -37,11 +36,19 @@ public class GildedRoseTest {
 					assertSame(item.type, ItemType.Type.STANDARD);
 			}
 		}
-	}*/
+	}
 
+    @Test
+	public void QualityIsNeverNegative(){
+        List<Item> items = GildedRose.itemsInit();
 
-
-
-
+        for (int j = 0; j < 1000; j++){
+            for (int i = 0; i < items.size(); i++)
+            {
+                GildedRose.updateQuality();
+                assertTrue(items.get(i).quality >= 0);
+            }
+        }
+    }
 
 }

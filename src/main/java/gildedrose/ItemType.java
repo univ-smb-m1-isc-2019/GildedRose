@@ -1,8 +1,6 @@
 package gildedrose;
 
 public class ItemType {
-    static final int LOWEST_QUALITY = 0;
-    static final int HIGHEST_QUALITY = 50;
     public enum Type { STANDARD, CONJURED, LEGENDARY, CHEESE, TICKET };
     public String name;
     public Type type;
@@ -30,22 +28,6 @@ public class ItemType {
                 itemType = Type.STANDARD;
         }
         this.type = itemType;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 }
