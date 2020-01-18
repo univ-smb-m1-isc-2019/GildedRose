@@ -9,8 +9,7 @@ public class GildedRose  {
     public GildedRose() {
 
     }
-
-
+    
 	public ArrayList<Item> initItems() {
         System.out.println("OMGHAI!");
 
