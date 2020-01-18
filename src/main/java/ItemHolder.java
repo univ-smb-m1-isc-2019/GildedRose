@@ -87,4 +87,8 @@ public class ItemHolder {
             }
         }
     }
+
+    public int getQualityToRemove() {
+        return 0;
+    }
 }
