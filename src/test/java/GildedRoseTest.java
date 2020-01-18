@@ -10,11 +10,6 @@ public class GildedRoseTest {
 	//Default item tests
 
 	@Test
-	public void testTheTruth() {
-		assertTrue(true);
-	}
-
-	@Test
 	public void testLowerQuality() {
 		Item normalItem=new Item("normal",10,20);
         items.add(normalItem);
@@ -60,6 +55,8 @@ public class GildedRoseTest {
 		assertEquals(0,normalItem.getQuality());
 	}
 
+
+
 	//Aged Brie items Test
 	@Test
 	public void  agedBrieIncreaseQualityByOneBeforeDaySellInDate(){
@@ -75,6 +72,8 @@ public class GildedRoseTest {
 		gr.updateQuality(items);
 		assertEquals(7,agedBrieItem.getQuality());
 	}
+
+
 
 
 	//BackstagePasses items tests
@@ -120,7 +119,25 @@ public class GildedRoseTest {
 		assertEquals(5,sulfurasItem.getQuality());
 	}
 
+	//ConjuredItem tests
+	@Test
+	public void conjuredItemQualityShouldDecreaseByFourAfterSellInDate(){
+		Item sulfurasItem=new Item("Conjured Mana Cake",0,5);
+		items.add(sulfurasItem);
+		gr.updateQuality(items);
+		assertEquals(-1,sulfurasItem.getQuality());
+	}
 
+	@Test
+	public void conjuredItemQualityShouldDecreaseByTwoBeforeSellInDate(){
+		Item sulfurasItem=new Item("Conjured Mana Cake",5,5);
+		items.add(sulfurasItem);
+		gr.updateQuality(items);
+		assertEquals(3,sulfurasItem.getQuality());
+	}
+
+
+   //GildedRose test General test
 	@Test
 	public void gildedRoseTest() {
 		gr.updateQuality(items);

@@ -25,7 +25,7 @@ public class GildedRose  {
         return items;
 }
 
-
+     //updates quality for all items in the 'items' list
      protected void updateQuality(ArrayList<Item> items)
     {
         for (int i = 0; i < items.size(); i++)

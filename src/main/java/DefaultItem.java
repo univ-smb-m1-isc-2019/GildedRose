@@ -3,6 +3,9 @@ public class DefaultItem extends ItemCreate {
         super(name, sellIn, quality);
     }
 
+    //this method updates the quality of other items
+    //Default Item's quality should decrease by one after and before SellIn date
+    //here the quality can be more than 50
     public static void  doUpdateQuality(Item item) {
         int sellIn=item.getSellIn();
         int quality=item.getQuality();

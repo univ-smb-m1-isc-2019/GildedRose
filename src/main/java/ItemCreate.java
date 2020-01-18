@@ -12,22 +12,7 @@ public class ItemCreate extends Item {
     }
 
     ;
-
-    public static Item createItem(String name, int sellIn, int quality) {
-
-        switch (name) {
-            case "Aged Brie":
-                return new AgedBrie(sellIn, quality);
-            case "Backstage passes to a TAFKAL80ETC concert":
-                return new BackstagePass(sellIn, quality);
-            case "Sulfuras, Hand of Ragnaros":
-                return new Sulfuras(sellIn, quality);
-            default:
-                return new Item(name, sellIn, quality);
-        }
-
-    }
-
+     //updates the quality of one item depending on the item's name
     public static void doUpdateQuality(Item item) {
 
 
@@ -40,6 +25,9 @@ public class ItemCreate extends Item {
                 break;
             case "Sulfuras, Hand of Ragnaros":
                 Sulfuras.doUpdateQuality(item);
+                break;
+            case "Conjured Mana Cake":
+                ConjuredItem.doUpdateQuality(item);
                 break;
             default:
                 DefaultItem.doUpdateQuality(item);
