@@ -6,6 +6,7 @@ public class GildedRose {
 
 
     private List<Item> items;
+    private List<MeilleurItem> mitems;
 
     public GildedRose() {
         System.out.println("OMGHAI!");
@@ -17,58 +18,38 @@ public class GildedRose {
         items.add(new Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new ConjuredItem("Conjured Mana Cake", 3, 6));
+        mitems = new ArrayList<MeilleurItem>();
+        convertItems();
     }
 
-    public void updateQuality() {
-        for (int i = 0; i < items.size(); i++) {
-            if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
-                if (items.get(i).getQuality() > 0) {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
-                        items.get(i).setQuality(items.get(i).getQuality() - 1);
-                    }
-                }
-            } else {
-                if (items.get(i).getQuality() < 50) {
-                    items.get(i).setQuality(items.get(i).getQuality() + 1);
-
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
-                        if (items.get(i).getSellIn() < 11) {
-                            if (items.get(i).getQuality() < 50) {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
-                            }
-                        }
-
-                        if (items.get(i).getSellIn() < 6) {
-                            if (items.get(i).getQuality() < 50) {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
-                items.get(i).setSellIn(items.get(i).getSellIn() - 1);
-            }
-
-            if (items.get(i).getSellIn() < 0) {
-                if (!"Aged Brie".equals(items.get(i).getName())) {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
-                        if (items.get(i).getQuality() > 0) {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
-                                items.get(i).setQuality(items.get(i).getQuality() - 1);
-                            }
-                        }
-                    } else {
-                        items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
-                    }
-                } else {
-                    if (items.get(i).getQuality() < 50) {
-                        items.get(i).setQuality(items.get(i).getQuality() + 1);
-                    }
-                }
-            }
+    //convertit la liste de Item en list de MeilleurItem
+    public void convertItems() {
+        for (Item item : items) {
+            System.out.println(item.getName());
+            mitems.add(new MeilleurItem(item.getName(), item.getSellIn(), item.getQuality()));
         }
     }
 
+    public List<MeilleurItem> getListItems() {
+        return mitems;
+    }
+
+    public MeilleurItem getItem(String s) {
+        int i = 0;
+        boolean trouve = false;
+        MeilleurItem res = null;
+        while (!trouve) {
+            if (!s.equals(mitems.get(i).getName())) {
+                trouve = true;
+                res = mitems.get(i);
+            }
+            i++;
+        }
+        return res;
+    }
+
+    public void updateQuality() {
+        for (MeilleurItem item : mitems)
+            item.updateQuality();
+    }
 }
