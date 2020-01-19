@@ -18,7 +18,7 @@ public class ItemHolder {
     }
 
     public void sellInPassed() {
-        this.item.setSellIn(this.item.getSellIn() - 1);
+        this.setSellIn(this.item.getSellIn() - 1);
     }
 
     public String getName() {
