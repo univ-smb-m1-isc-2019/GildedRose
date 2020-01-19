@@ -4,13 +4,13 @@ public class NormalItem extends ItemHolder {
     }
 
     @Override
-    public int getQualityToRemove() {
+    public int getQualityAmountToChange() {
         return 1;
     }
 
     @Override
     public void updateQuality() {
-        this.changeQualityOf(this.getQualityToRemove());
+        this.changeQualityOf(this.getQualityAmountToChange());
         if (this.getQuality() < 0)
             this.setQuality(0);
         this.sellInPassed();

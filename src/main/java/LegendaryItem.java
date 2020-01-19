@@ -9,15 +9,12 @@ public class LegendaryItem extends ItemHolder {
     }
 
     @Override
-    public int getQualityToRemove() {
+    public int getQualityAmountToChange() {
         return 0;
     }
 
     @Override
     public void updateQuality() {
-        this.changeQualityOf(this.getQualityToRemove());
-        if (this.getQuality() < 0)
-            this.setQuality(0);
-        this.sellInPassed();
+        
     }
 }

@@ -95,7 +95,7 @@ public class ItemHolder {
         }
     }
 
-    public int getQualityToRemove() {
+    public int getQualityAmountToChange() {
         return 0;
     }
 
