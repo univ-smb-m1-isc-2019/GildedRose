@@ -1,11 +1,11 @@
-public class NormalItem extends ItemHolder {
-    public NormalItem(String name, int sellIn, int quality) {
+public class CollectorItem extends ItemHolder {
+    public CollectorItem(String name, int sellIn, int quality) {
         super(new Item(name, sellIn, quality));
     }
 
     @Override
     public int getQualityAmountToChange() {
-        return -1;
+        return 1;
     }
 
     @Override

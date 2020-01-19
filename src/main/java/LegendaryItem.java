@@ -15,6 +15,6 @@ public class LegendaryItem extends ItemHolder {
 
     @Override
     public void updateQuality() {
-        
+
     }
 }
