@@ -7,7 +7,6 @@ public class Storage {
     private QualityUpdate qualityUpdate;
 
     public Storage(){
-
         this.listItems = new ArrayList<Item>();
         this.addItems();
         this.qualityUpdate = new QualityUpdate();
@@ -24,13 +23,12 @@ public class Storage {
 
     public void updateStorage(){
         for (Item item : this.listItems) {
-            System.out.println(item.getName());
-            System.out.println(item.getQuality());
-            System.out.println(item.getSellIn());
             this.qualityUpdate.updateQuality(item);
-            System.out.println(item.getQuality());
-            System.out.println(item.getSellIn());
-
         }
     }
+
+    public ArrayList<Item> getListItems() {
+        return this.listItems;
+    }
+
 }
