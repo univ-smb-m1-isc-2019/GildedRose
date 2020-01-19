@@ -8,6 +8,7 @@ public class ItemHolder implements ItemInterface {
         this.item = item;
     }
 
+    @Override
     public void changeQualityOf(int n) {
         this.item.setQuality(this.item.getQuality() + n);
 
@@ -17,34 +18,42 @@ public class ItemHolder implements ItemInterface {
             this.setQuality(0);
     }
 
+    @Override
     public void sellInPassed() {
         this.setSellIn(this.item.getSellIn() - 1);
     }
 
+    @Override
     public String getName() {
         return this.item.getName();
     }
 
+    @Override
     public void setName(String name) {
         this.item.setName(name);
     }
 
+    @Override
     public int getSellIn() {
         return this.item.getSellIn();
     }
 
+    @Override
     public void setSellIn(int sellIn) {
         this.item.setSellIn(sellIn);
     }
 
+    @Override
     public int getQuality() {
         return this.item.getQuality();
     }
 
+    @Override
     public void setQuality(int quality) {
         this.item.setQuality(quality);
     }
 
+    @Override
     public void updateQuality() {
         if ((!"Aged Brie".equals(this.getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(this.getName())) {
             if (this.getQuality() > 0) {
@@ -95,10 +104,12 @@ public class ItemHolder implements ItemInterface {
         }
     }
 
+    @Override
     public int getQualityAmountToChange() {
         return 0;
     }
 
+    @Override
     public int getMaximumQuality () {
         return MAXIMUM_QUALITY;
     }
