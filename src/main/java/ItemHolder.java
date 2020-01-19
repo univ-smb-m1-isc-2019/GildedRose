@@ -1,4 +1,6 @@
 public class ItemHolder {
+    public static int MAXIMUM_QUALITY = 50;
+
     private Item item;
 
     public ItemHolder(Item item) {
@@ -8,6 +10,11 @@ public class ItemHolder {
 
     public void changeQualityOf(int n) {
         this.item.setQuality(this.item.getQuality() + n);
+
+        if (this.getQuality() > this.getMaximumQuality())
+            this.setQuality(this.getMaximumQuality());
+        else if (this.getQuality() < 0)
+            this.setQuality(0);
     }
 
     public void sellInPassed() {
@@ -90,5 +97,9 @@ public class ItemHolder {
 
     public int getQualityToRemove() {
         return 0;
+    }
+
+    public int getMaximumQuality () {
+        return MAXIMUM_QUALITY;
     }
 }
