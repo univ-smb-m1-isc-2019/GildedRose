@@ -1,4 +1,6 @@
 public class LegendaryItem extends ItemHolder {
+    public static int MAXIMUM_QUALITY = 80;
+
     public LegendaryItem(String name, int sellIn, int quality) {
         super(new Item(name, sellIn, quality));
     }
@@ -16,5 +18,10 @@ public class LegendaryItem extends ItemHolder {
     @Override
     public void updateQuality() {
 
+    }
+
+    @Override
+    public int getMaximumQuality () {
+        return MAXIMUM_QUALITY;
     }
 }
