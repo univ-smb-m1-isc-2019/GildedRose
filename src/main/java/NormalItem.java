@@ -5,7 +5,11 @@ public class NormalItem extends ItemHolder {
 
     @Override
     public int getQualityAmountToChange() {
-        return -1;
+        int normalAmount = -1;
+        if (this.getSellIn() >= 0)
+            return normalAmount;
+        else
+            return normalAmount * 2;
     }
 
     @Override
