@@ -1,4 +1,4 @@
-public class ItemHolder {
+public class ItemHolder implements ItemInterface {
     public static int MAXIMUM_QUALITY = 50;
 
     private Item item;
