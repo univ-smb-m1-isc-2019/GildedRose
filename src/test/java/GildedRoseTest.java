@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class GildedRoseTest {
@@ -49,7 +50,7 @@ public class GildedRoseTest {
             tmpList.stream()
                     .forEach(
                             resetItem -> {
-                                if(!resetItem.getItem().getName().equals("Sulfuras, Hand of Ragnaros")){
+                                if (!resetItem.getItem().getName().equals("Sulfuras, Hand of Ragnaros")) {
                                     assertTrue(resetItem.getItem().getQuality() <= 50);
                                 }
 
@@ -57,6 +58,36 @@ public class GildedRoseTest {
                     );
         }
     }
+
+    @Test
+    public void Aged_Brie_quality_increase(){
+        GildedRose inn = new GildedRose();
+        UpdateQuality uq = new UpdateQuality();
+        List<ResetItem> tmpList = inn.getItemList();
+
+        AtomicInteger quality = new AtomicInteger();
+
+        for(int i=0;i<100;i++){
+            tmpList
+                    .forEach(
+                            resetItem -> {
+                                if(resetItem.getItem().getName().equals("Aged Brie")){
+                                    quality.set(resetItem.getItem().quality);
+                                }
+                            }
+                    );
+            uq.UpdateQuality(tmpList);
+            tmpList
+                    .forEach(
+                            resetItem -> {
+                                if(resetItem.getItem().name == "Aged Brie" && resetItem.getItem().quality < 50){
+                                    assertTrue(resetItem.getItem().getQuality() > quality.get());
+                                }
+                            }
+                    );
+        }
+    }
+
 
 
 }
