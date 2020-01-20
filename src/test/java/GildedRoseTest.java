@@ -15,14 +15,15 @@ public class GildedRoseTest {
     @Test
     public void qualityDegradeNormally() {
         GildedRose gr = new GildedRose();
-        List<MeilleurItem> items = gr.getListItems();
-        MeilleurItem dexterity = gr.getItem("+5 Dexterity Vest");
-        MeilleurItem elixir = gr.getItem("Elixir of the Mongoose");
+        List<Item> items = gr.getListItems();
+        Item dexterity = gr.getItem("+5 Dexterity Vest");
+        Item elixir = gr.getItem("Elixir of the Mongoose");
 
         for (int i = 0; i < 100; i++) {
             int lastQualityDexterity = dexterity.getQuality();
             int lastQualityElixir = elixir.getQuality();
             gr.updateQuality();
+
             items.stream()
                     .forEach(
                             item -> {
@@ -36,12 +37,13 @@ public class GildedRoseTest {
         }
     }
 
+
     //Vérifie qu'un item ne depasse jamais 50 de qualité.
     @Test
     public void qualityNeverOver50() {
         GildedRose gr = new GildedRose();
-        List<MeilleurItem> items = gr.getListItems();
-        MeilleurItem sulfuras = gr.getItem("Sulfuras, Hand of Ragnaros");
+        List<Item> items = gr.getListItems();
+        Item sulfuras = gr.getItem("Sulfuras, Hand of Ragnaros");
         for (int i = 0; i < 100; i++) {
             gr.updateQuality();
             items.stream()
@@ -60,7 +62,7 @@ public class GildedRoseTest {
     @Test
     public void qualityNeverNegative() {
         GildedRose gr = new GildedRose();
-        List<MeilleurItem> items = gr.getListItems();
+        List<Item> items = gr.getListItems();
         for (int i = 0; i < 100; i++) {
             gr.updateQuality();
             items.stream()
@@ -116,7 +118,9 @@ public class GildedRoseTest {
     public void conjuredQualityDegradeTwiceAsFast() {
         GildedRose gr = new GildedRose();
         Item conjured = gr.getItem("Conjured Mana Cake");
-
+        System.out.println(conjured.getQuality());
+        gr.updateQuality();
+        System.out.println(conjured.getQuality());
         for (int i = 0; i < 100; i++) {
             int lastQualityConjured = conjured.getQuality();
             gr.updateQuality();
@@ -134,11 +138,11 @@ public class GildedRoseTest {
     @Test
     public void qualityDegradeTwiceAsFastWhenSellinPassed() {
         GildedRose gr = new GildedRose();
-        List<MeilleurItem> items = gr.getListItems();
+        List<Item> items = gr.getListItems();
 
-        MeilleurItem conjured = gr.getItem("Conjured Mana Cake");
-        MeilleurItem elixir = gr.getItem("Elixir of the Mongoose");
-        MeilleurItem dVest = gr.getItem("+5 Dexterity Vest");
+        Item conjured = gr.getItem("Conjured Mana Cake");
+        Item elixir = gr.getItem("Elixir of the Mongoose");
+        Item dVest = gr.getItem("+5 Dexterity Vest");
 
         for (int i = 0; i < 100; i++) {
             int lastQualityConjured = conjured.getQuality();
@@ -166,10 +170,10 @@ public class GildedRoseTest {
     @Test
     public void sulfurasQualityNeverChanges() {
         GildedRose gr = new GildedRose();
-        MeilleurItem sulfuras = gr.getItem("Sulfuras, Hand of Ragnaros");
+        Item sulfuras = gr.getItem("Sulfuras, Hand of Ragnaros");
         int originQuality = sulfuras.getQuality();
         for (int i = 0; i < 100; i++) {
-            sulfuras.updateQuality();
+            gr.updateQuality();
             assertTrue(originQuality == sulfuras.quality);
         }
     }
@@ -178,10 +182,10 @@ public class GildedRoseTest {
     @Test
     public void sulfurasCantBeSold() {
         GildedRose gr = new GildedRose();
-        MeilleurItem sulfuras = gr.getItem("Sulfuras, Hand of Ragnaros");
+        Item sulfuras = gr.getItem("Sulfuras, Hand of Ragnaros");
         int originSellIn = sulfuras.sellIn;
         for (int i = 0; i < 100; i++) {
-            sulfuras.updateQuality();
+            gr.updateQuality();
             assertTrue(originSellIn == sulfuras.sellIn);
         }
     }

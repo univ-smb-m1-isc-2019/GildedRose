@@ -1,15 +1,16 @@
 public class NormalItem extends MeilleurItem {
 
-    public NormalItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public NormalItem(Item item) {
+        super(item);
     }
 
+    @Override
     public void updateQuality() {
-        if (quality > 0 && sellIn > 0) {
-            quality--;
-        } else if (sellIn <= 0) quality = quality - 2;
-        else if (quality <= 0) quality = 0;
+        if (item.quality > 0 && item.sellIn > 0)
+            item.quality--;
+        else if (item.quality > 1) item.quality = item.quality - 2;
+        else item.quality = 0;
 
-        sellIn--;
+        if (item.sellIn >= 0) item.sellIn--;
     }
 }

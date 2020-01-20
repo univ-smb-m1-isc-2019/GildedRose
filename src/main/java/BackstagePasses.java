@@ -1,14 +1,15 @@
 public class BackstagePasses extends MeilleurItem {
 
-    public BackstagePasses(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public BackstagePasses(Item item) {
+        super(item);
     }
 
+    @Override
     public void updateQuality() {
-        if (sellIn > 10) quality++;
-        else if (sellIn > 5) quality = quality + 2;
-        else if (sellIn > 0) quality = quality + 3;
-        else quality = 0;
-        sellIn--;
+        if (item.quality < 50 && item.sellIn > 10) item.quality++;
+        else if (item.quality < 49 && item.sellIn > 5) item.quality = item.quality + 2;
+        else if (item.quality < 48 && item.sellIn > 0) item.quality = item.quality + 3;
+        else item.quality = 0;
+        if (item.sellIn >= 0) item.sellIn--;
     }
 }
