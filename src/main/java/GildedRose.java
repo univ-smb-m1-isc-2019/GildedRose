@@ -11,7 +11,11 @@ public class GildedRose {
         ItemList i = new ItemList();
         itemList = i.createList();
 
-}
+    }
+    public void udapteQuality() {
+        UdapteQuality u = new UdapteQuality();
+        u.UdapteQuality(getItemList());
+    }
 
     public Item get(String key) {
         Optional<AdvancedItem> optional = itemList.stream()
@@ -29,4 +33,12 @@ public class GildedRose {
     public List<AdvancedItem> getItemList() {return itemList;}
 
     public void setItemList(List<AdvancedItem> itemList) {this.itemList = itemList;}
+
+    @Override
+    public String toString() {
+        ItemList i = new ItemList();
+        return  i.toString(itemList);
+    }
+
+
 }
