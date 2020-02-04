@@ -12,10 +12,12 @@ public class GildedRose {
 
 	public void gildedRose() {
         items = stock.addAllItem(items);
-        treatment.updateQuality(items);
-        result.showResult(items);
+		treatment.updateQuality(items);
+		result.showResult(items);
 
 	}
+
+
 
 	public void addAllItem(){
 		items = stock.addAllItem(items);
@@ -31,6 +33,10 @@ public class GildedRose {
 				.findFirst();
 		return optional.get();
 
+	}
+
+	public List<CorruptedItem> getItems(){
+		return items;
 	}
 
 

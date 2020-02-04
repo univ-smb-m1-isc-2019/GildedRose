@@ -2,95 +2,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Treatment {
-    public  void updateQuality(List<CorruptedItem> items)
-    {
-        for (int i = 0; i < items.size(); i++)
-        {
-            if ((!"Aged Brie".equals(items.get(i).getItem().getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getItem().getName()))
+    public  void updateQuality(List<CorruptedItem> items){
+        Item item;
+        for (CorruptedItem Citem: items) {
+            item = Citem.getItem();
+            switch(item.getName())
             {
-                if (items.get(i).getItem().getQuality() > 0)
-                {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getItem().getName()))
-                    {
-                        if (items.get(i).getIsCorrupted()){
-                            items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() - 2);
-                        }
-                        else{
-                            items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() - 1);
-                        }
-                        if (items.get(i).getItem().getQuality() < 0 ){
-                            items.get(i).getItem().setQuality(0);
-                        }
-                    }
-                }
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    if (item.sellIn > 10) { item.setQuality(item.getQuality() + 1);}
+                    if (item.sellIn <= 10 && item.sellIn > 5) { item.setQuality(item.getQuality() + 2);}
+                    if (item.sellIn <= 5 && item.sellIn > 0) { item.setQuality(item.getQuality() + 3);}
+                    if (item.sellIn == 0) { item.setQuality(0);}
+                    break;
+                case "Aged Brie":
+                    if (item.sellIn > 0 && item.quality < 50) { item.setQuality(item.getQuality() + 1);}
+                    if (item.sellIn <= 0 && item.quality < 50) { item.setQuality(item.getQuality() + 2);}
+                    break;
+                case "Conjured Mana Cake":
+                    if (item.sellIn > 0 && isQualityGreaterThan1 (item)){ item.setQuality(item.getQuality() - 2);}
+                    if (item.sellIn <= 0 && item.quality < 50 && isQualityGreaterThan3 (item)){ item.setQuality(item.getQuality() - 4);}
+                    break;
+                case "Sulfuras, Hand of Ragnaros":
+                    //rien a faire pour le moment
+                    break;
+                default:
+                    if (item.sellIn > 0 && isQualityGreaterThan0( item)) {  item.setQuality(item.getQuality() -1);}
+                    if (item.sellIn <= 0 && item.quality > 0 && isQualityGreaterThan1(item)) {  item.setQuality(item.getQuality() -2);}
             }
-            else
-            {
-                if (items.get(i).getItem().getQuality() < 50)
-                {
-                    items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() + 1);
-
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getItem().getName()))
-                    {
-                        if (items.get(i).getItem().getSellIn() < 11)
-                        {
-                            if (items.get(i).getItem().getQuality() < 50)
-                            {
-                                items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() + 1);
-                            }
-                        }
-
-                        if (items.get(i).getItem().getSellIn() < 6)
-                        {
-                            if (items.get(i).getItem().getQuality() < 50)
-                            {
-                                items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() + 1);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getItem().getName()))
-            {
-                items.get(i).getItem().setSellIn(items.get(i).getItem().getSellIn() - 1);
-            }
-
-            if (items.get(i).getItem().getSellIn() < 0)
-            {
-                if (!"Aged Brie".equals(items.get(i).getItem().getName()))
-                {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getItem().getName()))
-                    {
-                        if (items.get(i).getItem().getQuality() > 0)
-                        {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getItem().getName()))
-                            {
-                                if(items.get(i).getIsCorrupted()){
-                                    items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() - 2);
-                                }
-                                else{
-                                    items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() - 1);
-                                }
-                                if (items.get(i).getItem().getQuality() < 0 ){
-                                    items.get(i).getItem().setQuality(0);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() - items.get(i).getItem().getQuality());
-                    }
-                }
-                else
-                {
-                    if (items.get(i).getItem().getQuality() < 50)
-                    {
-                        items.get(i).getItem().setQuality(items.get(i).getItem().getQuality() + 1);
-                    }
-                }
-            }
+            if (!item.getName().equals("Sulfuras, Hand of Ragnaros")) { item.setSellIn(item.sellIn - 1); }
         }
     }
+
+    private static boolean isQualityGreaterThan3(Item item) {
+        return item.quality > 3;
+    }
+
+    private static boolean isQualityGreaterThan1(Item item) {
+        return item.quality > 1;
+    }
+
+    private static boolean isQualityGreaterThan0(Item item) {
+        return item.quality > 0;
+    }
+
 }
+
