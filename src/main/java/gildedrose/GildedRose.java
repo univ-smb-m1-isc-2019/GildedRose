@@ -20,6 +20,12 @@ public class GildedRose {
         }
 
         ItemWrapper wrapper = new ItemWrapper(item);
+
+        if (wrapper.isBackstagePass(item)) {
+            items.add(new BackstagePass(item));
+            return;
+        }
+
         this.items.add(wrapper);
     }
 
