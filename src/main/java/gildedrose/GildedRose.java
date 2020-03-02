@@ -13,7 +13,14 @@ public class GildedRose {
     }
 
     public void add(Item item) {
-        this.items.add(new ItemWrapper(item));
+
+        if ("Sulfuras, Hand of Ragnaros".equals(item.getName())) {
+            items.add(new Sulfuras(item));
+            return;
+        }
+
+        ItemWrapper wrapper = new ItemWrapper(item);
+        this.items.add(wrapper);
     }
 
     public void updateQuality() {
