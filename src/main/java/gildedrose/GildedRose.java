@@ -8,67 +8,66 @@ public class GildedRose {
 
     private final List<Item> items;
 
-
     public GildedRose() {
         items = new ArrayList<>();
     }
-
 
     public void add(Item item) {
         this.items.add(item);
     }
 
-
     public void updateQuality() {
-        for (Item item : items) {
+        items.forEach(this::updateQuality);
+    }
 
-            if ((isAgedBrie(item)) || isBackstagePass(item)) {
+    private void updateQuality(Item item) {
+
+        if ((isAgedBrie(item)) || isBackstagePass(item)) {
+            if (item.getQuality() < 50) {
+                incrementQuality(item);
+
+                if (isBackstagePass(item)) {
+                    if (item.getSellIn() < 11) {
+                        if (item.getQuality() < 50) {
+                            incrementQuality(item);
+                        }
+                    }
+
+                    if (item.getSellIn() < 6) {
+                        if (item.getQuality() < 50) {
+                            incrementQuality(item);
+                        }
+                    }
+                }
+            }
+        } else {
+            if (item.getQuality() > 0) {
+                if (isSulfuras(item)) {
+                } else {
+                    decrementQuality(item);
+                }
+            }
+        }
+
+        if (isSulfuras(item)) {
+        } else {
+            decrementSellIn(item);
+        }
+
+        if (item.getSellIn() < 0) {
+            if (isAgedBrie(item)) {
                 if (item.getQuality() < 50) {
                     incrementQuality(item);
-
-                    if (isBackstagePass(item)) {
-                        if (item.getSellIn() < 11) {
-                            if (item.getQuality() < 50) {
-                                incrementQuality(item);
-                            }
-                        }
-
-                        if (item.getSellIn() < 6) {
-                            if (item.getQuality() < 50) {
-                                incrementQuality(item);
-                            }
-                        }
-                    }
                 }
             } else {
-                if (item.getQuality() > 0) {
-                    if (isSulfuras(item)) {
-                    } else {
-                        decrementQuality(item);
-                    }
-                }
-            }
-
-            if (isSulfuras(item)) {
-            } else {
-                decrementSellIn(item);
-            }
-
-            if (item.getSellIn() < 0) {
-                if (isAgedBrie(item)) {
-                    if (item.getQuality() < 50) {
-                        incrementQuality(item);
-                    }
+                if (isBackstagePass(item)) {
+                    item.setQuality(0);
                 } else {
-                    if (isBackstagePass(item)) {
-                        item.setQuality(0);
-                    } else {
-                        if (item.getQuality() > 0) {
-                            if (isSulfuras(item)) {
-                                continue;
-                            }
-                            decrementQuality(item);
+                    if (item.getQuality() > 0) {
+                        if (isSulfuras(item)) {
+                            return;
                         }
+                        decrementQuality(item);
                     }
                 }
             }
