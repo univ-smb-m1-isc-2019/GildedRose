@@ -34,7 +34,7 @@ public class GildedRose {
     }
 
     public void updateQuality() {
-        items.forEach(ItemWrapper::updateQuality);
+        items.forEach(ItemWrapper::checks);
     }
 
 }

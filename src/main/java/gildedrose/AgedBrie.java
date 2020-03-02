@@ -7,17 +7,15 @@ public class AgedBrie extends ItemWrapper {
     }
 
 
-    protected void checkQuality() {
+    protected void updateQuality() {
         if (item.getQuality() < 50) {
             incrementQuality(item);
         }
     }
 
     protected void checkExpiration() {
-        if (item.getSellIn() < 0) {
-            if (item.getQuality() < 50) {
-                incrementQuality(item);
-            }
+        if (item.getSellIn() < 0 && item.getQuality() < 50) {
+            incrementQuality(item);
         }
     }
 

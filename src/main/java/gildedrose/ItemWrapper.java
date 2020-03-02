@@ -33,9 +33,9 @@ public class ItemWrapper {
     }
 
 
-    public void updateQuality() {
+    public void checks() {
 
-        checkQuality();
+        updateQuality();
 
         updateSellIn();
 
@@ -43,7 +43,7 @@ public class ItemWrapper {
 
     }
 
-    protected void checkQuality() {
+    protected void updateQuality() {
         decrementQuality();
     }
 

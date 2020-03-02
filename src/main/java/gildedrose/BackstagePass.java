@@ -6,7 +6,7 @@ public class BackstagePass extends ItemWrapper {
         super(item);
     }
 
-    protected void checkQuality() {
+    protected void updateQuality() {
         if (item.getQuality() < 50) {
 
             incrementQuality(item);
