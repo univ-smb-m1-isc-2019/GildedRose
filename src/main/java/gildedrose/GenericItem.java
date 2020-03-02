@@ -1,10 +1,10 @@
 package gildedrose;
 
-public class ItemWrapper {
+public class GenericItem {
 
     protected final Item item;
 
-    public ItemWrapper(Item item) {
+    public GenericItem(Item item) {
         this.item = item;
     }
 

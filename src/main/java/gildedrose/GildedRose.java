@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GildedRose {
 
-    private final List<ItemWrapper> items;
+    private final List<GenericItem> items;
 
     public GildedRose() {
         items = new ArrayList<>();
@@ -29,12 +29,11 @@ public class GildedRose {
             return;
         }
 
-        ItemWrapper wrapper = new ItemWrapper(item);
-        this.items.add(wrapper);
+        this.items.add(new GenericItem(item));
     }
 
     public void updateQuality() {
-        items.forEach(ItemWrapper::checks);
+        items.forEach(GenericItem::checks);
     }
 
 }

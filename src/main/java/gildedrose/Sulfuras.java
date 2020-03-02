@@ -1,6 +1,6 @@
 package gildedrose;
 
-public class Sulfuras extends ItemWrapper {
+public class Sulfuras extends GenericItem {
 
     public Sulfuras(Item item) {
         super(item);
