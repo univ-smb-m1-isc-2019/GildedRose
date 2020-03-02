@@ -1,3 +1,6 @@
+import gildedrose.GildedRose;
+import gildedrose.Item;
+
 public class Main {
 
     public static void main(String[] args) {

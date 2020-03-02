@@ -1,3 +1,5 @@
+import gildedrose.GildedRose;
+import gildedrose.Item;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
