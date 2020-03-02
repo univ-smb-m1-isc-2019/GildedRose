@@ -248,7 +248,7 @@ public class GildedRoseTest {
 	public void sulfurasQualityShouldNeverChange(){
 		GildedRose inn = new GildedRose();
 
-		Item sulfuras = inn.getItem("gildedrose.Sulfuras, Hand of Ragnaros");
+		Item sulfuras = inn.getItem("Sulfuras, Hand of Ragnaros");
 
 		int originalQuality = sulfuras.quality;
 
