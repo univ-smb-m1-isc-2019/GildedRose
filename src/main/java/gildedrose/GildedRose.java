@@ -24,18 +24,18 @@ public class GildedRose {
 
             if (("Aged Brie".equals(item.getName())) || "Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
                 if (item.getQuality() < 50) {
-                    item.setQuality(item.getQuality() + 1);
+                    incrementQuality(item);
 
                     if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
                         if (item.getSellIn() < 11) {
                             if (item.getQuality() < 50) {
-                                item.setQuality(item.getQuality() + 1);
+                                incrementQuality(item);
                             }
                         }
 
                         if (item.getSellIn() < 6) {
                             if (item.getQuality() < 50) {
-                                item.setQuality(item.getQuality() + 1);
+                                incrementQuality(item);
                             }
                         }
                     }
@@ -43,20 +43,20 @@ public class GildedRose {
             } else {
                 if (item.getQuality() > 0) {
                     if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                        item.setQuality(item.getQuality() - 1);
+                        decrementQuality(item);
                     }
                 }
             }
 
             if ("Sulfuras, Hand of Ragnaros".equals(item.getName())) {
             } else {
-                item.setSellIn(item.getSellIn() - 1);
+                decrementSellIn(item);
             }
 
             if (item.getSellIn() < 0) {
                 if ("Aged Brie".equals(item.getName())) {
                     if (item.getQuality() < 50) {
-                        item.setQuality(item.getQuality() + 1);
+                        incrementQuality(item);
                     }
                 } else {
                     if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
@@ -66,12 +66,24 @@ public class GildedRose {
                             if ("Sulfuras, Hand of Ragnaros".equals(item.getName())) {
                                 continue;
                             }
-                            item.setQuality(item.getQuality() - 1);
+                            decrementQuality(item);
                         }
                     }
                 }
             }
         }
+    }
+
+    private void decrementSellIn(Item item) {
+        item.setSellIn(item.getSellIn() - 1);
+    }
+
+    private void decrementQuality(Item item) {
+        item.setQuality(item.getQuality() - 1);
+    }
+
+    private void incrementQuality(Item item) {
+        item.setQuality(item.getQuality() + 1);
     }
 
 }
