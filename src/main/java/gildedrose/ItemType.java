@@ -1,3 +1,5 @@
+package gildedrose;
+
 public class ItemType {
     public enum Type { STANDARD, CONJURED, LEGENDARY, CHEESE, TICKET };
     public String name;

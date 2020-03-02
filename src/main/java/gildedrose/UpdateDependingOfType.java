@@ -1,32 +1,34 @@
+package gildedrose;
+
 public class UpdateDependingOfType {
-    //private ItemType updatedItem;
+    //private gildedrose.ItemType updatedItem;
 
     public UpdateDependingOfType(ItemType item) {
         int sellIn = item.sellIn;
         int quality = item.quality;
 
         switch(item.type) {
-            case STANDARD:
+            case ItemType.Type.STANDARD:
                 if(sellIn > 0){
                     sellIn--;
                     if(quality > 0) quality--;
                 }else if (quality > 0) quality -= 2;
                 break;
-            case CONJURED:
+            case ItemType.Type.CONJURED:
                 if(sellIn > 0){
                     sellIn--;
                     if(quality > 0) quality -= 2;
                 }else if (quality > 0) quality -= 4;
                 break;
-            case LEGENDARY:
+            case ItemType.Type.LEGENDARY:
                 break;
-            case CHEESE:
+            case ItemType.Type.CHEESE:
                 if(sellIn > 0){
                     sellIn--;
                     if(quality < 50) quality++;
                 }else if (quality < 50) quality += 2;
                 break;
-            case TICKET:
+            case ItemType.Type.TICKET:
                 if(sellIn > 10){
                     sellIn--;
                     if(quality < 50) quality++;
