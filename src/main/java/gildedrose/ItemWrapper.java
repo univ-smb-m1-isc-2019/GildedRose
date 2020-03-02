@@ -24,10 +24,6 @@ public class ItemWrapper {
         item.setQuality(quality);
     }
 
-    public boolean isAgedBrie(Item item) {
-        return "Aged Brie".equals(item.getName());
-    }
-
     protected void decrementSellIn(Item item) {
         item.setSellIn(item.getSellIn() - 1);
     }
@@ -44,27 +40,16 @@ public class ItemWrapper {
         updateSellIn();
 
         checkExpiration();
+
     }
 
     protected void checkQuality() {
-        if ((isAgedBrie(item))) {
-            if (item.getQuality() < 50) {
-                incrementQuality(item);
-            }
-        } else {
-            decrementQuality();
-        }
+        decrementQuality();
     }
 
     protected void checkExpiration() {
         if (item.getSellIn() < 0) {
-            if (isAgedBrie(item)) {
-                if (item.getQuality() < 50) {
-                    incrementQuality(item);
-                }
-            } else {
-                decrementQuality();
-            }
+            decrementQuality();
         }
     }
 

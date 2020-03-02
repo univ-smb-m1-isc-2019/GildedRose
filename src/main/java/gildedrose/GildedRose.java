@@ -24,8 +24,12 @@ public class GildedRose {
             return;
         }
 
-        ItemWrapper wrapper = new ItemWrapper(item);
+        if ("Aged Brie".equals(item.getName())) {
+            items.add(new AgedBrie(item));
+            return;
+        }
 
+        ItemWrapper wrapper = new ItemWrapper(item);
         this.items.add(wrapper);
     }
 
