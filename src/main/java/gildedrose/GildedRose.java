@@ -6,21 +6,21 @@ import java.util.List;
 
 public class GildedRose {
 
-    private final List<Item> items;
+    private final List<ItemWrapper> items;
 
     public GildedRose() {
         items = new ArrayList<>();
     }
 
     public void add(Item item) {
-        this.items.add(item);
+        this.items.add(new ItemWrapper(item));
     }
 
     public void updateQuality() {
         items.forEach(this::updateQuality);
     }
 
-    private void updateQuality(Item item) {
+    private void updateQuality(ItemWrapper item) {
 
         if ((isAgedBrie(item)) || isBackstagePass(item)) {
             if (item.getQuality() < 50) {
@@ -74,27 +74,27 @@ public class GildedRose {
         }
     }
 
-    private boolean isBackstagePass(Item item) {
+    private boolean isBackstagePass(ItemWrapper item) {
         return "Backstage passes to a TAFKAL80ETC concert".equals(item.getName());
     }
 
-    private boolean isAgedBrie(Item item) {
+    private boolean isAgedBrie(ItemWrapper item) {
         return "Aged Brie".equals(item.getName());
     }
 
-    private boolean isSulfuras(Item item) {
+    private boolean isSulfuras(ItemWrapper item) {
         return "Sulfuras, Hand of Ragnaros".equals(item.getName());
     }
 
-    private void decrementSellIn(Item item) {
+    private void decrementSellIn(ItemWrapper item) {
         item.setSellIn(item.getSellIn() - 1);
     }
 
-    private void decrementQuality(Item item) {
+    private void decrementQuality(ItemWrapper item) {
         item.setQuality(item.getQuality() - 1);
     }
 
-    private void incrementQuality(Item item) {
+    private void incrementQuality(ItemWrapper item) {
         item.setQuality(item.getQuality() + 1);
     }
 
