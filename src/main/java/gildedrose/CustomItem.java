@@ -1,3 +1,5 @@
+package gildedrose;
+
 public abstract class CustomItem {
     static final int LOWEST_QUALITY = 0;
     static final int HIGHEST_QUALITY = 50;

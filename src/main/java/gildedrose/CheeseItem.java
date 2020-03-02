@@ -1,3 +1,5 @@
+package gildedrose;
+
 public class CheeseItem extends  CustomItem {
     private static final int QUALITY_INCREASE = 1;
 

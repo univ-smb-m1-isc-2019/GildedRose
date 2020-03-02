@@ -1,3 +1,5 @@
+package gildedrose;
+
 public class StandardItem extends CustomItem {
     private static final int QUALITY_DECREASE = 1;
 
