@@ -19,12 +19,12 @@ public class GildedRose {
             return;
         }
 
-        ItemWrapper wrapper = new ItemWrapper(item);
-
-        if (wrapper.isBackstagePass(item)) {
+        if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
             items.add(new BackstagePass(item));
             return;
         }
+
+        ItemWrapper wrapper = new ItemWrapper(item);
 
         this.items.add(wrapper);
     }

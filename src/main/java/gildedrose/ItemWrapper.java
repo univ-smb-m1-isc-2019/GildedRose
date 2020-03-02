@@ -24,10 +24,6 @@ public class ItemWrapper {
         item.setQuality(quality);
     }
 
-    public boolean isBackstagePass(Item item) {
-        return "Backstage passes to a TAFKAL80ETC concert".equals(item.getName());
-    }
-
     public boolean isAgedBrie(Item item) {
         return "Aged Brie".equals(item.getName());
     }

@@ -31,4 +31,3 @@ public class BackstagePass extends ItemWrapper {
         }
     }
 }
-§
