@@ -37,10 +37,6 @@ public class ItemWrapper {
         item.setSellIn(item.getSellIn() - 1);
     }
 
-    private void decrementQuality(Item item) {
-        item.setQuality(item.getQuality() - 1);
-    }
-
     private void incrementQuality(Item item) {
         item.setQuality(item.getQuality() + 1);
     }
@@ -67,16 +63,15 @@ public class ItemWrapper {
                 }
             }
         } else {
-            if (item.getQuality() > 0) {
-                if ("Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                } else {
-                    decrementQuality(item);
-                }
-            }
+            decrementQuality();
         }
 
         updateSellIn();
 
+        checkExpiration();
+    }
+
+    private void checkExpiration() {
         if (item.getSellIn() < 0) {
             if (isAgedBrie(item)) {
                 if (item.getQuality() < 50) {
@@ -86,14 +81,15 @@ public class ItemWrapper {
                 if (isBackstagePass(item)) {
                     item.setQuality(0);
                 } else {
-                    if (item.getQuality() > 0) {
-                        if ("Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                            return;
-                        }
-                        decrementQuality(item);
-                    }
+                    decrementQuality();
                 }
             }
+        }
+    }
+
+    protected void decrementQuality() {
+        if (item.getQuality() > 0) {
+            item.setQuality(item.getQuality() - 1);
         }
     }
 

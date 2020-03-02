@@ -10,5 +10,10 @@ public class Sulfuras extends ItemWrapper {
         // do nothing
     }
 
+    protected void decrementQuality() {
+        // do nothing
+    }
+
+
 
 }
