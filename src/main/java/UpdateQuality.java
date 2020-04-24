@@ -9,13 +9,12 @@ public class UpdateQuality {
     UpdateStandard US = new UpdateStandard();
 
     //Met à jour les données des items
-    public  void updateQuality(ArrayList<Item> items)
-    {
-        for (Item item :items)
-        {
+    public void updateQuality(ArrayList<Item> items) {
+        for (Item item : items) {
             identifyItem(item);
         }
     }
+
     ///////////////////////////////////////////////
     private void identifyItem(Item item) {
 
@@ -44,7 +43,7 @@ public class UpdateQuality {
             }
         }
 
-        if (item.name.startsWith("Conjured ")){
+        if (item.name.startsWith("Conjured ")) {
 
             UJ.updateQualityConjured(item);
             US.updateSellIn(item);
@@ -53,10 +52,10 @@ public class UpdateQuality {
             }
         }
 
-        if (item.name.startsWith("Elixir") || item.name.startsWith("+5 ")){
+        if (item.name.startsWith("Elixir") || item.name.startsWith("+5 ")) {
 
-                US.updateQualityStandard(item);
-                US.updateSellIn(item);
+            US.updateQualityStandard(item);
+            US.updateSellIn(item);
             if (item.sellIn < 0) {
                 US.updateExpiredStandard(item);
             }
